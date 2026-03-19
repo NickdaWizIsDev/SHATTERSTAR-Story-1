@@ -215,6 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152461214}
+  - component: {fileID: 152461215}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -238,6 +239,37 @@ Transform:
   - {fileID: 400982200}
   m_Father: {fileID: 2066150267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152461215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152461213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7294932015ed8bc4289fde6c4337fe67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0.05
+  wallDistance: 0.2
+  touchingCol: {fileID: 400982201}
+  isGrounded: 0
+  isOnWall: 0
 --- !u!1 &400982199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,8 +1141,11 @@ MonoBehaviour:
   movementVector: {x: 0, y: 0}
   runVelocity: 15
   stopLerpValue: 0.05
-  jumpForce: 2
+  jumpForce: 10
+  coyoteTimeWindow: 0
+  jumpBufferTimeWindow: 0
   body: {fileID: 2066150264}
+  touching: {fileID: 152461215}
 --- !u!114 &2066150266
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SHATTERSTAR Story 1.sln"
+    "dotnet.defaultSolution": "SHATTERSTAR-Story-1.sln"
 }
