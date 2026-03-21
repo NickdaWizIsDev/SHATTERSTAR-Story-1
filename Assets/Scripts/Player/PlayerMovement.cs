@@ -110,7 +110,7 @@ namespace Player
         }
         internal void Stop()
         {
-            body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, stopLerpValue);
+            body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, touching.Ground? stopLerpValue : stopLerpValue/3);
         }
         #endregion
 
