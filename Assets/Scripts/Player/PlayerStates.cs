@@ -7,7 +7,7 @@ namespace Player
     {
         internal PlayerStates(PlayerController player)
         {
-            // The constructor passes the entity down to the states, so they can access it and its components.
+            // The constructor passes the player down to the states, so they can access it and its components.
 
             // Create our base StateMachine.
             player.stateMachine = new StateMachine();
@@ -56,15 +56,17 @@ namespace Player
     // As you can see, you create States in here.
     internal class PlayerIdleState : State
     {
-        public PlayerIdleState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerIdleState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "Idle";
         }
 
         public override void Enter()
         {
-            
+            entity.animationManager.PlayAnimation(player.animations.IdleAnimation);
         }
         public override void Do()
         {
@@ -78,20 +80,24 @@ namespace Player
 
     internal class PlayerMovingState : State
     {
-        public PlayerMovingState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerMovingState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "Moving";
             subStateMachine = new StateMachine();
         }
 
         public override void Enter()
         {
-            
+            entity.animationManager.PlayAnimation(player.animations.RunAnimation);
         }
         public override void Do()
         {
-            
+            // Evaluate the possibility of updating the animation speed depending on the player's velocity.
+
+            // Transition between the different movement states.
         }
         public override void Exit()
         {
@@ -101,20 +107,49 @@ namespace Player
 
     internal class PlayerAttackState : State
     {
-        public PlayerAttackState(Entity entity) : base(entity)
+        PlayerController player;
+        int attackCounter; // This is meant to be used for the basic attack combo, to know which attack animation to play.
+        int comboTimer; // This is meant to be used for the basic attack combo, to know when to reset the attackCounter.
+        public PlayerAttackState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "Attacking";
             subStateMachine = new StateMachine();
         }
 
         public override void Enter()
         {
-            
+            if(comboTimer > 0)
+            {
+                switch(attackCounter)
+                {
+                    case 0:
+                        entity.animationManager.PlayAnimation(player.animations.GroundAttackAnimation_1);
+                        attackCounter++;
+                        break;
+                    case 1:
+                        entity.animationManager.PlayAnimation(player.animations.GroundAttackAnimation_2);
+                        attackCounter++;
+                        break;
+                    case 2:
+                        entity.animationManager.PlayAnimation(player.animations.GroundAttackAnimation_3);
+                        attackCounter = 0;
+                        break;
+                }
+            }
+            else 
+            {
+                entity.animationManager.PlayAnimation(player.animations.GroundAttackAnimation_1);
+                attackCounter = 1;
+            }
         }
         public override void Do()
         {
-            
+            if(comboTimer > 0)
+            {
+                comboTimer--;
+            }
         }
         public override void Exit()
         {
@@ -124,9 +159,11 @@ namespace Player
 
     internal class PlayerDashingState : State
     {
-        public PlayerDashingState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerDashingState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "Dashing";
         }
 
@@ -146,9 +183,11 @@ namespace Player
 
     internal class PlayerMovingOnGroundState : State
     {
-        public PlayerMovingOnGroundState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerMovingOnGroundState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "OnGround";
         }
 
@@ -168,9 +207,11 @@ namespace Player
 
     internal class PlayerMovingOnAirState : State
     {
-        public PlayerMovingOnAirState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerMovingOnAirState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "OnAir";
         }
 
@@ -190,9 +231,11 @@ namespace Player
 
     internal class PlayerAttackingStillState : State
     {
-        public PlayerAttackingStillState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerAttackingStillState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "BasicAttack";
         }
 
@@ -212,9 +255,11 @@ namespace Player
 
     internal class PlayerAttackingMovingState : State
     {
-        public PlayerAttackingMovingState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerAttackingMovingState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "MovingAttack";
         }
 
@@ -234,9 +279,11 @@ namespace Player
 
     internal class PlayerAttackingOnAirState : State
     {
-        public PlayerAttackingOnAirState(Entity entity) : base(entity)
+        PlayerController player;
+        public PlayerAttackingOnAirState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
+            player = entity;
             stateName = "AirAttack";
         }
 

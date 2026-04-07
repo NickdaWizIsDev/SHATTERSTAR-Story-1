@@ -3,8 +3,8 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     // This script is meant to be used as a component of an Entity, and will be used by the States to play animations.
-    // This is mainly because I lowkey hate Unity's Animator Controller. With this, I can just call PlayAnimation("AnimationName")
-    // from any state, and it will play the animation. Same with setting bools, floats and ints. Godsend.
+    // This is mainly because I lowkey hate Unity's Animator Controller. With this, I can just call PlayAnimation("AnimationClip")
+    // and after checking prerequesites, it will play the animation. Same with setting bools, floats and ints. Godsend.
 
     // You need to set the Animator component of the Entity in the inspector.
     // This is for two main reasons. The first being that once the scene has like, idk, 40~ entities, running GetComponent on each
