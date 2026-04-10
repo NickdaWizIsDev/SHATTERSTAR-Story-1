@@ -66,7 +66,8 @@ namespace Player
 
         public override void Enter()
         {
-            entity.animationManager.PlayAnimation(player.animations.IdleAnimation);
+            // This animation doesn't exist yet. Anyways this serves as example of how to play animations when entering a state.
+            //entity.animationManager.PlayAnimation(player.animations.IdleAnimation);
         }
         public override void Do()
         {

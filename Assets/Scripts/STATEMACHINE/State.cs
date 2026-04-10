@@ -10,7 +10,7 @@ public abstract class State
     }
     // The base for a working Hierarchical State Machine (HSM).
     internal StateMachine subStateMachine;
-    protected State subState => subStateMachine.currentState;
+    protected State subState => subStateMachine?.currentState;
 
     // This function is called only once, when you change the Entity's state to this one.
     public abstract void Enter();

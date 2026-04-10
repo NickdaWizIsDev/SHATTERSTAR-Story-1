@@ -147,14 +147,14 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: Placeholder_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 0
-      y: 48
+      y: 64
       width: 16
       height: 16
     spriteID: 586a7a32bf9b1f243b2f056925e5efd9
@@ -168,14 +168,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 16
-      y: 48
+      y: 64
       width: 16
       height: 16
     spriteID: 572d4107718f82147bb809d46fb6a520
@@ -189,14 +189,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_2
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 32
-      y: 48
+      y: 64
       width: 16
       height: 16
     spriteID: 225471a2729435c4ab9f3b082507c628
@@ -210,14 +210,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_3
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 48
-      y: 48
+      y: 64
       width: 16
       height: 16
     spriteID: 09fd4bc84d9d5c844861badc05836d25
@@ -231,14 +231,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_4
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 0
-      y: 32
+      y: 48
       width: 16
       height: 16
     spriteID: 875baf48eed35954f99e6e87811f2d3c
@@ -252,14 +252,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_5
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 16
-      y: 32
+      y: 48
       width: 16
       height: 16
     spriteID: 5f62fe6169af3d04aaed8e3657875eae
@@ -273,14 +273,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 32
-      y: 32
+      y: 48
       width: 16
       height: 16
     spriteID: 48607c59df590b24c97d3ee540f251da
@@ -294,14 +294,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_7
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 48
-      y: 32
+      y: 48
       width: 16
       height: 16
     spriteID: 920a7f00cb552d848a26f903a7ac86d8
@@ -315,14 +315,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_8
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 0
-      y: 16
+      y: 32
       width: 16
       height: 16
     spriteID: c369edcab94666046a093f9b06b60e15
@@ -336,14 +336,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_9
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 16
-      y: 16
+      y: 32
       width: 16
       height: 16
     spriteID: 9a9876665e805824b9ddc7f38bd06932
@@ -357,14 +357,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_10
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 32
-      y: 16
+      y: 32
       width: 16
       height: 16
     spriteID: cababd8776fca1e4992c77f59e4680c2
@@ -378,14 +378,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_11
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 48
-      y: 16
+      y: 32
       width: 16
       height: 16
     spriteID: 45af9c8cb836fd44697cf0e6f5624bd1
@@ -399,14 +399,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_12
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 16
       width: 16
       height: 16
     spriteID: d75823407141892429a978c18e4e5fbc
@@ -420,14 +420,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_13
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 16
-      y: 0
+      y: 16
       width: 16
       height: 16
     spriteID: 70b0f77b43a89ee4a9e43b64b2128dd7
@@ -441,14 +441,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_14
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 32
-      y: 0
+      y: 16
       width: 16
       height: 16
     spriteID: 8efdf6275c2e7964a92d0dffbf1b058f
@@ -462,6 +462,90 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Placeholder_15
     originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 16
+      width: 16
+      height: 16
+    spriteID: af772e1e1ef09764e82de458f3f1cf9c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Placeholder_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 16
+      height: 16
+    spriteID: d340a40dd479e4f47be0f196a0481cc4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Placeholder_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 5fe28f8c97205fe4a9413cd4e6732a73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Placeholder_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 40949062ac6266644a483bff4ea02ddd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Placeholder_19
+    originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,7 +556,7 @@ ScriptedImporter:
       y: 0
       width: 16
       height: 16
-    spriteID: af772e1e1ef09764e82de458f3f1cf9c
+    spriteID: eb9f6cf5b2f8750479d53f58eb4f4f4f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -496,7 +580,7 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       spriteId: 588c9ccb4542f0f44906a1e1dc1b274b
     linkedCells: []
     parentIndex: -1
@@ -540,5 +624,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
-  previousTextureSize: {x: 64, y: 64}
+  canvasSize: {x: 64, y: 80}
+  previousTextureSize: {x: 64, y: 128}

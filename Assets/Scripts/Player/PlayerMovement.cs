@@ -140,10 +140,10 @@ namespace Player
         private void Jump()
         {            
             // 1. Calculate the actual gravity affecting this Rigidbody2D
-            // Physics2D.gravity is usually -9.81. We multiply by gravityScale and make it positive.
-            float gravity = Mathf.Abs(Physics2D.gravity.y * body.gravityScale);
+            // Physics2D.gravity is -9.81. We multiply by baseGravityScale and make it positive.
+            float gravity = Mathf.Abs(Physics2D.gravity.y * baseGravityScale);
 
-            // 2. Apply the kinematic formula: vi = sqrt(vf^2 + 2gh)
+            // 2. Kinematic formula (yippie physics): vi = sqrt(vf^2 + 2gh)
             float requiredVelocity = Mathf.Sqrt(
                 Mathf.Pow(1.5f, 2) + (2f * gravity * jumpHeight + 0.5f)
             );
