@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
+using Assets.Scripts.Statemachine;
 
-namespace Player
+namespace Assets.Scripts.Player
 {
     public class PlayerController : Entity
     {
@@ -15,7 +17,7 @@ namespace Player
 
         void Start()
         {
-            stateMachine.ChangeState(playerStates.IdleState);
+            // stateMachine.ChangeState<PlayerIdleState>();
         }
         void FixedUpdate()
         {
@@ -32,6 +34,22 @@ namespace Player
             CurrentState.RecursiveDo();
 
             // PENDING: show the current state (if it has a substate, add "." and the substate's name)
+
+            // --- STATE MANAGEMENT --- //
+            PickState();
+        }
+
+        private void PickState()
+        {
+            Debug.Log("Current State: " + stateMachine.currentState.RecursiveStateString());
+            if(movement.body.linearVelocity != Vector2.zero)
+            {
+                // Change to Moving States
+            }
+            else
+            {
+                // Change to Idle State
+            }
         }
     }
 
@@ -45,11 +63,11 @@ namespace Player
         public AnimationClip JumpAnimation;
         public AnimationClip AirHangAnimation;
         public AnimationClip FallAnimation;
+        public AnimationClip FallLoopAnimation;
         public AnimationClip GroundAttackAnimation_1;
         public AnimationClip GroundAttackAnimation_2;
-        public AnimationClip GroundAttackAnimation_3;
-        public AnimationClip AirAttackAnimation;
-        public AnimationClip MovingAttackAnimation;
+        public AnimationClip AirAttackAnimation;        // Not Animated Yet
+        public AnimationClip MovingAttackAnimation;     // Not Animated Yet
         public AnimationClip DashAnimation;
     }
 }

@@ -615,6 +615,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nick
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5e9cb52c78c6f7d42b8c49d9d5f0104d, type: 2}
     - target: {fileID: 7878350319992209165, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4477,6 +4481,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1755486379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755486381}
+  - component: {fileID: 1755486380}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1755486380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755486379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae16db613b0a9f4bbd7dc9ffa460e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1755486381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755486379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6527391, y: 3.4816694, z: 0.73717076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066150263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4564,17 +4612,17 @@ MonoBehaviour:
   animationManager: {fileID: 2066150268}
   movement: {fileID: 2066150265}
   animations:
-    IdleAnimation: {fileID: 0}
-    RunAnimation: {fileID: 0}
-    JumpAnimation: {fileID: 0}
-    AirHangAnimation: {fileID: 0}
-    FallAnimation: {fileID: 0}
-    GroundAttackAnimation_1: {fileID: 0}
-    GroundAttackAnimation_2: {fileID: 0}
-    GroundAttackAnimation_3: {fileID: 0}
+    IdleAnimation: {fileID: 7400000, guid: f9a3918d22e8a8245b9c2d3105e8440e, type: 2}
+    RunAnimation: {fileID: 7400000, guid: 28674aa29f7d6d2498e4099e2465dde8, type: 2}
+    JumpAnimation: {fileID: 7400000, guid: 69ecd44553a77f845bf739deac83164d, type: 2}
+    AirHangAnimation: {fileID: 7400000, guid: 7f685f8a4fc00ea4782ba5e28ccc878d, type: 2}
+    FallAnimation: {fileID: 7400000, guid: c2c1cab8912e185498b0bb616e9bd2f9, type: 2}
+    FallLoopAnimation: {fileID: 7400000, guid: 9b2351ebf67d27f40948f4abd4aeb746, type: 2}
+    GroundAttackAnimation_1: {fileID: 7400000, guid: c9606c407f44a184abafd98ec8b4844f, type: 2}
+    GroundAttackAnimation_2: {fileID: 7400000, guid: ffe8f1c71fe911b4aa2eeca8afc02adf, type: 2}
     AirAttackAnimation: {fileID: 0}
     MovingAttackAnimation: {fileID: 0}
-    DashAnimation: {fileID: 0}
+    DashAnimation: {fileID: 7400000, guid: d0124c6273bef1b4f9e8face52ed7c16, type: 2}
 --- !u!4 &2066150267
 Transform:
   m_ObjectHideFlags: 0
@@ -4617,3 +4665,4 @@ SceneRoots:
   - {fileID: 1244742994}
   - {fileID: 1062432284}
   - {fileID: 807109595}
+  - {fileID: 1755486381}

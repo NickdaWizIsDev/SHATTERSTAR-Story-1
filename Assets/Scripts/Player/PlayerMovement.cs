@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Assets.Scripts.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -24,9 +24,9 @@ namespace Player
         [SerializeField] internal float fallGravityScale = 4f;
 
         [Header("References")]
-        [SerializeField] Rigidbody2D body;
-        [SerializeField] TouchingDirections touching;
-        PlayerInputActions inputActions;
+        [SerializeField] internal Rigidbody2D body;
+        [SerializeField] internal TouchingDirections touching;
+        internal PlayerInputActions inputActions;
 
         void Awake()
         {
@@ -95,7 +95,6 @@ namespace Player
             if (Mathf.Sign(body.linearVelocityX) != Mathf.Sign(movementVector.x) && vel > 0.5f)
             {
                 body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, movementVector.x * runVelocity, stopLerpValue/4);
-                // runState = state.turning or something of the sort
                 return;
             }
 
@@ -110,6 +109,7 @@ namespace Player
         }
         internal void Stop()
         {
+            // You lose less speed while in mid air
             body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, touching.Ground? stopLerpValue : stopLerpValue/3);
         }
         #endregion
