@@ -1,13 +1,21 @@
 using System;
 using UnityEngine;
 using Assets.Scripts.Statemachine;
+using TMPro;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerController : Entity
+    public class PlayerController : Entity, IDamageable
     {
+        [Header("Debug Stuff")] 
+        [SerializeField] private TextMeshProUGUI debugStateText;
+
+        [Header("References")]
         [SerializeField] internal PlayerMovement movement;
         [SerializeField] internal PlayerAnimations animations;
+
+        [Header("Stats")]
+        [SerializeField] private int health = 100;
         PlayerStates playerStates;
 
         void Awake()
@@ -17,7 +25,7 @@ namespace Assets.Scripts.Player
 
         void Start()
         {
-            // stateMachine.ChangeState<PlayerIdleState>();
+            stateMachine.ChangeState<PlayerIdleState>();
         }
         void FixedUpdate()
         {
@@ -33,7 +41,10 @@ namespace Assets.Scripts.Player
         {
             CurrentState.RecursiveDo();
 
-            // PENDING: show the current state (if it has a substate, add "." and the substate's name)
+            if (debugStateText != null)
+            {
+                debugStateText.text = stateMachine.currentState.RecursiveStateString();
+            }
 
             // --- STATE MANAGEMENT --- //
             PickState();
@@ -41,19 +52,34 @@ namespace Assets.Scripts.Player
 
         private void PickState()
         {
-            Debug.Log("Current State: " + stateMachine.currentState.RecursiveStateString());
-            if(movement.body.linearVelocity != Vector2.zero)
+            switch (CurrentState)
             {
-                // Change to Moving States
+                case PlayerIdleState:
+                    if (movement.CurrentVelocity != Vector2.zero)
+                    {
+                        stateMachine.ChangeState<PlayerMovingState>();
+                    }
+                    break;
+                case PlayerMovingState:
+                    if (movement.CurrentVelocity == Vector2.zero)
+                    {
+                        stateMachine.ChangeState<PlayerIdleState>();
+                    }
+                    break;
             }
-            else
+        }
+
+        public void DamageThis(int damage)
+        {
+            health -= damage;
+            if(health <= 0)
             {
-                // Change to Idle State
+                // Handle player death
             }
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     internal class PlayerAnimations
     {
         // This is meant to be used as a reference for the player's animations. I don't wanna have to go into the animator every time 

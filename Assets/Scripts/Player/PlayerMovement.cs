@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player
     {
         [Header("Values")]
         [SerializeField] internal Vector2 movementVector;
+        [SerializeField] internal Vector2 CurrentVelocity => body.linearVelocity;
 
         [Header("Horizontal Movement")]
         [SerializeField] internal float runVelocity;

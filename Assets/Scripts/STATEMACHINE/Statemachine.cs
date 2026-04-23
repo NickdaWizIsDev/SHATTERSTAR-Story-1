@@ -8,6 +8,13 @@ namespace Assets.Scripts.Statemachine
         public State currentState;
         // Dictionary allows us to find states by their Class Type
         public Dictionary<Type, State> availableStates = new Dictionary<Type, State>();
+        public void AddStates(params State[] states)
+        {
+            foreach (var s in states)
+            {
+                availableStates.Add(s.GetType(), s);
+            }
+        }
 
         public Exception ChangeState<T>() where T : State
         {

@@ -2,19 +2,16 @@ using Assets.Scripts.Statemachine;
 
 namespace Assets.Scripts.Player
 {
-    internal class PlayerMovingOnGroundState : State
+    internal class PlayerAirHangState : State
     {
-        PlayerController player;
-        public PlayerMovingOnGroundState(PlayerController entity) : base(entity)
+        public PlayerAirHangState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
-            player = entity;
-            stateName = "OnGround";
         }
 
         public override void Enter()
         {
-            player.animationManager.PlayAnimation(player.animations.RunAnimation);
+            
         }
         public override void Do()
         {
@@ -25,4 +22,5 @@ namespace Assets.Scripts.Player
             
         }
     }
+    
 }

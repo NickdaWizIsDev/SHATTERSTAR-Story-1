@@ -5,23 +5,48 @@ namespace Assets.Scripts.Player
     internal class PlayerMovingState : State
     {
         PlayerController player;
+        PlayerMovingOnGroundState onGround;
+        PlayerMovingOnAirState onAir;
         public PlayerMovingState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
             player = entity;
             stateName = "Moving";
             subStateMachine = new StateMachine();
+            onGround = new PlayerMovingOnGroundState(player);
+            onAir = new PlayerMovingOnAirState(player);
+
+            subStateMachine.AddStates(onGround, onAir);
         }
 
         public override void Enter()
         {
-            entity.animationManager.PlayAnimation(player.animations.RunAnimation);
+            if (player.movement.touching.Ground)
+            {
+                subStateMachine.ChangeState<PlayerMovingOnGroundState>();
+            }
+            else
+            {
+                subStateMachine.ChangeState<PlayerMovingOnAirState>();
+            }
         }
         public override void Do()
         {
-            // Evaluate the possibility of updating the animation speed depending on the player's velocity.
-
-            // Transition between the different movement states.
+            switch (subStateMachine.currentState)
+            {
+                case PlayerMovingOnGroundState:
+                    if (!player.movement.touching.Ground)
+                    {
+                        subStateMachine.ChangeState<PlayerMovingOnAirState>();
+                    }
+                    break;
+                case PlayerMovingOnAirState:
+                    if (player.movement.touching.Ground)
+                    {
+                        subStateMachine.ChangeState<PlayerMovingOnGroundState>();
+                    }
+                    break;
+            }
         }
         public override void Exit()
         {
