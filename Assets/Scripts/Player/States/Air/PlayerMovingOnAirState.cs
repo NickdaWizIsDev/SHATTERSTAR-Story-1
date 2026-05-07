@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player
             this.entity = entity;
             player = entity;
             stateName = "OnAir";
+            subStateMachine = new StateMachine();
 
             jumpState = new PlayerJumpState(player);
             airHangState = new PlayerAirHangState(player);
