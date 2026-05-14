@@ -23,26 +23,25 @@ namespace Assets.Scripts.Player
 
         public override void Enter()
         {
-            if(player.movement.CurrentVelocity.y > 0) subStateMachine.ChangeState<PlayerJumpState>();
-            else if(player.movement.CurrentVelocity.y < 0) subStateMachine.ChangeState<PlayerFallState>();
-            else subStateMachine.ChangeState<PlayerAirHangState>();
+            if(player.movement.CurrentVelocity.y > 0.5f) subStateMachine.ChangeStateTo<PlayerJumpState>();
+            else if(player.movement.CurrentVelocity.y < -0.5f) subStateMachine.ChangeStateTo<PlayerFallState>();
+            else subStateMachine.ChangeStateTo<PlayerAirHangState>();
         }
         public override void Do()
         {
-            // switch (subStateMachine.AAAAAAAAAAAAAA)
-            // {
-            //     case PlayerJumpState:
-            //         if (player.movement.CurrentVelocity.y <= 0) subStateMachine.ChangeState<PlayerFallState>();
-            //         break;
-            //     case PlayerAirHangState:
-            //         if (player.movement.CurrentVelocity.y > 0) subStateMachine.ChangeState<PlayerJumpState>();
-            //         else if (player.movement.CurrentVelocity.y < 0) subStateMachine.ChangeState<PlayerFallState>();
-            //         break;
-            //     case PlayerFallState:
-            //         if (player.movement.CurrentVelocity.y > 0) subStateMachine.ChangeState<PlayerJumpState>();
-            //         else if (player.movement.CurrentVelocity.y == 0) subStateMachine.ChangeState<PlayerAirHangState>();
-            //         break;
-            // }
+            switch (subStateMachine.currentState)
+            {
+                case PlayerJumpState:
+                    if (player.movement.CurrentVelocity.y <= 0.5f) subStateMachine.ChangeStateTo<PlayerAirHangState>();
+                    break;
+                case PlayerAirHangState:
+                    if (player.movement.CurrentVelocity.y < -1f) subStateMachine.ChangeStateTo<PlayerFallState>();
+                    break;
+                case PlayerFallState:
+                    if (player.movement.CurrentVelocity.y >= -0.5f && player.movement.CurrentVelocity.y <= 0.5f) 
+                        subStateMachine.ChangeStateTo<PlayerAirHangState>();
+                    break;
+            }
         }
         public override void Exit()
         {

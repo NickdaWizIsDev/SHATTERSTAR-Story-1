@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Assets.Scripts.Statemachine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Player
 {
@@ -14,22 +15,37 @@ namespace Assets.Scripts.Player
         [SerializeField] internal PlayerMovement movement;
         [SerializeField] internal PlayerAnimations animations;
 
-        [Header("Stats")]
-        [SerializeField] private int health = 100;
-        PlayerStates playerStates;
+        private int health = 100;
+        private PlayerStates playerStates;
+        private PlayerInputActions inputActions;
 
         void Awake()
         {
             playerStates = new PlayerStates(this);
+            
+            inputActions = new PlayerInputActions();
+
+            inputActions.Gameplay.Jump.started += movement.OnJump;
+            inputActions.Gameplay.Jump.canceled += movement.OnJump;
+
+            inputActions.Gameplay.Move.performed += movement.OnMove;
+            inputActions.Gameplay.Move.canceled += movement.OnMove;
+
+            inputActions.Gameplay.Dash.started += movement.OnDash;
+
+            inputActions.Gameplay.Attack.started += OnAttack;
         }
+
+        private void OnEnable() => inputActions.Gameplay.Enable();
+        private void OnDisable() => inputActions.Gameplay.Disable();
 
         void Start()
         {
-            stateMachine.ChangeState<PlayerIdleState>();
+            stateMachine.ChangeStateTo<PlayerIdleState>();
+            movement.controller = this;
         }
         void FixedUpdate()
         {
-            // Calling movement functions here, and not on the movement script, so I can later make it depend on the player's state
             if(movement.movementVector != Vector2.zero)
             {
                 movement.Move();
@@ -46,27 +62,16 @@ namespace Assets.Scripts.Player
                 debugStateText.text = stateMachine.currentState.RecursiveStateString();
             }
 
-            // --- STATE MANAGEMENT --- //
-            PickState();
-        }
-
-        private void PickState()
-        {
-            switch (CurrentState)
+            if(movement.movementVector.x > 0)
             {
-                case PlayerIdleState:
-                    if (movement.CurrentVelocity != Vector2.zero)
-                    {
-                        stateMachine.ChangeState<PlayerMovingState>();
-                    }
-                    break;
-                case PlayerMovingState:
-                    if (movement.CurrentVelocity == Vector2.zero)
-                    {
-                        stateMachine.ChangeState<PlayerIdleState>();
-                    }
-                    break;
+                transform.localRotation = new Quaternion(0, 0, 0, 1);
             }
+            else if(movement.movementVector.x < 0)
+            {
+                transform.localRotation = new Quaternion(0, 180, 0, 1);
+            }
+
+            animationManager.SetBool("OnGround", movement.touching.Ground);
         }
 
         public void DamageThis(int damage)
@@ -76,6 +81,11 @@ namespace Assets.Scripts.Player
             {
                 // Handle player death
             }
+        }
+
+        private void OnAttack(InputAction.CallbackContext context)
+        {            
+            stateMachine.ChangeStateTo<PlayerAttackState>();
         }
     }
 

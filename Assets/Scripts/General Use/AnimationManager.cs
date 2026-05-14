@@ -22,38 +22,37 @@ public class AnimationManager : MonoBehaviour
     // Make sure the bool I wanna set in the animator is called the same as the one I'm passing. For example, idk,
     // CanAttack could be a bool for a given Entity. The bool in it's AnimatorController should also be called
     // CanAttack, caps sensitive. Same applies for all the other variable setters and getters.
-    public void SetBool(bool value)
+
+    public void SetBool(string boolName, bool value)
     {
-        string boolName = value.ToString();
         animator.SetBool(boolName, value);
     }
-    public void GetBool(bool value)
+    public bool GetBool(string boolName)
     {
-        string boolName = value.ToString();
-        animator.GetBool(boolName);
+        return animator.GetBool(boolName);
     }
-    public void SetFloat(float value)
+    public void SetFloat(string floatName, float value)
     {
-        string floatName = value.ToString();
         animator.SetFloat(floatName, value);
     }
-    public void GetFloat(float value)
+    public float GetFloat(string floatName)
     {
-        string floatName = value.ToString();
-        animator.GetFloat(floatName);
+        return animator.GetFloat(floatName);
     }
-    public void SetInt(int value)
+    public void SetInt(string intName, int value)
     {
-        string intName = value.ToString();
         animator.SetInteger(intName, value);
     }
-    public void GetInt(int value)
+    public int GetInt(string intName)
     {
-        string intName = value.ToString();
-        animator.GetInteger(intName);
+        return animator.GetInteger(intName);
     }
     public void SetTrigger(string triggerName)
     {
         animator.SetTrigger(triggerName);
+    }
+    public void SetAnimationSpeed(float speed)
+    {
+        animator.speed = speed;
     }
 }

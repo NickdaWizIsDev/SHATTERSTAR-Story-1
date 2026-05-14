@@ -16,7 +16,7 @@ namespace Assets.Scripts.Statemachine
             }
         }
 
-        public Exception ChangeState<T>() where T : State
+        public Exception ChangeStateTo<T>() where T : State
         {
             var type = typeof(T);
             if (!availableStates.ContainsKey(type)) return new Exception("State of type " + type + " not found on this machine.");

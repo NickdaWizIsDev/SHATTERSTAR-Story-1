@@ -1,4 +1,5 @@
 using Assets.Scripts.Statemachine;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -20,6 +21,10 @@ namespace Assets.Scripts.Player
         public override void Do()
         {
             
+                    if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) > 0.5f)
+                    {
+                        entity.stateMachine.ChangeStateTo<PlayerMovingState>();
+                    }
         }
         public override void Exit()
         {

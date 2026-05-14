@@ -1,4 +1,5 @@
 using Assets.Scripts.Statemachine;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -23,11 +24,11 @@ namespace Assets.Scripts.Player
         {
             if (player.movement.touching.Ground)
             {
-                subStateMachine.ChangeState<PlayerMovingOnGroundState>();
+                subStateMachine.ChangeStateTo<PlayerMovingOnGroundState>();
             }
             else
             {
-                subStateMachine.ChangeState<PlayerMovingOnAirState>();
+                subStateMachine.ChangeStateTo<PlayerMovingOnAirState>();
             }
         }
         public override void Do()
@@ -37,15 +38,21 @@ namespace Assets.Scripts.Player
                 case PlayerMovingOnGroundState:
                     if (!player.movement.touching.Ground)
                     {
-                        subStateMachine.ChangeState<PlayerMovingOnAirState>();
+                        subStateMachine.ChangeStateTo<PlayerMovingOnAirState>();
                     }
                     break;
                 case PlayerMovingOnAirState:
                     if (player.movement.touching.Ground)
                     {
-                        subStateMachine.ChangeState<PlayerMovingOnGroundState>();
+                        subStateMachine.ChangeStateTo<PlayerMovingOnGroundState>();
                     }
                     break;
+            }
+
+            
+            if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) < 0.5f)
+            {
+                player.stateMachine.ChangeStateTo<PlayerIdleState>();
             }
         }
         public override void Exit()

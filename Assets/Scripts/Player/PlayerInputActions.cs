@@ -112,7 +112,7 @@ namespace Assets.Scripts.Player
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""a4dd75c3-048f-44de-9fe6-54542d3a2a6a"",
                     ""expectedControlType"": """",
@@ -130,13 +130,49 @@ namespace Assets.Scripts.Player
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Aim"",
+                    ""name"": ""Mouse Position"",
                     ""type"": ""Value"",
                     ""id"": ""4aad3501-f760-4adb-93ba-a0ba4e6dee78"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb1438dd-67f6-488f-9691-f2d88d210a2f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""372af925-5776-47a1-ad3e-92d4adc21d72"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a558f1c-6d6b-4b86-be8a-fc7520659862"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""56da9717-4662-4f4a-9254-591c322fa4f9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,7 +190,7 @@ namespace Assets.Scripts.Player
                 {
                     ""name"": ""up"",
                     ""id"": ""bd67a964-6c9e-4d75-8617-5af09dfdf3e7"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,7 +201,7 @@ namespace Assets.Scripts.Player
                 {
                     ""name"": ""down"",
                     ""id"": ""e77ec388-e910-4fc8-afba-729c6933a18a"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -176,7 +212,7 @@ namespace Assets.Scripts.Player
                 {
                     ""name"": ""left"",
                     ""id"": ""83c7a775-bac4-47f2-9d80-f660e7bafbbd"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,7 +223,7 @@ namespace Assets.Scripts.Player
                 {
                     ""name"": ""right"",
                     ""id"": ""ab9161a6-a908-465a-bdc4-ca8ecaa1e67c"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -209,18 +245,18 @@ namespace Assets.Scripts.Player
                 {
                     ""name"": """",
                     ""id"": ""6f54f53a-a8f3-4770-b231-82de714f3456"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""2ac38b72-3f86-43ae-aa45-dc9d29ac7b3d"",
-                    ""path"": ""<Keyboard>/f7"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -235,7 +271,62 @@ namespace Assets.Scripts.Player
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Aim"",
+                    ""action"": ""Mouse Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aeda7c2e-dac1-4e01-b557-07f02581f966"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb8baec7-3dcf-4028-b172-a5325118085e"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""467b6bac-1f8c-4bc5-926d-350cc8c2d262"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21c7dd16-599b-4bc9-88a6-4b9d8f9ecacc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3265df78-c723-4010-84e7-8a19771acc6b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -248,9 +339,13 @@ namespace Assets.Scripts.Player
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-            m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+            m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
             m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
-            m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
+            m_Gameplay_MousePosition = m_Gameplay.FindAction("Mouse Position", throwIfNotFound: true);
+            m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+            m_Gameplay_Spell1 = m_Gameplay.FindAction("Spell 1", throwIfNotFound: true);
+            m_Gameplay_Spell2 = m_Gameplay.FindAction("Spell 2", throwIfNotFound: true);
+            m_Gameplay_Spell3 = m_Gameplay.FindAction("Spell 3", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -333,9 +428,13 @@ namespace Assets.Scripts.Player
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_Move;
         private readonly InputAction m_Gameplay_Jump;
-        private readonly InputAction m_Gameplay_Shoot;
+        private readonly InputAction m_Gameplay_Attack;
         private readonly InputAction m_Gameplay_Pause;
-        private readonly InputAction m_Gameplay_Aim;
+        private readonly InputAction m_Gameplay_MousePosition;
+        private readonly InputAction m_Gameplay_Dash;
+        private readonly InputAction m_Gameplay_Spell1;
+        private readonly InputAction m_Gameplay_Spell2;
+        private readonly InputAction m_Gameplay_Spell3;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -356,17 +455,33 @@ namespace Assets.Scripts.Player
             /// </summary>
             public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
             /// <summary>
-            /// Provides access to the underlying input action "Gameplay/Shoot".
+            /// Provides access to the underlying input action "Gameplay/Attack".
             /// </summary>
-            public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+            public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
             /// <summary>
             /// Provides access to the underlying input action "Gameplay/Pause".
             /// </summary>
             public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
             /// <summary>
-            /// Provides access to the underlying input action "Gameplay/Aim".
+            /// Provides access to the underlying input action "Gameplay/MousePosition".
             /// </summary>
-            public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
+            public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Dash".
+            /// </summary>
+            public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Spell1".
+            /// </summary>
+            public InputAction @Spell1 => m_Wrapper.m_Gameplay_Spell1;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Spell2".
+            /// </summary>
+            public InputAction @Spell2 => m_Wrapper.m_Gameplay_Spell2;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Spell3".
+            /// </summary>
+            public InputAction @Spell3 => m_Wrapper.m_Gameplay_Spell3;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -399,15 +514,27 @@ namespace Assets.Scripts.Player
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Aim.started += instance.OnAim;
-                @Aim.performed += instance.OnAim;
-                @Aim.canceled += instance.OnAim;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @Spell1.started += instance.OnSpell1;
+                @Spell1.performed += instance.OnSpell1;
+                @Spell1.canceled += instance.OnSpell1;
+                @Spell2.started += instance.OnSpell2;
+                @Spell2.performed += instance.OnSpell2;
+                @Spell2.canceled += instance.OnSpell2;
+                @Spell3.started += instance.OnSpell3;
+                @Spell3.performed += instance.OnSpell3;
+                @Spell3.canceled += instance.OnSpell3;
             }
 
             /// <summary>
@@ -425,15 +552,27 @@ namespace Assets.Scripts.Player
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @Shoot.started -= instance.OnShoot;
-                @Shoot.performed -= instance.OnShoot;
-                @Shoot.canceled -= instance.OnShoot;
+                @Attack.started -= instance.OnAttack;
+                @Attack.performed -= instance.OnAttack;
+                @Attack.canceled -= instance.OnAttack;
                 @Pause.started -= instance.OnPause;
                 @Pause.performed -= instance.OnPause;
                 @Pause.canceled -= instance.OnPause;
-                @Aim.started -= instance.OnAim;
-                @Aim.performed -= instance.OnAim;
-                @Aim.canceled -= instance.OnAim;
+                @MousePosition.started -= instance.OnMousePosition;
+                @MousePosition.performed -= instance.OnMousePosition;
+                @MousePosition.canceled -= instance.OnMousePosition;
+                @Dash.started -= instance.OnDash;
+                @Dash.performed -= instance.OnDash;
+                @Dash.canceled -= instance.OnDash;
+                @Spell1.started -= instance.OnSpell1;
+                @Spell1.performed -= instance.OnSpell1;
+                @Spell1.canceled -= instance.OnSpell1;
+                @Spell2.started -= instance.OnSpell2;
+                @Spell2.performed -= instance.OnSpell2;
+                @Spell2.canceled -= instance.OnSpell2;
+                @Spell3.started -= instance.OnSpell3;
+                @Spell3.performed -= instance.OnSpell3;
+                @Spell3.canceled -= instance.OnSpell3;
             }
 
             /// <summary>
@@ -489,12 +628,12 @@ namespace Assets.Scripts.Player
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnJump(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnShoot(InputAction.CallbackContext context);
+            void OnAttack(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
@@ -503,12 +642,40 @@ namespace Assets.Scripts.Player
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPause(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Mouse Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnAim(InputAction.CallbackContext context);
+            void OnMousePosition(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnDash(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Spell 1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpell1(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Spell 2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpell2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Spell 3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpell3(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,20 +1,23 @@
 using Assets.Scripts.Statemachine;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    internal class PlayerJumpState : State
+    internal class PlayerAttackState : State
     {
         PlayerController player;
-        public PlayerJumpState(PlayerController entity) : base(entity)
+
+        public PlayerAttackState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
             player = entity;
-            stateName = "Jump";
+            stateName = "Attacking";
+            subStateMachine = new StateMachine();
         }
 
         public override void Enter()
         {
-            player.animationManager.PlayAnimation(player.animations.JumpAnimation);
+            
         }
         public override void Do()
         {
@@ -25,5 +28,4 @@ namespace Assets.Scripts.Player
             
         }
     }
-    
 }

@@ -12,36 +12,24 @@ namespace Assets.Scripts.Player
 
         [Header("Horizontal Movement")]
         [SerializeField] internal float runVelocity;
-        [SerializeField][Range(0, 1)] internal float stopLerpValue;
+        [SerializeField][Range(0, 1)] private float stopLerpValue;
+        [SerializeField] internal float dashSpeed = 45f;
 
         [Header("Vertical Movement")]
-        [SerializeField] internal float jumpHeight = 4;
-        [SerializeField] internal float coyoteTimeWindow = .05f;
+        [SerializeField] private float jumpHeight = 4;
+        [SerializeField] private float coyoteTimeWindow = .05f;
         [SerializeField] private float coyoteTimer;
-        [SerializeField] internal float jumpBufferTimeWindow = .1f;
+        [SerializeField] private float jumpBufferTimeWindow = .1f;
         [SerializeField] private float jumpBufferTimer;
-        [SerializeField] internal float baseGravityScale = 2f;
-        [SerializeField] internal float apexGravityScale = .75f;
+        [SerializeField] private float baseGravityScale = 2f;
+        [SerializeField] private float apexGravityScale = .75f;
         [SerializeField] internal float fallGravityScale = 4f;
+        private bool _wantsToJump;
 
         [Header("References")]
         [SerializeField] internal Rigidbody2D body;
         [SerializeField] internal TouchingDirections touching;
-        internal PlayerInputActions inputActions;
-
-        void Awake()
-        {
-            inputActions = new PlayerInputActions();
-
-            inputActions.Gameplay.Jump.started += OnJump;
-            inputActions.Gameplay.Jump.canceled += OnJump;
-
-            inputActions.Gameplay.Move.performed += OnMove;
-            inputActions.Gameplay.Move.canceled += OnMove;
-        }
-
-        private void OnEnable() => inputActions.Gameplay.Enable();
-        private void OnDisable() => inputActions.Gameplay.Disable();
+        internal PlayerController controller;
 
         void Update()
         {
@@ -64,8 +52,10 @@ namespace Assets.Scripts.Player
             {
                 // Consume the timer so we don't double jump, then jump
                 jumpBufferTimer = 0f;
-                Jump();
+                _wantsToJump = true;
             }
+
+            if(controller.stateMachine.currentState is PlayerDashingState) return;
 
             // Gravity
             if (body.linearVelocityY < 0)
@@ -83,6 +73,15 @@ namespace Assets.Scripts.Player
 
         }
 
+        void FixedUpdate()
+        {
+            if(_wantsToJump)
+            {
+                Jump();
+                _wantsToJump = false;
+            }
+        }
+
         #region Movement
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -90,28 +89,24 @@ namespace Assets.Scripts.Player
         }
         internal void Move()
         {
-            var vel = Mathf.Abs(body.linearVelocityX);
+            float targetVelocityX = movementVector.x * runVelocity;
 
             // Turning logic
-            if (Mathf.Sign(body.linearVelocityX) != Mathf.Sign(movementVector.x) && vel > 0.5f)
+            if (Mathf.Sign(body.linearVelocityX) != Mathf.Sign(movementVector.x) && Mathf.Abs(body.linearVelocityX) > 0.5f)
             {
-                body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, movementVector.x * runVelocity, stopLerpValue/4);
+                body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, targetVelocityX, stopLerpValue / 4);
                 return;
             }
 
-            // Acceleration, divided into two sections (acceleration is slower after the velocity is half way to the target)
-            // Halving runVelocity so that the acceleration is a bit more noticeable, otherwise you just feel the slowdown as you approach max speed
-            if (vel < runVelocity / 2) body.AddForceX(movementVector.x * runVelocity / 2);
-            else
-            {
-                var force = runVelocity - vel * (touching.Ground ? 1 : .65f); // Apply less force in the air, so you don't accelerate as fast as when you're on the ground
-                body.AddForceX(movementVector.x * force);
-            }
+            // Apply less force in the air, so you don't accelerate as fast as when you're on the ground
+            float accelerationRate = touching.Ground ? (runVelocity * 15f) : (runVelocity * 7.5f);
+            
+            body.linearVelocityX = Mathf.MoveTowards(body.linearVelocityX, targetVelocityX, accelerationRate * Time.fixedDeltaTime);
         }
         internal void Stop()
         {
             // You lose less speed while in mid air
-            body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, touching.Ground? stopLerpValue : stopLerpValue/3);
+            body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, touching.Ground? stopLerpValue : stopLerpValue/8);
         }
         #endregion
 
@@ -155,5 +150,16 @@ namespace Assets.Scripts.Player
             body.AddForceY(requiredForce, ForceMode2D.Impulse);
         }
         #endregion
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            // Cooldown missing.
+            if (context.started)
+            {
+                if (controller.stateMachine.currentState is PlayerDashingState) return;
+
+                controller.stateMachine.ChangeStateTo<PlayerDashingState>();
+            }
+        }
     }
 }
