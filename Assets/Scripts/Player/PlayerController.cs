@@ -15,6 +15,9 @@ namespace Assets.Scripts.Player
         [SerializeField] internal PlayerMovement movement;
         [SerializeField] internal PlayerAnimations animations;
 
+        [Header("Variables")]
+        [SerializeField] internal bool canMove = true;
+
         private int health = 100;
         private PlayerStates playerStates;
         private PlayerInputActions inputActions;
@@ -46,6 +49,7 @@ namespace Assets.Scripts.Player
         }
         void FixedUpdate()
         {
+            if(!canMove) return;
             if(movement.movementVector != Vector2.zero)
             {
                 movement.Move();

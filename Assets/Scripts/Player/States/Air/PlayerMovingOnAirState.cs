@@ -1,4 +1,6 @@
+using System.Collections;
 using Assets.Scripts.Statemachine;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -23,9 +25,15 @@ namespace Assets.Scripts.Player
 
         public override void Enter()
         {
-            if(player.movement.CurrentVelocity.y > 0.5f) subStateMachine.ChangeStateTo<PlayerJumpState>();
+            if(player.movement.CurrentVelocity.y > 0.5f) 
+            {
+                subStateMachine.ChangeStateTo<PlayerJumpState>();                
+                player.StartCoroutine(ChangeToHangState());
+                return;
+            }
             else if(player.movement.CurrentVelocity.y < -0.5f) subStateMachine.ChangeStateTo<PlayerFallState>();
-            else subStateMachine.ChangeStateTo<PlayerAirHangState>();
+            else subStateMachine.ChangeStateTo<PlayerAirHangState>();            
+            player.StopCoroutine(ChangeToHangState());
         }
         public override void Do()
         {
@@ -45,7 +53,13 @@ namespace Assets.Scripts.Player
         }
         public override void Exit()
         {
-            
+            player.StopCoroutine(ChangeToHangState());
+        }
+
+        private IEnumerator ChangeToHangState()
+        {
+            yield return new WaitForSeconds(player.animations.JumpAnimation.length);
+            subStateMachine.ChangeStateTo<PlayerAirHangState>();
         }
     }    
 }

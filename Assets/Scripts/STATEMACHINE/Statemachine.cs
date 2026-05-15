@@ -20,8 +20,7 @@ namespace Assets.Scripts.Statemachine
         {
             var type = typeof(T);
             if (!availableStates.ContainsKey(type)) return new Exception("State of type " + type + " not found on this machine.");
-
-            currentState?.Exit();
+            currentState?.RecursiveExit();
             currentState = availableStates[type];
             currentState.Enter();
             return null;

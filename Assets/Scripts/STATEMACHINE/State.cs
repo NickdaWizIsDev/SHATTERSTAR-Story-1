@@ -33,6 +33,14 @@ namespace Assets.Scripts.Statemachine
                 subState.RecursiveDo();
             }
         }
+        public void RecursiveExit()
+        {
+            if(subState != null)
+            {
+                subState.RecursiveExit();
+            }
+            Exit();
+        }
         public string RecursiveStateString()
         {
             string fullStateName = stateName;
