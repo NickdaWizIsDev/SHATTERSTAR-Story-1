@@ -6,10 +6,10 @@ public class TouchingDirections : MonoBehaviour
     public float groundDistance = 0.05f;
     public float wallDistance = 0.2f;
 
-    [SerializeField] Collider2D touchingCol;
+    [SerializeField] private Collider2D touchingCol;
 
-    RaycastHit2D[] groundHits = new RaycastHit2D[5];
-    RaycastHit2D[] wallHits = new RaycastHit2D[5];
+    private RaycastHit2D[] groundHits = new RaycastHit2D[5];
+    private RaycastHit2D[] wallHits = new RaycastHit2D[5];
 
     [SerializeField]
     private bool isGrounded;
@@ -41,7 +41,7 @@ public class TouchingDirections : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Ground = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
         Wall = touchingCol.Cast(WallCheckDirection, castFilter, wallHits, wallDistance) > 0;

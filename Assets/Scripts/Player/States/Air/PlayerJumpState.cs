@@ -1,10 +1,10 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerJumpState : State
     {
-        PlayerController player;
+        private PlayerController player;
         public PlayerJumpState(PlayerController entity) : base(entity)
         {
             this.entity = entity;

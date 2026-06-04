@@ -1,13 +1,13 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerMovingState : State
     {
-        PlayerController player;
-        PlayerMovingOnGroundState onGround;
-        PlayerMovingOnAirState onAir;
+        private PlayerController player;
+        private PlayerMovingOnGroundState onGround;
+        private PlayerMovingOnAirState onAir;
         public PlayerMovingState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
@@ -50,14 +50,14 @@ namespace Assets.Scripts.Player
             }
 
             
-            if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) < 0.5f)
+            if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) < 0.15f)
             {
                 player.stateMachine.ChangeStateTo<PlayerIdleState>();
             }
         }
         public override void Exit()
         {
-            
+            player.animationManager.SetAnimationSpeed(1);
         }
     }
 }

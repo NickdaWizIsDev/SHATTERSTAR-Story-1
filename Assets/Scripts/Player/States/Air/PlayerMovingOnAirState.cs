@@ -1,15 +1,15 @@
 using System.Collections;
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerMovingOnAirState : State
     {
-        PlayerController player;
-        PlayerJumpState jumpState;
-        PlayerAirHangState airHangState;
-        PlayerFallState fallState;
+        private PlayerController player;
+        private PlayerJumpState jumpState;
+        private PlayerAirHangState airHangState;
+        private PlayerFallState fallState;
         public PlayerMovingOnAirState(PlayerController entity) : base(entity)
         {
             this.entity = entity;

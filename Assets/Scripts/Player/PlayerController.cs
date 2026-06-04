@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
-using Assets.Scripts.Statemachine;
 using TMPro;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     public class PlayerController : Entity, IDamageable
     {
@@ -14,6 +13,7 @@ namespace Assets.Scripts.Player
         [Header("References")]
         [SerializeField] internal PlayerMovement movement;
         [SerializeField] internal PlayerAnimations animations;
+        [SerializeField] internal PlayerCombat combat;
 
         [Header("Variables")]
         [SerializeField] internal bool canMove = true;
@@ -22,8 +22,10 @@ namespace Assets.Scripts.Player
         private PlayerStates playerStates;
         private PlayerInputActions inputActions;
 
-        void Awake()
+        private void Awake()
         {
+            GameManager.Instance.InitializePlayer(this);
+            
             playerStates = new PlayerStates(this);
             
             inputActions = new PlayerInputActions();
@@ -34,34 +36,47 @@ namespace Assets.Scripts.Player
             inputActions.Gameplay.Move.performed += movement.OnMove;
             inputActions.Gameplay.Move.canceled += movement.OnMove;
 
-            inputActions.Gameplay.Dash.started += movement.OnDash;
+            inputActions.Gameplay.Dash.started += OnDash;
 
             inputActions.Gameplay.Attack.started += OnAttack;
+
+            movement ??= GetComponent<PlayerMovement>();
+            animations ??= GetComponent<PlayerAnimations>();
+            combat ??= GetComponent<PlayerCombat>();
         }
+        
+        public void EnableInput() => inputActions.Gameplay.Enable();
+        public void DisableInput() => inputActions.Gameplay.Disable();
 
-        private void OnEnable() => inputActions.Gameplay.Enable();
-        private void OnDisable() => inputActions.Gameplay.Disable();
+        private void OnEnable() => EnableInput();
+        private void OnDisable() => DisableInput();
 
-        void Start()
+        private void Start()
         {
             stateMachine.ChangeStateTo<PlayerIdleState>();
             movement.controller = this;
         }
-        void FixedUpdate()
+
+        private void FixedUpdate()
         {
-            if(!canMove) return;
-            if(movement.movementVector != Vector2.zero)
+            // If we can't move, force a stop and exit early so we don't apply movement
+            if (!canMove)
             {
-                movement.Move();
+                movement.Stop();
+                return;
             }
-            else movement.Stop();
+
+            if (movement.movementVector == Vector2.zero)
+                movement.Stop();
+            else 
+                movement.Move();
         }
 
-        void Update()
+        private void Update()
         {
             CurrentState.RecursiveDo();
 
-            if (debugStateText != null)
+            if (debugStateText is not null)
             {
                 debugStateText.text = stateMachine.currentState.RecursiveStateString();
             }
@@ -88,16 +103,38 @@ namespace Assets.Scripts.Player
         }
 
         private void OnAttack(InputAction.CallbackContext context)
-        {            
+        {
+            // Attack cannot interrupt an ongoing dash
+            if (stateMachine.currentState is PlayerDashingState) return;
+
+            // If we are ALREADY attacking, pass the input down to the active attack state for combos
+            if (stateMachine.currentState is PlayerAttackState)
+            {
+                var activeAttack = stateMachine.currentState as PlayerAttackState;
+                activeAttack?.StartAttack();
+                return;
+            }
+
+            // Otherwise, start a brand-new attack
             stateMachine.ChangeStateTo<PlayerAttackState>();
+            var newAttack = stateMachine.currentState as PlayerAttackState;
+            newAttack?.StartAttack();
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            // Dash can interrupt ANYTHING (even attacks!) except itself
+            if (stateMachine.currentState is PlayerDashingState) return;
+
+            stateMachine.ChangeStateTo<PlayerDashingState>();
         }
     }
 
     [Serializable]
     internal class PlayerAnimations
     {
-        // This is meant to be used as a reference for the player's animations. I don't wanna have to go into the animator every time 
-        // I wanna check the name of an animation clip.
+        // This is meant to be used as a reference for the player's animations. I don't wanna have to go into the
+        // animator every time I wanna check the name of an animation clip.
         public AnimationClip IdleAnimation;
         public AnimationClip RunAnimation;
         public AnimationClip JumpAnimation;

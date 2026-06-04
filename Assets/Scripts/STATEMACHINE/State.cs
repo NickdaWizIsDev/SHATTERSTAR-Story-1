@@ -1,12 +1,13 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Statemachine
+namespace HSM
 {
     public abstract class State
     {
         public string stateName = "Default State Name";
         protected Entity entity;
-        public State(Entity entity)
+
+        protected State(Entity entity)
         {
             this.entity = entity;
         }
@@ -40,6 +41,12 @@ namespace Assets.Scripts.Statemachine
                 subState.RecursiveExit();
             }
             Exit();
+        
+            // Clear the cached sub-state so it fires Enter() on the next visit!
+            if(subStateMachine != null)
+            {
+                subStateMachine.currentState = null;
+            }
         }
         public string RecursiveStateString()
         {

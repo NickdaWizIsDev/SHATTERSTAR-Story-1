@@ -1,10 +1,10 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
-    internal class PlayerAttackingOnAirState : State
+    internal class PlayerAttackingOnAirState : AttackState
     {
-        PlayerController player;
+        private PlayerController player;
         public PlayerAttackingOnAirState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
@@ -21,6 +21,11 @@ namespace Assets.Scripts.Player
             
         }
         public override void Exit()
+        {
+            
+        }
+
+        public override void StartAttack()
         {
             
         }

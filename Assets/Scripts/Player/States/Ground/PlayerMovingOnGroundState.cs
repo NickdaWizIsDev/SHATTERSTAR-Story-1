@@ -1,11 +1,11 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerMovingOnGroundState : State
     {
-        PlayerController player;
+        private PlayerController player;
         public PlayerMovingOnGroundState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Player
             player.animationManager.SetAnimationSpeed(1);
         }
 
-        public float Map(float value, float from1, float to1, float from2, float to2)
+        private static float Map(float value, float from1, float to1, float from2, float to2)
         {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }

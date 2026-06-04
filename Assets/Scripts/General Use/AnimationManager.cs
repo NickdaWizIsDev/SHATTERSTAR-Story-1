@@ -13,9 +13,13 @@ public class AnimationManager : MonoBehaviour
     // down. Instead of calling GetComponentInChildren, which is even worse than the basic version, we just set them manually.
     [SerializeField] private Animator animator;
 
+    // Cache the current animation to see if we're already playing it.
+    private string currentAnimation;
+
     // Making this take a clip reference so I can be certain the clip exists in the animator
-    public void PlayAnimation(AnimationClip animationClip)
+    public void PlayAnimation(AnimationClip animationClip, bool interruptSelf = false)
     {
+        if (currentAnimation == animationClip.name && !interruptSelf) return;
         animator.Play(animationClip.name);
     }
 

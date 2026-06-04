@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.Statemachine
+namespace HSM
 {
     public class StateMachine
     {
         public State currentState;
+
+        public State previousState;
         // Dictionary allows us to find states by their Class Type
         public Dictionary<Type, State> availableStates = new Dictionary<Type, State>();
         public void AddStates(params State[] states)
@@ -19,8 +21,11 @@ namespace Assets.Scripts.Statemachine
         public Exception ChangeStateTo<T>() where T : State
         {
             var type = typeof(T);
-            if (!availableStates.ContainsKey(type)) return new Exception("State of type " + type + " not found on this machine.");
+            if (!availableStates.TryGetValue(type, out var state)) return new Exception("State of type " 
+                                                                    + type + " not found on this machine.");
+            if (availableStates[type] == currentState) return null;
             currentState?.RecursiveExit();
+            previousState = currentState;
             currentState = availableStates[type];
             currentState.Enter();
             return null;

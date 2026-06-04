@@ -1,13 +1,13 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerDashingState : State
     {
-        PlayerController player;
-        float dashTimer;
-        float dashDirection;
+        private PlayerController player;
+        private float dashTimer;
+        private float dashDirection;
 
         public PlayerDashingState(PlayerController entity) : base(entity)
         {

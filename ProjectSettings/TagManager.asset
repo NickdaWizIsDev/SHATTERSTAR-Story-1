@@ -16,7 +16,7 @@ TagManager:
   - PlayerHurtbox
   - EnemyHits
   - EnemyHurtbox
-  - 
+  - StrikeableBox
   - 
   - 
   - 

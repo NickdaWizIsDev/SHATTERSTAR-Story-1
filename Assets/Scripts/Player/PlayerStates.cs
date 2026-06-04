@@ -1,8 +1,6 @@
-using UnityEditor.Experimental.Licensing;
-using UnityEngine;
-using Assets.Scripts.Statemachine;
+using HSM;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerStates
     {

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Player
         [SerializeField] internal TouchingDirections touching;
         internal PlayerController controller;
 
-        void Update()
+        private void Update()
         {
             // Coyote Time
             if (touching.Ground && coyoteTimer != coyoteTimeWindow)
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Player
 
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             if(_wantsToJump)
             {
@@ -150,16 +150,5 @@ namespace Assets.Scripts.Player
             body.AddForceY(requiredForce, ForceMode2D.Impulse);
         }
         #endregion
-
-        public void OnDash(InputAction.CallbackContext context)
-        {
-            // Cooldown missing.
-            if (context.started)
-            {
-                if (controller.stateMachine.currentState is PlayerDashingState) return;
-
-                controller.stateMachine.ChangeStateTo<PlayerDashingState>();
-            }
-        }
     }
 }

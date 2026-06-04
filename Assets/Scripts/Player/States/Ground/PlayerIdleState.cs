@@ -1,12 +1,12 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     // As you can see, you create States in here.
     internal class PlayerIdleState : State
     {
-        PlayerController player;
+        private PlayerController player;
         public PlayerIdleState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
@@ -20,11 +20,10 @@ namespace Assets.Scripts.Player
         }
         public override void Do()
         {
-            
-                    if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) > 0.5f)
-                    {
-                        entity.stateMachine.ChangeStateTo<PlayerMovingState>();
-                    }
+            if (Mathf.Abs(player.movement.CurrentVelocity.magnitude) > 0.5f)
+            {
+                entity.stateMachine.ChangeStateTo<PlayerMovingState>();
+            }
         }
         public override void Exit()
         {

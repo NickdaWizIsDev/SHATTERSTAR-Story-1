@@ -1,14 +1,11 @@
-using Assets.Scripts.Statemachine;
+using HSM;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Player
 {
     internal class PlayerAttackState : State
     {
-        PlayerController player;
-        PlayerAttackingStillState attackingStillState;
-        PlayerAttackingOnAirState attackingAirState;
-        PlayerAttackingMovingState attackingMovingState;
+        private PlayerController player;
 
         public PlayerAttackState(PlayerController entity) : base(entity)
         {
@@ -17,9 +14,9 @@ namespace Assets.Scripts.Player
             stateName = "Attacking";
             subStateMachine = new StateMachine();
 
-            attackingStillState = new PlayerAttackingStillState(player);
-            attackingAirState = new PlayerAttackingOnAirState(player);
-            attackingMovingState = new PlayerAttackingMovingState(player);
+            var attackingStillState = new PlayerAttackingStillState(player);
+            var attackingAirState = new PlayerAttackingOnAirState(player);
+            var attackingMovingState = new PlayerAttackingMovingState(player);
             subStateMachine.AddStates(attackingStillState, attackingAirState, attackingMovingState);
         }
 
@@ -28,17 +25,29 @@ namespace Assets.Scripts.Player
             if(player.movement.touching.Ground)
             {
                 if(player.movement.movementVector == Vector2.zero) subStateMachine.ChangeStateTo<PlayerAttackingStillState>();
-                else subStateMachine.ChangeStateTo<PlayerAttackingMovingState>();
+                else
+                {
+                    // subStateMachine.ChangeStateTo<PlayerAttackingMovingState>();
+                }
             }
-            else subStateMachine.ChangeStateTo<PlayerAttackingOnAirState>();
+            else
+            {
+                // subStateMachine.ChangeStateTo<PlayerAttackingOnAirState>();
+            }
         }
         public override void Do()
         {
-            
+            if (subStateMachine.currentState is null) player.stateMachine.ChangeStateTo<PlayerIdleState>();
         }
         public override void Exit()
         {
             
+        }
+
+        public void StartAttack()
+        {
+            var atk = subStateMachine.currentState as AttackState;
+            atk?.StartAttack();
         }
     }
 }
