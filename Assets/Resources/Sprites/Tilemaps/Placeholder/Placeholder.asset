@@ -16,7 +16,7 @@ MonoBehaviour:
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
-  - m_Id: 0
+  - m_Id: 21
     m_Sprites:
     - {fileID: -4714399949353667890, guid: 9e8d28ae86aaac04eafb5abcae00887e, type: 3}
     m_GameObject: {fileID: 0}

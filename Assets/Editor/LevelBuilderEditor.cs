@@ -7,6 +7,7 @@ namespace SHATTERDEV.EditorTools
     {
         // Change these paths to match exactly where your prefabs live in your project!
         [SerializeField] private const string DoorPrefabPath = "Assets/Resources/Prefabs/RoomDoor.prefab";
+        [SerializeField] private const string VerticalExitPrefabPath = "Assets/Resources/Prefabs/VerticalExit.prefab";
         [SerializeField] private const string GeodeGruntPrefabPath = "Assets/Prefabs/Enemies/GeodeGrunt.prefab";
 
         // Adds a right-click option in the Hierarchy window
@@ -14,6 +15,12 @@ namespace SHATTERDEV.EditorTools
         public static void SpawnRoomDoor(MenuCommand menuCommand)
         {
             SpawnPrefab(DoorPrefabPath, "RoomDoor", menuCommand);
+        }
+
+        [MenuItem("GameObject/Shatterstar/Spawn Room Exit", false, 10)]
+        public static void SpawnRoomExit(MenuCommand menuCommand)
+        {
+            SpawnPrefab(VerticalExitPrefabPath, "RoomExit", menuCommand);
         }
 
         [MenuItem("GameObject/Shatterstar/Spawn Geode Grunt", false, 10)]

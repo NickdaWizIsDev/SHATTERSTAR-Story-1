@@ -18,8 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Caves/Cave Entrance.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Caves/Elven Mines.unity
+    path: Assets/Scenes/Caves/Elven Mines_1.unity
     guid: 818d6875bec6a284889b6694ca73a164
+  - enabled: 1
+    path: Assets/Scenes/Caves/Elven Mines_2.unity
+    guid: 6c1fb9ca339aa7f4b92cd89a9973983d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

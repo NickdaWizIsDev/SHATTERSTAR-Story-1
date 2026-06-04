@@ -1,3 +1,4 @@
+using Gameplay;
 using Player;
 using UnityEngine;
 using Managers;
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Range(0, 3)] public float timeScale = 1f;
     
     public PlayerController Player { get; private set; }
-    public string nextSpawnDoor;
+    public RoomExitID nextSpawnExit;
 
     private void Awake()
     {

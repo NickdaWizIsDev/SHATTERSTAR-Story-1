@@ -133,7 +133,7 @@ namespace Player
             }
         }
 
-        private void Jump()
+        public void Jump()
         {            
             // 1. Calculate the actual gravity affecting this Rigidbody2D
             // Physics2D.gravity is -9.81. We multiply by baseGravityScale and make it positive.

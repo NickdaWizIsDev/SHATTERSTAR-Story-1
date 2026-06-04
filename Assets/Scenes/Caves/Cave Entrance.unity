@@ -5201,6 +5201,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029101593613935327, guid: 7e03236fdeb775348b1cc3e7c1ded8d0, type: 3}
+      propertyPath: exitID
+      value: 
+      objectReference: {fileID: 11400000, guid: da8efb6f631240048b78efbde86ad44b, type: 2}
+    - target: {fileID: 7029101593613935327, guid: 7e03236fdeb775348b1cc3e7c1ded8d0, type: 3}
       propertyPath: doorName
       value: CaveEntrance_Left
       objectReference: {fileID: 0}
@@ -5208,6 +5212,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 9166185716613376719}
+    - target: {fileID: 7029101593613935327, guid: 7e03236fdeb775348b1cc3e7c1ded8d0, type: 3}
+      propertyPath: targetExitID
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c5e137377c606249a5d2a90da9d870f, type: 2}
     - target: {fileID: 7029101593613935327, guid: 7e03236fdeb775348b1cc3e7c1ded8d0, type: 3}
       propertyPath: targetDoorName
       value: Mines_Right
