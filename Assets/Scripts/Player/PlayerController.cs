@@ -21,10 +21,11 @@ namespace Player
 
         [Header("Variables")]
         [SerializeField] internal bool canMove = true;
-
-        private int health = 100;
+        [SerializeField] private int health = 100;
         [SerializeField] private float iFrameDuration = 1.5f;
         [SerializeField] private float flashInterval = 0.1f;
+        [SerializeField] internal float dashCooldown = 0.75f;
+        [SerializeField] internal float dashCdTimer;
         private bool isInvincible;
         
         [UsedImplicitly] private PlayerStates playerStates;
@@ -101,6 +102,11 @@ namespace Player
                 transform.localRotation = new Quaternion(0, 180, 0, 1);
             }
 
+            if (dashCdTimer > 0)
+            {
+                dashCdTimer -= Time.deltaTime;
+            }
+
             animationManager.SetBool("OnGround", movement.touching.Ground);
         }
 
@@ -172,7 +178,8 @@ namespace Player
         {
             // Dash can interrupt ANYTHING (even attacks!) except itself
             if (stateMachine.currentState is PlayerDashingState) return;
-
+            if (dashCdTimer > 0) return;
+            
             stateMachine.ChangeStateTo<PlayerDashingState>();
         }
 

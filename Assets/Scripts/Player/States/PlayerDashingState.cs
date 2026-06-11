@@ -32,10 +32,12 @@ namespace Player
             player.movement.body.linearVelocityY = 0f;
             player.hurtbox.enabled = false;
 
-            if (player.animations.DashAnimation != null)
+            if (player.animations.DashAnimation is not null)
             {
                 player.animationManager.PlayAnimation(player.animations.DashAnimation);
             }
+            
+            player.dashCdTimer = player.dashCooldown;
         }
 
         public override void Do()
@@ -44,16 +46,14 @@ namespace Player
 
             player.movement.body.linearVelocityX = dashDirection * player.movement.dashSpeed;
 
-            if (dashTimer <= 0)
+            if (dashTimer > 0) return;
+            if (Mathf.Abs(player.movement.movementVector.x) > 0.1f)
             {
-                if (Mathf.Abs(player.movement.movementVector.x) > 0.1f)
-                {
-                    player.stateMachine.ChangeStateTo<PlayerMovingState>();
-                }
-                else
-                {
-                    player.stateMachine.ChangeStateTo<PlayerIdleState>();
-                }
+                player.stateMachine.ChangeStateTo<PlayerMovingState>();
+            }
+            else
+            {
+                player.stateMachine.ChangeStateTo<PlayerIdleState>();
             }
         }
 
@@ -62,8 +62,9 @@ namespace Player
             player.movement.body.gravityScale = player.movement.fallGravityScale;
             player.hurtbox.enabled = true;
 
-            bool isHoldingDashDirection = Mathf.Abs(player.movement.movementVector.x) > 0.1f && 
-                                          Mathf.Sign(player.movement.movementVector.x) == Mathf.Sign(dashDirection);
+            var isHoldingDashDirection = Mathf.Abs(player.movement.movementVector.x) > 0.1f && 
+                                         // ReSharper disable once CompareOfFloatsByEqualityOperator
+                                         Mathf.Sign(player.movement.movementVector.x) == Mathf.Sign(dashDirection);
 
             if (!isHoldingDashDirection)
             {
