@@ -17,10 +17,10 @@ TagManager:
   - EnemyHits
   - EnemyHurtbox
   - StrikeableBox
-  - 
-  - 
-  - 
-  - 
+  - PlayerCollision
+  - EnemyCollision
+  - Hazards
+  - Interactable
   - 
   - 
   - 

@@ -8,9 +8,10 @@ namespace Managers
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Execute()
         {
-            string coreSceneName = "CoreScene"; 
+            if(SceneManager.GetActiveScene().name == "Main Menu") return;
+            var coreSceneName = "CoreScene"; 
 
-            bool isCoreLoaded = false;
+            var isCoreLoaded = false;
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 if (SceneManager.GetSceneAt(i).name == coreSceneName)

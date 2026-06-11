@@ -16,6 +16,7 @@ namespace Enemies
         public override void Enter()
         {
             enemy.body.linearVelocity = new Vector2(0, enemy.body.linearVelocityY);
+            enemy.animationManager.PlayAnimation(enemy.animations.IdleAnimation);
         }
 
         public override void Do()

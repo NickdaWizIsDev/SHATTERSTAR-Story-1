@@ -15,7 +15,7 @@ namespace Enemies
 
         public override void Enter()
         {
-        
+            enemy.animationManager.PlayAnimation(enemy.animations.MoveAnimation);
         }
 
         public override void Do()
@@ -32,10 +32,10 @@ namespace Enemies
             }
 
             // Stop moving if close enough to attack
-            if (distanceToPlayer <= enemy.attackRange)
+            if (distanceToPlayer <= enemy.attackRange && enemy.attackTimer <= 0f)
             {
                 enemy.body.linearVelocity = new Vector2(0, enemy.body.linearVelocityY);
-                // In the future, trigger stateMachine.ChangeStateTo<EnemyAttackState>() here
+                enemy.stateMachine.ChangeStateTo<EnemyAttackState>();
                 return;
             }
 

@@ -173,6 +173,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a6e6397-a9dd-4ee5-91cf-d2b1e223a7b1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,17 +286,6 @@ namespace Player
                 },
                 {
                     ""name"": """",
-                    ""id"": ""aeda7c2e-dac1-4e01-b557-07f02581f966"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""bb8baec7-3dcf-4028-b172-a5325118085e"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -329,6 +327,17 @@ namespace Player
                     ""action"": ""Spell 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a572933-f4b1-4fa1-9d13-2b5257d3b0b5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -346,6 +355,7 @@ namespace Player
             m_Gameplay_Spell1 = m_Gameplay.FindAction("Spell 1", throwIfNotFound: true);
             m_Gameplay_Spell2 = m_Gameplay.FindAction("Spell 2", throwIfNotFound: true);
             m_Gameplay_Spell3 = m_Gameplay.FindAction("Spell 3", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -435,6 +445,7 @@ namespace Player
         private readonly InputAction m_Gameplay_Spell1;
         private readonly InputAction m_Gameplay_Spell2;
         private readonly InputAction m_Gameplay_Spell3;
+        private readonly InputAction m_Gameplay_Interact;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -482,6 +493,10 @@ namespace Player
             /// Provides access to the underlying input action "Gameplay/Spell3".
             /// </summary>
             public InputAction @Spell3 => m_Wrapper.m_Gameplay_Spell3;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Interact".
+            /// </summary>
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -535,6 +550,9 @@ namespace Player
                 @Spell3.started += instance.OnSpell3;
                 @Spell3.performed += instance.OnSpell3;
                 @Spell3.canceled += instance.OnSpell3;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             /// <summary>
@@ -573,6 +591,9 @@ namespace Player
                 @Spell3.started -= instance.OnSpell3;
                 @Spell3.performed -= instance.OnSpell3;
                 @Spell3.canceled -= instance.OnSpell3;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             /// <summary>
@@ -676,6 +697,13 @@ namespace Player
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnSpell3(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

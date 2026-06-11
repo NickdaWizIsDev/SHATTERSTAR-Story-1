@@ -8,6 +8,7 @@ namespace SHATTERDEV.EditorTools
         // Change these paths to match exactly where your prefabs live in your project!
         [SerializeField] private const string DoorPrefabPath = "Assets/Resources/Prefabs/RoomDoor.prefab";
         [SerializeField] private const string VerticalExitPrefabPath = "Assets/Resources/Prefabs/VerticalExit.prefab";
+        [SerializeField] private const string CenteredDoorPrefabPath = "Assets/Resources/Prefabs/CenteredDoor.prefab";
         [SerializeField] private const string GeodeGruntPrefabPath = "Assets/Prefabs/Enemies/GeodeGrunt.prefab";
 
         // Adds a right-click option in the Hierarchy window

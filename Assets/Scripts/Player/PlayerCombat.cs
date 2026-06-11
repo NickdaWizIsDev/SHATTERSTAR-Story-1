@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Player; 
+using Player;
+using UnityEngine.Audio;
 
 namespace Player
 {
@@ -11,6 +12,10 @@ namespace Player
         [SerializeField] private Vector2 attackArea = new Vector2(2f, 1.5f);
         [SerializeField] private LayerMask targetLayers; 
         [SerializeField] private int attackDamage = 10;
+        
+        [Header("FX")]
+        [SerializeField] private GameObject basicHitFXPrefab;
+        [SerializeField] private AudioResource basicHitSFX;
 
         private bool isHitboxActive;
         private AttackType currentAttackType;
@@ -53,12 +58,30 @@ namespace Player
                 alreadyHitTargets.Add(target); // Add them to the memory
 
                 // Apply Damage
-                var damageable = target.GetComponent<IDamageable>();
+                var damageable = target.attachedRigidbody?.GetComponent<IDamageable>();
                 damageable?.DamageThis(attackDamage);
 
                 // Apply Interaction
                 var strikeable = target.GetComponent<IStrikeable>();
                 strikeable?.OnStrike(currentAttackType);
+
+                if (damageable == null && strikeable == null) continue;
+                else
+                {
+                    var hitPoint = target.ClosestPoint(attackPoint.position);
+                    Debug.Log($"The player hit {target.name} for {attackDamage} damage.");
+                    
+                    if (basicHitFXPrefab is not null)
+                    {
+                        var angle = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+                        var fX = Instantiate(basicHitFXPrefab, hitPoint, angle);
+                    }
+                }
+                    
+                
+
+                GameManager.Instance.TriggerHitStop(0.05f);
+                CameraEffects.Instance?.Shake(0.1f, 0.2f);
             }
         }
 

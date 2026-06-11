@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -14,12 +16,18 @@ namespace Player
         [SerializeField] internal PlayerMovement movement;
         [SerializeField] internal PlayerAnimations animations;
         [SerializeField] internal PlayerCombat combat;
+        [SerializeField] internal Collider2D hurtbox;
+        [SerializeField] internal SpriteRenderer spriteRenderer;
 
         [Header("Variables")]
         [SerializeField] internal bool canMove = true;
 
         private int health = 100;
-        private PlayerStates playerStates;
+        [SerializeField] private float iFrameDuration = 1.5f;
+        [SerializeField] private float flashInterval = 0.1f;
+        private bool isInvincible;
+        
+        [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
 
         private void Awake()
@@ -40,9 +48,12 @@ namespace Player
 
             inputActions.Gameplay.Attack.started += OnAttack;
 
+            inputActions.Gameplay.Interact.started += OnInteract;
+
             movement ??= GetComponent<PlayerMovement>();
             animations ??= GetComponent<PlayerAnimations>();
             combat ??= GetComponent<PlayerCombat>();
+            spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
         }
         
         public void EnableInput() => inputActions.Gameplay.Enable();
@@ -95,11 +106,47 @@ namespace Player
 
         public void DamageThis(int damage)
         {
+            if (isInvincible) return;
+
             health -= damage;
+            
             if(health <= 0)
             {
                 // Handle player death
             }
+            else
+            {
+                StartCoroutine(IFrameRoutine());
+            }
+        }
+
+        private IEnumerator IFrameRoutine()
+        {
+            isInvincible = true;
+            float elapsed = 0f;
+            bool isVisible = true;
+
+            while (elapsed < iFrameDuration)
+            {
+                isVisible = !isVisible;
+                if (spriteRenderer != null) 
+                {
+                    Color c = spriteRenderer.color;
+                    c.a = isVisible ? 1f : 0f;
+                    spriteRenderer.color = c;
+                }
+                
+                yield return new WaitForSeconds(flashInterval);
+                elapsed += flashInterval;
+            }
+
+            if (spriteRenderer != null) 
+            {
+                Color c = spriteRenderer.color;
+                c.a = 0f;
+                spriteRenderer.color = c;
+            }
+            isInvincible = false;
         }
 
         private void OnAttack(InputAction.CallbackContext context)
@@ -128,6 +175,13 @@ namespace Player
 
             stateMachine.ChangeStateTo<PlayerDashingState>();
         }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            OnInteractEvent?.Invoke();
+        }
+
+        public event Action OnInteractEvent;
     }
 
     [Serializable]

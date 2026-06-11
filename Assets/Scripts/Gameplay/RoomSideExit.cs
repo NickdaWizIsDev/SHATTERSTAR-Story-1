@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Helpers;
 using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,7 +40,7 @@ namespace Gameplay
             var currentScene = gameObject.scene.name;
 
             var loadOp = SceneManager.LoadSceneAsync(targetScene.ScenePath, LoadSceneMode.Additive);
-            while (loadOp != null && !loadOp.isDone)
+            while (loadOp is { isDone: false })
             {
                 yield return null;
             }
@@ -68,9 +66,15 @@ namespace Gameplay
             var walkDir = autoWalkDirection == Direction.Right ? 0.5f : -0.5f;
             player.movement.movementVector = new Vector2(walkDir, 0);
 
-            yield return UIManager.Instance.FadeFromBlack(0.5f);
+            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(0.5f));
+
+            yield return new WaitForSeconds(0.15f);
 
             player.movement.movementVector = Vector2.zero;
+            player.movement.Stop();
+
+            yield return fadeCoroutine;
+
             player.EnableInput();
             
             isTransitioning = false;
