@@ -1607,6 +1607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 0, y: 0}
+  walkVelocity: 6
   runVelocity: 12
   stopLerpValue: 0.2
   dashSpeed: 36
@@ -1637,6 +1638,7 @@ MonoBehaviour:
   movement: {fileID: 5748584346749709187}
   animations:
     IdleAnimation: {fileID: 7400000, guid: f9a3918d22e8a8245b9c2d3105e8440e, type: 2}
+    WalkAnimation: {fileID: 0}
     RunAnimation: {fileID: 7400000, guid: 28674aa29f7d6d2498e4099e2465dde8, type: 2}
     JumpAnimation: {fileID: 7400000, guid: 69ecd44553a77f845bf739deac83164d, type: 2}
     AirHangAnimation: {fileID: 7400000, guid: 7f685f8a4fc00ea4782ba5e28ccc878d, type: 2}
@@ -1651,8 +1653,12 @@ MonoBehaviour:
   hurtbox: {fileID: 1331073119}
   spriteRenderer: {fileID: 1000193448}
   canMove: 1
+  health: 100
   iFrameDuration: 1.5
   flashInterval: 0.1
+  dashCooldown: 0.75
+  dashCdTimer: 0
+  isRunning: 0
 --- !u!50 &6289367415402898585
 Rigidbody2D:
   serializedVersion: 5

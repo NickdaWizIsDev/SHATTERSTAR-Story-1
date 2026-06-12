@@ -11,6 +11,7 @@ namespace Player
         [SerializeField] internal Vector2 CurrentVelocity => body.linearVelocity;
 
         [Header("Horizontal Movement")]
+        [SerializeField] internal float walkVelocity;
         [SerializeField] internal float runVelocity;
         [SerializeField][Range(0, 1)] private float stopLerpValue;
         [SerializeField] internal float dashSpeed = 45f;
@@ -89,7 +90,8 @@ namespace Player
         }
         internal void Move()
         {
-            float targetVelocityX = movementVector.x * runVelocity;
+            float activeVelocity = controller.isRunning ? runVelocity : walkVelocity;
+            float targetVelocityX = movementVector.x * activeVelocity;
 
             // Turning logic
             if (Mathf.Sign(body.linearVelocityX) != Mathf.Sign(movementVector.x) && Mathf.Abs(body.linearVelocityX) > 0.5f)
@@ -99,7 +101,7 @@ namespace Player
             }
 
             // Apply less force in the air, so you don't accelerate as fast as when you're on the ground
-            float accelerationRate = touching.Ground ? (runVelocity * 15f) : (runVelocity * 7.5f);
+            float accelerationRate = touching.Ground ? (activeVelocity * 15f) : (activeVelocity * 7.5f);
             
             body.linearVelocityX = Mathf.MoveTowards(body.linearVelocityX, targetVelocityX, accelerationRate * Time.fixedDeltaTime);
         }

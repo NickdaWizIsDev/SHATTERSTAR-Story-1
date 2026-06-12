@@ -6,6 +6,8 @@ namespace Player
     internal class PlayerMovingOnGroundState : State
     {
         private PlayerController player;
+        private bool wasRunning;
+
         public PlayerMovingOnGroundState(PlayerController entity) : base(entity)
         {
             this.entity = entity;
@@ -15,12 +17,21 @@ namespace Player
 
         public override void Enter()
         {
-            player.animationManager.PlayAnimation(player.animations.RunAnimation);
+            wasRunning = player.isRunning;
+            //TODO: get a proper walk animation in here if we're not running
+            player.animationManager.PlayAnimation(wasRunning ? player.animations.RunAnimation : player.animations.RunAnimation);
         }
         public override void Do()
         {
+            if (wasRunning != player.isRunning)
+            {
+                wasRunning = player.isRunning;
+                player.animationManager.PlayAnimation(wasRunning ? player.animations.RunAnimation : player.animations.WalkAnimation);
+            }
+
             var horizontalSpeed = Mathf.Abs(player.movement.CurrentVelocity.x);
-            player.animationManager.SetAnimationSpeed(Map(horizontalSpeed, 0, player.movement.runVelocity, 0.25f, 1));
+            var activeVelocity = wasRunning ? player.movement.runVelocity : player.movement.walkVelocity;
+            player.animationManager.SetAnimationSpeed(Map(horizontalSpeed, 0, activeVelocity, 0.25f, 1));
         }
         public override void Exit()
         {

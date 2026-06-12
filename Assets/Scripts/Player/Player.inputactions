@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "dfb280c3-beaa-40b8-b80e-07fdc8efb935",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "8fa50292-22d7-418f-a492-4c8b51ecff3c",
@@ -199,7 +208,7 @@
                 {
                     "name": "",
                     "id": "bb8baec7-3dcf-4028-b172-a5325118085e",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -243,11 +252,22 @@
                 {
                     "name": "",
                     "id": "4a572933-f4b1-4fa1-9d13-2b5257d3b0b5",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "175bc30c-9866-424a-a0dd-0513935c3028",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

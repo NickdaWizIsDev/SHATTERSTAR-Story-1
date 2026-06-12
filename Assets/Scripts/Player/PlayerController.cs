@@ -26,6 +26,7 @@ namespace Player
         [SerializeField] private float flashInterval = 0.1f;
         [SerializeField] internal float dashCooldown = 0.75f;
         [SerializeField] internal float dashCdTimer;
+        [SerializeField] internal bool isRunning;
         private bool isInvincible;
         
         [UsedImplicitly] private PlayerStates playerStates;
@@ -44,6 +45,9 @@ namespace Player
 
             inputActions.Gameplay.Move.performed += movement.OnMove;
             inputActions.Gameplay.Move.canceled += movement.OnMove;
+
+            inputActions.Gameplay.Run.performed += ctx => isRunning = true;
+            inputActions.Gameplay.Run.canceled += ctx => isRunning = false;
 
             inputActions.Gameplay.Dash.started += OnDash;
 
@@ -71,7 +75,6 @@ namespace Player
 
         private void FixedUpdate()
         {
-            // If we can't move, force a stop and exit early so we don't apply movement
             if (!canMove)
             {
                 movement.Stop();
@@ -118,7 +121,6 @@ namespace Player
             
             if(health <= 0)
             {
-                // Handle player death
             }
             else
             {
@@ -157,10 +159,8 @@ namespace Player
 
         private void OnAttack(InputAction.CallbackContext context)
         {
-            // Attack cannot interrupt an ongoing dash
             if (stateMachine.currentState is PlayerDashingState) return;
 
-            // If we are ALREADY attacking, pass the input down to the active attack state for combos
             if (stateMachine.currentState is PlayerAttackState)
             {
                 var activeAttack = stateMachine.currentState as PlayerAttackState;
@@ -168,7 +168,6 @@ namespace Player
                 return;
             }
 
-            // Otherwise, start a brand-new attack
             stateMachine.ChangeStateTo<PlayerAttackState>();
             var newAttack = stateMachine.currentState as PlayerAttackState;
             newAttack?.StartAttack();
@@ -176,7 +175,6 @@ namespace Player
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            // Dash can interrupt ANYTHING (even attacks!) except itself
             if (stateMachine.currentState is PlayerDashingState) return;
             if (dashCdTimer > 0) return;
             
@@ -194,9 +192,8 @@ namespace Player
     [Serializable]
     internal class PlayerAnimations
     {
-        // This is meant to be used as a reference for the player's animations. I don't wanna have to go into the
-        // animator every time I wanna check the name of an animation clip.
         public AnimationClip IdleAnimation;
+        public AnimationClip WalkAnimation;
         public AnimationClip RunAnimation;
         public AnimationClip JumpAnimation;
         public AnimationClip AirHangAnimation;
@@ -204,8 +201,8 @@ namespace Player
         public AnimationClip FallLoopAnimation;
         public AnimationClip GroundAttackAnimation_1;
         public AnimationClip GroundAttackAnimation_2;
-        public AnimationClip AirAttackAnimation;        // Not Animated Yet
-        public AnimationClip MovingAttackAnimation;     // Not Animated Yet
+        public AnimationClip AirAttackAnimation;        
+        public AnimationClip MovingAttackAnimation;     
         public AnimationClip DashAnimation;
     }
 }
