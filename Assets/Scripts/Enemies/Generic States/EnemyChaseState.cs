@@ -10,7 +10,7 @@ namespace Enemies
         public EnemyChaseState(Entity entity) : base(entity)
         {
             enemy = (EnemyController)entity;
-            stateName = "EnemyChase";
+            stateName = "Chasing";
         }
 
         public override void Enter()

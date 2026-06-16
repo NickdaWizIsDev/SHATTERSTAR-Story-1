@@ -8,14 +8,17 @@ namespace Player
     public class PlayerCombat : MonoBehaviour
     {
         [Header("Hitbox Settings")]
-        [SerializeField] private Transform attackPoint; 
-        [SerializeField] private Vector2 attackArea = new Vector2(2f, 1.5f);
+        [SerializeField] private PlayerAttackPoint attackPoint; 
+        [SerializeField] private Vector2 AttackArea
+        {
+            get { return attackPoint.Area; }
+        }
         [SerializeField] private LayerMask targetLayers; 
         [SerializeField] private int attackDamage = 10;
         
         [Header("FX")]
         [SerializeField] private GameObject basicHitFXPrefab;
-        [SerializeField] private AudioResource basicHitSFX;
+        [SerializeField] private AudioResource basicHitSfx;
 
         private bool isHitboxActive;
         private AttackType currentAttackType;
@@ -48,7 +51,7 @@ namespace Player
             if (!isHitboxActive) return;
 
             // Continuously check for collisions during the Active Frames
-            var hitTargets = Physics2D.OverlapBoxAll(attackPoint.position, attackArea, 0f, targetLayers);
+            var hitTargets = Physics2D.OverlapBoxAll(attackPoint.transform.position, AttackArea, 0f, targetLayers);
 
             foreach (var target in hitTargets)
             {
@@ -68,7 +71,7 @@ namespace Player
                 if (damageable == null && strikeable == null) continue;
                 else
                 {
-                    var hitPoint = target.ClosestPoint(attackPoint.position);
+                    var hitPoint = target.ClosestPoint(attackPoint.transform.position);
                     Debug.Log($"The player hit {target.name} for {attackDamage} damage.");
                     
                     if (basicHitFXPrefab is not null)
@@ -85,12 +88,12 @@ namespace Player
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if (attackPoint == null) return;
             // The box will turn red in the editor when it is actually lethal!
             Gizmos.color = isHitboxActive ? Color.red : Color.yellow;
-            Gizmos.DrawWireCube(attackPoint.position, attackArea);
+            Gizmos.DrawWireCube(attackPoint.transform.position, AttackArea);
         }
     }
 }

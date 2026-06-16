@@ -10,7 +10,7 @@ namespace Enemies
         public EnemyIdleState(Entity entity) : base(entity)
         {
             enemy = (EnemyController)entity;
-            stateName = "EnemyIdle";
+            stateName = "Idle";
         }
 
         public override void Enter()

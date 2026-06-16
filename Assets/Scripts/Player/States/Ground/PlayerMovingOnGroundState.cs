@@ -30,8 +30,7 @@ namespace Player
             }
 
             var horizontalSpeed = Mathf.Abs(player.movement.CurrentVelocity.x);
-            var activeVelocity = wasRunning ? player.movement.runVelocity : player.movement.walkVelocity;
-            player.animationManager.SetAnimationSpeed(Map(horizontalSpeed, 0, activeVelocity, 0.25f, 1));
+            player.animationManager.SetAnimationSpeed(Map(horizontalSpeed, 0, player.movement.runVelocity, 0.25f, 1));
         }
         public override void Exit()
         {

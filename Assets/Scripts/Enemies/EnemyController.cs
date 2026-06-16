@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyController : Entity, IDamageable
+    public abstract class EnemyController : Entity, IDamageable
     {
         [Header("Enemy Stats")]
         [SerializeField] internal int health = 30;
@@ -24,30 +24,24 @@ namespace Enemies
         [SerializeField] internal EnemyAnimations animations;
         internal Transform playerTransform;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             stateMachine = new StateMachine();
-        
-            // Add enemy states
-            stateMachine.AddStates(
-                new EnemyIdleState(this),
-                new EnemyChaseState(this),
-                new EnemyAttackState(this)
-            );
+            InitializeStateMachine();
         }
 
-        private void Start()
+        protected abstract void InitializeStateMachine();
+
+        protected virtual void Start()
         {
             if (playerTransform == null)
             {
                 var player = GameManager.Instance.Player;
                 playerTransform = player.transform;
             }
-
-            stateMachine.ChangeStateTo<EnemyIdleState>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             CurrentState?.RecursiveDo();
 
@@ -57,7 +51,7 @@ namespace Enemies
             }
         }
 
-        public void DamageThis(int damage)
+        public virtual void DamageThis(int damage)
         {
             health -= damage;
         
@@ -69,13 +63,13 @@ namespace Enemies
             }
         }
 
-        private void Die()
+        protected virtual void Die()
         {
             // TODO: Handle death (play animation, drop particles, destroy object)
             Destroy(gameObject);
         }
 
-        private void OnDrawGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, detectionRadius);
@@ -83,7 +77,7 @@ namespace Enemies
             Gizmos.DrawWireSphere(transform.position, attackRange);
         }
 
-        public void ResetAttackCD()
+        public virtual void ResetAttackCD()
         {
             attackTimer = attackCooldown;
         }

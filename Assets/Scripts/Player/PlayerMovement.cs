@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +24,7 @@ namespace Player
         [SerializeField] private float baseGravityScale = 2f;
         [SerializeField] private float apexGravityScale = .75f;
         [SerializeField] internal float fallGravityScale = 4f;
-        private bool _wantsToJump;
+        private bool wantsToJump;
 
         [Header("References")]
         [SerializeField] internal Rigidbody2D body;
@@ -44,7 +43,7 @@ namespace Player
                 coyoteTimer -= Time.deltaTime;
             }
 
-            // Jump Buffering
+            // Jump Buffer
             if (jumpBufferTimer > 0)
             {
                 jumpBufferTimer -= Time.deltaTime;
@@ -53,7 +52,7 @@ namespace Player
             {
                 // Consume the timer so we don't double jump, then jump
                 jumpBufferTimer = 0f;
-                _wantsToJump = true;
+                wantsToJump = true;
             }
 
             if(controller.stateMachine.currentState is PlayerDashingState) return;
@@ -63,7 +62,7 @@ namespace Player
             {
                 body.gravityScale = fallGravityScale;
             }
-            else if (body.linearVelocityY <= 0.5f && body.linearVelocityY >= -0.5f && !touching.Ground)
+            else if (body.linearVelocityY is <= 0.5f and >= -0.5f && !touching.Ground)
             {
                 body.gravityScale = apexGravityScale;
             }
@@ -76,10 +75,10 @@ namespace Player
 
         private void FixedUpdate()
         {
-            if(_wantsToJump)
+            if(wantsToJump)
             {
                 Jump();
-                _wantsToJump = false;
+                wantsToJump = false;
             }
         }
 
@@ -107,7 +106,7 @@ namespace Player
         }
         internal void Stop()
         {
-            // You lose less speed while in mid air
+            // You lose less speed while in midair
             body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, 0, touching.Ground? stopLerpValue : stopLerpValue/8);
         }
         #endregion
@@ -141,7 +140,7 @@ namespace Player
             // Physics2D.gravity is -9.81. We multiply by baseGravityScale and make it positive.
             float gravity = Mathf.Abs(Physics2D.gravity.y * baseGravityScale);
 
-            // 2. Kinematic formula (yippie physics): vi = sqrt(vf^2 + 2gh)
+            // 2. Kinematic formula: vi = sqrt(vf^2 + 2gh)
             float requiredVelocity = Mathf.Sqrt(
                 Mathf.Pow(1.5f, 2) + (2f * gravity * jumpHeight + 0.5f)
             );

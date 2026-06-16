@@ -14,7 +14,7 @@ namespace Enemies
         public EnemyAttackState(Entity entity) : base(entity)
         {
             enemy = (EnemyController)entity;
-            stateName = "EnemyAttack";
+            stateName = "Attacking";
         }
 
         public override void Enter()
@@ -24,7 +24,7 @@ namespace Enemies
             lungeTimer = enemy.attackRecoveryTime; 
             attackPhase = 0;
 
-            if (enemy.playerTransform is null) return;
+            if (!enemy.playerTransform) return;
             attackDirection = Mathf.Sign(enemy.playerTransform.position.x - enemy.transform.position.x);
             enemy.transform.localRotation = attackDirection > 0 
                 ? new Quaternion(0, 0, 0, 1) 
@@ -44,7 +44,6 @@ namespace Enemies
                     attackPhase = 1;
                     enemy.animationManager.PlayAnimation(enemy.animations.AttackAnimation);
                     enemy.body.linearVelocityX = attackDirection * enemy.attackLungeSpeed;
-                    enemy.body.linearVelocityY = 6f;
                     enemy.ResetAttackCD();
                     break;
                 }
