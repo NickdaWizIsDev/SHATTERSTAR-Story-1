@@ -236,6 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410608691}
+  - component: {fileID: 410608692}
   m_Layer: 6
   m_Name: Attack Point
   m_TagString: Untagged
@@ -252,12 +253,25 @@ Transform:
   m_GameObject: {fileID: 410608690}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8765051247277258776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &410608692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410608690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c75079d6877457489ad8d4d016ce882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Area: {x: 2.5, y: 2}
 --- !u!1 &504742173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,13 +2123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 410608691}
-  attackArea: {x: 2, y: 1.5}
   targetLayers:
     serializedVersion: 2
     m_Bits: 1536
   attackDamage: 10
   basicHitFXPrefab: {fileID: 3635309423712053226, guid: 3929ed140da76714f9b1609bf376355f, type: 3}
-  basicHitSFX: {fileID: 0}
+  basicHitSfx: {fileID: 0}
 --- !u!61 &8514590972486666424
 BoxCollider2D:
   m_ObjectHideFlags: 0
