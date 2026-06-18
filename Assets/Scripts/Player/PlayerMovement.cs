@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -85,6 +86,7 @@ namespace Player
         #region Movement
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (DialogueManager.Instance.IsPlaying) return;
             movementVector = context.ReadValue<Vector2>();
         }
         internal void Move()
@@ -114,6 +116,7 @@ namespace Player
         #region Jumping
         public void OnJump(InputAction.CallbackContext context)
         {
+            if (DialogueManager.Instance.IsPlaying) return;
             if (context.started)
             {
                 if (touching.Ground)

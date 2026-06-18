@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: R Foot
+    m_Hash: 968650474
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: R FOOT
+      m_Hash: 790309984
+      m_Sprite: {fileID: -6643191737940754969, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6643191737940754969, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    - m_Name: SMEAR
+      m_Hash: 179946321
+      m_Sprite: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: R Hand
+    m_Hash: 391190006
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: R HAND
+      m_Hash: 32921468
+      m_Sprite: {fileID: 8439672380661010093, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8439672380661010093, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    - m_Name: SMEAR
+      m_Hash: 179946321
+      m_Sprite: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: L Hand
+    m_Hash: 781022749
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: L HAND
+      m_Hash: 942290071
+      m_Sprite: {fileID: 1809746773064800704, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1809746773064800704, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    - m_Name: SMEAR
+      m_Hash: 179946321
+      m_Sprite: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5629605716776633022, guid: 5dd79218ef50e594c87a33244b036999, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 639173988749568826
+  m_Version: 1

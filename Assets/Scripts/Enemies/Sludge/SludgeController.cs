@@ -6,7 +6,6 @@ namespace Enemies.Sludge
     {
         [SerializeField] private float initialRoamDirection;
         [SerializeField] private float idleWaitTime = 2f; // How long it waits before moving again
-        [SerializeField] internal LayerMask obstacleLayer;
         private float roamTimer;
 
         protected override void InitializeStateMachine()

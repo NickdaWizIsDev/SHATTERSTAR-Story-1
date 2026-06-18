@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using JetBrains.Annotations;
+using Managers;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -98,11 +99,11 @@ namespace Player
 
             if(movement.movementVector.x > 0)
             {
-                transform.localRotation = new Quaternion(0, 0, 0, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else if(movement.movementVector.x < 0)
             {
-                transform.localRotation = new Quaternion(0, 180, 0, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
 
             if (dashCdTimer > 0)
@@ -160,6 +161,7 @@ namespace Player
         private void OnAttack(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
+            if (DialogueManager.Instance.IsPlaying) return;
 
             if (stateMachine.currentState is PlayerAttackState)
             {
@@ -176,6 +178,7 @@ namespace Player
         public void OnDash(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
+            if (DialogueManager.Instance.IsPlaying) return;
             if (dashCdTimer > 0) return;
             
             stateMachine.ChangeStateTo<PlayerDashingState>();

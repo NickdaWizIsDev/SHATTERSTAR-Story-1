@@ -1,8 +1,8 @@
-using UnityEngine;
-using Player;
 using Managers;
+using Player;
+using UnityEngine;
 
-namespace Gameplay
+namespace Dialogue
 {
     public class DialogueTrigger : MonoBehaviour
     {
@@ -16,12 +16,11 @@ namespace Gameplay
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.attachedRigidbody != null && other.attachedRigidbody.TryGetComponent(out PlayerController player))
-            {
-                playerInZone = player;
-                if(autoTrigger) TriggerDialogue();
-                else playerInZone.OnInteractEvent += TriggerDialogue;
-            }
+            if (other.attachedRigidbody == null ||
+                !other.attachedRigidbody.TryGetComponent(out PlayerController player)) return;
+            playerInZone = player;
+            if(autoTrigger) TriggerDialogue();
+            else playerInZone.OnInteractEvent += TriggerDialogue;
         }
 
         private void OnTriggerExit2D(Collider2D other)

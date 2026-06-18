@@ -14,7 +14,7 @@ namespace Player
 
         public override void Enter()
         {
-            player.animationManager.PlayAnimation(player.animations.AirHangAnimation);
+            
         }
         public override void Do()
         {

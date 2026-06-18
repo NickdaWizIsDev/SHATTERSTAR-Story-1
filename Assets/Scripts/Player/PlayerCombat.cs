@@ -18,7 +18,7 @@ namespace Player
 
         [Header("Pogo Settings")]
         [SerializeField] private Rigidbody2D playerRb; // Assign the Player's Rigidbody in the Inspector!
-        [SerializeField] private float pogoBounceForce = 12f;
+        [SerializeField] private float pogoBounceForce = 15f;
 
         private bool isHitboxActive;
         private bool isPogoActive; // Tracks if the current swing can pogo
@@ -50,6 +50,7 @@ namespace Player
             if (!isHitboxActive) return;
 
             var hitTargets = Physics2D.OverlapBoxAll(attackPoint.transform.position, AttackArea, 0f, targetLayers);
+            bool landedValidHit = false;
 
             foreach (var target in hitTargets)
             {
@@ -63,26 +64,29 @@ namespace Player
                 var strikeable = target.GetComponent<IStrikeable>();
                 strikeable?.OnStrike(currentAttackType);
 
-                if (damageable == null && strikeable == null) continue;
-                else
+                if (damageable != null || strikeable != null)
                 {
-                    // --- POGO LOGIC TRIGGER ---
-                    // If the pogo flag is true and we successfully hit a valid target, BOUNCE!
-                    if (isPogoActive && playerRb)
-                    {
-                        playerRb.linearVelocityY =  pogoBounceForce;
-                    }
-
                     var hitPoint = target.ClosestPoint(attackPoint.transform.position);
                     Debug.Log($"The player hit {target.name} for {attackDamage} damage.");
                     
                     if (basicHitFXPrefab is not null)
                     {
                         var angle = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
-                        var fX = Instantiate(basicHitFXPrefab, hitPoint, angle);
+                        Instantiate(basicHitFXPrefab, hitPoint, angle);
                     }
+
+                    landedValidHit = true;
                 }
-                    
+            }
+
+            if (landedValidHit)
+            {
+                if (isPogoActive && playerRb)
+                {
+                    playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 0f);
+                    playerRb.linearVelocityY = pogoBounceForce;
+                }
+
                 GameManager.Instance.TriggerHitStop(0.05f);
                 CameraEffects.Instance?.Shake(0.1f, 0.2f);
             }

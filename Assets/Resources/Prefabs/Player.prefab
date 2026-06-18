@@ -221,7 +221,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.7
+  m_Time: 0.25
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -836,14 +836,14 @@ MonoBehaviour:
   runVelocity: 12
   stopLerpValue: 0.2
   dashSpeed: 36
-  jumpHeight: 4
+  jumpHeight: 5
   coyoteTimeWindow: 0.15
   coyoteTimer: 0
   jumpBufferTimeWindow: 0.25
   jumpBufferTimer: 0
-  baseGravityScale: 2
-  apexGravityScale: 0.75
-  fallGravityScale: 4
+  baseGravityScale: 3
+  apexGravityScale: 1.5
+  fallGravityScale: 6
   body: {fileID: 8941156250295194971}
   touching: {fileID: 439274907094716225}
 --- !u!50 &8941156250295194971

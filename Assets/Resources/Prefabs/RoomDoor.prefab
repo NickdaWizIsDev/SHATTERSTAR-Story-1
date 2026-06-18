@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0b651750932fc584f86b772d3935053c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7949e4e2ece44338143d572a9d698a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorName: 
+  exitID: {fileID: 0}
   targetScene:
     sceneAsset: {fileID: 0}
     scenePath: 
-  targetDoorName: 
+  targetExitID: {fileID: 0}
   spawnPoint: {fileID: 4548915133874686039}
   autoWalkDirection: 0
 --- !u!1 &4557864472156000795
