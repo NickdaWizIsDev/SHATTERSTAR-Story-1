@@ -24,15 +24,15 @@ namespace Player
         {
             if(player.movement.touching.Ground)
             {
-                if(player.movement.movementVector == Vector2.zero) subStateMachine.ChangeStateTo<PlayerAttackingStillState>();
+                if(player.movement.movementVector.x == 0) subStateMachine.ChangeStateTo<PlayerAttackingStillState>();
                 else
                 {
-                    // subStateMachine.ChangeStateTo<PlayerAttackingMovingState>();
+                    subStateMachine.ChangeStateTo<PlayerAttackingMovingState>();
                 }
             }
             else
             {
-                // subStateMachine.ChangeStateTo<PlayerAttackingOnAirState>();
+                subStateMachine.ChangeStateTo<PlayerAttackingOnAirState>();
             }
         }
         public override void Do()

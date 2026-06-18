@@ -1,0 +1,1992 @@
+fileFormatVersion: 2
+guid: d846c81d271664d40abb729f20f4357a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7433220620634243607
+    second: Nick_Spritesheet_0
+  - first:
+      213: -2305023779591906604
+    second: Nick_Spritesheet_1
+  - first:
+      213: -7069775632613969107
+    second: Nick_Spritesheet_2
+  - first:
+      213: -3541078039994732475
+    second: Nick_Spritesheet_3
+  - first:
+      213: 4424895274333847261
+    second: Nick_Spritesheet_4
+  - first:
+      213: 566444396378490726
+    second: Nick_Spritesheet_5
+  - first:
+      213: 4733759798392553957
+    second: Nick_Spritesheet_6
+  - first:
+      213: -7206695284030615044
+    second: Nick_Spritesheet_7
+  - first:
+      213: -4764306556591030654
+    second: Nick_Spritesheet_8
+  - first:
+      213: 311629144638616041
+    second: Nick_Spritesheet_9
+  - first:
+      213: -3193651838898365860
+    second: Nick_Spritesheet_10
+  - first:
+      213: 8746590686309029874
+    second: Nick_Spritesheet_11
+  - first:
+      213: -8809278488864420598
+    second: Nick_Spritesheet_12
+  - first:
+      213: 3135687730685792092
+    second: Nick_Spritesheet_13
+  - first:
+      213: 6385405553102654740
+    second: Nick_Spritesheet_14
+  - first:
+      213: 3562774745497203196
+    second: Nick_Spritesheet_15
+  - first:
+      213: 7309535620065972951
+    second: Nick_Spritesheet_16
+  - first:
+      213: 6757482192611567939
+    second: Nick_Spritesheet_17
+  - first:
+      213: 1780529606017971357
+    second: Nick_Spritesheet_18
+  - first:
+      213: 2314688819269206728
+    second: Nick_Spritesheet_19
+  - first:
+      213: 6510062391830568907
+    second: Nick_Spritesheet_20
+  - first:
+      213: -3082731055507963178
+    second: Nick_Spritesheet_21
+  - first:
+      213: -1468699888736085365
+    second: Nick_Spritesheet_22
+  - first:
+      213: 109604695308137969
+    second: Nick_Spritesheet_23
+  - first:
+      213: -2672408982414499451
+    second: Nick_Spritesheet_24
+  - first:
+      213: 7033716620866379781
+    second: Nick_Spritesheet_25
+  - first:
+      213: 7604820293323689964
+    second: Nick_Spritesheet_26
+  - first:
+      213: -3465480135078975283
+    second: Nick_Spritesheet_27
+  - first:
+      213: -6193730399736497912
+    second: Nick_Spritesheet_28
+  - first:
+      213: -8901496020248441285
+    second: Nick_Spritesheet_29
+  - first:
+      213: -6234242247177854559
+    second: Nick_Spritesheet_30
+  - first:
+      213: -1310267464769524151
+    second: Nick_Spritesheet_31
+  - first:
+      213: -4729607382329454673
+    second: Nick_Spritesheet_32
+  - first:
+      213: 1490416732039652624
+    second: Nick_Spritesheet_33
+  - first:
+      213: -4028646252454788105
+    second: Nick_Spritesheet_34
+  - first:
+      213: 5387261106190608687
+    second: Nick_Spritesheet_35
+  - first:
+      213: -7662535368897988925
+    second: Nick_Spritesheet_36
+  - first:
+      213: 1133163758119803648
+    second: Nick_Spritesheet_37
+  - first:
+      213: -1560141074786414324
+    second: Nick_Spritesheet_38
+  - first:
+      213: -5037212546791448945
+    second: Nick_Spritesheet_39
+  - first:
+      213: 3483782418008581942
+    second: Nick_Spritesheet_40
+  - first:
+      213: -3007730275528429536
+    second: Nick_Spritesheet_41
+  - first:
+      213: 209085938203114902
+    second: Nick_Spritesheet_42
+  - first:
+      213: -5720556999869682706
+    second: Nick_Spritesheet_43
+  - first:
+      213: 5375951352905076
+    second: Nick_Spritesheet_44
+  - first:
+      213: 8997058631045408062
+    second: Nick_Spritesheet_45
+  - first:
+      213: 2155078571915285448
+    second: Nick_Spritesheet_46
+  - first:
+      213: 9015010544936187720
+    second: Nick_Spritesheet_47
+  - first:
+      213: -3868539924328248947
+    second: Nick_Spritesheet_48
+  - first:
+      213: -7445461523487925264
+    second: Nick_Spritesheet_49
+  - first:
+      213: -507460659631856977
+    second: Nick_Spritesheet_50
+  - first:
+      213: 6204856937252491928
+    second: Nick_Spritesheet_51
+  - first:
+      213: -3248809043740702169
+    second: Nick_Spritesheet_52
+  - first:
+      213: 7556505040695670023
+    second: Nick_Spritesheet_53
+  - first:
+      213: 6845519175927198335
+    second: Nick_Spritesheet_54
+  - first:
+      213: 5097745546090464232
+    second: Nick_Spritesheet_55
+  - first:
+      213: 8430918751457373036
+    second: Nick_Spritesheet_56
+  - first:
+      213: -327595019227382351
+    second: Nick_Spritesheet_57
+  - first:
+      213: 5462824170201229717
+    second: Nick_Spritesheet_58
+  - first:
+      213: -7823954406913521533
+    second: Nick_Spritesheet_59
+  - first:
+      213: 8136731606696777216
+    second: Nick_Spritesheet_60
+  - first:
+      213: 532228558616953345
+    second: Nick_Spritesheet_61
+  - first:
+      213: 8041169248602571014
+    second: Nick_Spritesheet_62
+  - first:
+      213: -1589886396327783358
+    second: Nick_Spritesheet_63
+  - first:
+      213: -6049326163542630686
+    second: Nick_Spritesheet_64
+  - first:
+      213: -4650313113012205413
+    second: Nick_Spritesheet_65
+  - first:
+      213: -4675750146106872953
+    second: Nick_Spritesheet_66
+  - first:
+      213: 768188190109965283
+    second: Nick_Spritesheet_67
+  - first:
+      213: -8431897881867421425
+    second: Nick_Spritesheet_68
+  - first:
+      213: -5045349946492534102
+    second: Nick_Spritesheet_69
+  - first:
+      213: 9181939716381611496
+    second: Nick_Spritesheet_70
+  - first:
+      213: -6811529729075187301
+    second: Nick_Spritesheet_71
+  - first:
+      213: -815272610740311564
+    second: Nick_Spritesheet_72
+  - first:
+      213: -9213862791564955350
+    second: Nick_Spritesheet_73
+  - first:
+      213: -1813710481248142086
+    second: Nick_Spritesheet_74
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nick_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 655
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712430685ca182760800000000000000
+      internalID: 7433220620634243607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 591
+        width: 39
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da9892c519e200e0800000000000000
+      internalID: -2305023779591906604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 591
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d23f458f48c13ed90800000000000000
+      internalID: -7069775632613969107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 591
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5407d28b8409bdec0800000000000000
+      internalID: -3541078039994732475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 592
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde39f2dec2686d30800000000000000
+      internalID: 4424895274333847261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 593
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66786276d2a6cd700800000000000000
+      internalID: 566444396378490726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 594
+        width: 42
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e18633c471b1b140800000000000000
+      internalID: 4733759798392553957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 591
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf15fd662dcacfb90800000000000000
+      internalID: -7206695284030615044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 591
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28eb35ddd68c1edb0800000000000000
+      internalID: -4764306556591030654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 591
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e1f7d35e01235400800000000000000
+      internalID: 311629144638616041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 592
+        width: 39
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a903eb29edda3d0800000000000000
+      internalID: -3193651838898365860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 593
+        width: 39
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f7903543e1226970800000000000000
+      internalID: 8746590686309029874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 593
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0d0fbf43e72fb580800000000000000
+      internalID: -8809278488864420598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 525
+        width: 71
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fc312a063348b20800000000000000
+      internalID: 3135687730685792092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 527
+        width: 88
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d8d7be4848d9850800000000000000
+      internalID: 6385405553102654740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 527
+        width: 97
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf1f71031c4817130800000000000000
+      internalID: 3562774745497203196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 544
+        width: 29
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2d81b3befa07560800000000000000
+      internalID: 7309535620065972951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 530
+        width: 51
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349e3a2604667cd50800000000000000
+      internalID: 6757482192611567939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 544
+        width: 39
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9474c63e36b5b810800000000000000
+      internalID: 1780529606017971357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 539
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c20c16a73d6f1020800000000000000
+      internalID: 2314688819269206728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 542
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcfd0bae043685a50800000000000000
+      internalID: 6510062391830568907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 530
+        width: 61
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d202622070f735d0800000000000000
+      internalID: -3082731055507963178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 529
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ada329b312e9be0800000000000000
+      internalID: -1468699888736085365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 526
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f57e81c3e4658100800000000000000
+      internalID: 109604695308137969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 531
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581ee948032b9ead0800000000000000
+      internalID: -2672408982414499451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 483
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500608d1008cc9160800000000000000
+      internalID: 7033716620866379781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 463
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef8d34c3cfb98960800000000000000
+      internalID: 7604820293323689964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 463
+        width: 38
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc8e1749d2428efc0800000000000000
+      internalID: -3465480135078975283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 463
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 809fa2964037b0aa0800000000000000
+      internalID: -6193730399736497912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 463
+        width: 67
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ec98f1888877480800000000000000
+      internalID: -8901496020248441285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 463
+        width: 71
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a12b35e4b58b79a0800000000000000
+      internalID: -6234242247177854559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 463
+        width: 27
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94e29a1deaef0dde0800000000000000
+      internalID: -1310267464769524151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 463
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faf0031f42f0d5eb0800000000000000
+      internalID: -4729607382329454673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 399
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015a5880f160fa410800000000000000
+      internalID: 1490416732039652624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 395
+        width: 63
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f349bcf39f5718c0800000000000000
+      internalID: -4028646252454788105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 397
+        width: 68
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f29e4c2ee6563ca40800000000000000
+      internalID: 5387261106190608687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 399
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6f7f90ea439a590800000000000000
+      internalID: -7662535368897988925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 401
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00bd31b2f6ec9bf00800000000000000
+      internalID: 1133163758119803648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 399
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c011cdd55f3495ae0800000000000000
+      internalID: -1560141074786414324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 411
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8eda5280e9381ab0800000000000000
+      internalID: -5037212546791448945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 399
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 637272cb6a1e85030800000000000000
+      internalID: 3483782418008581942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 335
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020b0f200456246d0800000000000000
+      internalID: -3007730275528429536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 335
+        width: 68
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d30229d82d6e200800000000000000
+      internalID: 209085938203114902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 326
+        width: 57
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeba469a7bf7c90b0800000000000000
+      internalID: -5720556999869682706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 326
+        width: 29
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47d38b63669131000800000000000000
+      internalID: 5375951352905076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 339
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35e2de0829fbdc70800000000000000
+      internalID: 8997058631045408062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 326
+        width: 29
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c311160b8068ed10800000000000000
+      internalID: 2155078571915285448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 336
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8477259b350cb1d70800000000000000
+      internalID: 9015010544936187720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 335
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d898ffa6f6f205ac0800000000000000
+      internalID: -3868539924328248947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 329
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fbd9af21386ca890800000000000000
+      internalID: -7445461523487925264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 271
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2682df73325f8f0800000000000000
+      internalID: -507460659631856977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 272
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8929d0b72841c1650800000000000000
+      internalID: 6204856937252491928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 278
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72a42cc3369e9e2d0800000000000000
+      internalID: -3248809043740702169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 279
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7053d166c491ed860800000000000000
+      internalID: 7556505040695670023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 276
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f72f340eb6b200f50800000000000000
+      internalID: 6845519175927198335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 220
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e34d0ea094deb640800000000000000
+      internalID: 5097745546090464232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 223
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6bebce7fe3a00570800000000000000
+      internalID: 8430918751457373036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 224
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bdb3c0d016247bf0800000000000000
+      internalID: -327595019227382351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 225
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5992347b3a9dfcb40800000000000000
+      internalID: 5462824170201229717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 226
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38841158beabb6390800000000000000
+      internalID: -7823954406913521533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 226
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 006dad9394a7be070800000000000000
+      internalID: 8136731606696777216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 220
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1028eafdd0bd26700800000000000000
+      internalID: 532228558616953345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 219
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60140c1e3d8f79f60800000000000000
+      internalID: 8041169248602571014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 150
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24418a10fb69fe9e0800000000000000
+      internalID: -1589886396327783358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 144
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee909ba7e97c0ca0800000000000000
+      internalID: -6049326163542630686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 80
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b980194bcd4c67fb0800000000000000
+      internalID: -4650313113012205413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 80
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78ba1dae3066c1fb0800000000000000
+      internalID: -4675750146106872953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 80
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb9720c61729aa00800000000000000
+      internalID: 768188190109965283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 80
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f097ce0fc81ebfa80800000000000000
+      internalID: -8431897881867421425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 15
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa2c6cf74f05bf9b0800000000000000
+      internalID: -5045349946492534102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 6
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e51af7268dcc6f70800000000000000
+      internalID: 9181939716381611496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 9
+        width: 51
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b91f579ecc59871a0800000000000000
+      internalID: -6811529729075187301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 14
+        width: 62
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f9e7b941e19fa4f0800000000000000
+      internalID: -815272610740311564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 14
+        width: 67
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a21f493bb98c12080800000000000000
+      internalID: -9213862791564955350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nick_Spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 14
+        width: 67
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc3dcf3de764d6e0800000000000000
+      internalID: -1813710481248142086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

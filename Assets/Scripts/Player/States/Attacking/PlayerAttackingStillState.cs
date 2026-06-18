@@ -45,34 +45,45 @@ namespace Player
         {
             player.combat.InitializeAttack(AttackType.Sword);
             var clipToPlay = player.animations.GroundAttackAnimation_1;
-            
+    
             // Ignore the input if the current swing hasn't completed to a certain point.
             if (animationTimer / (currentClip ? currentClip.length : clipToPlay.length) > 0.15f) return;
 
-            if(Time.time <= comboTimer)
+            // We use > 0.5f to account for joystick dead zones, preventing accidental up-attacks.
+            if (player.movement.movementVector.y > 0.5f)
             {
-                switch(attackCounter)
-                {
-                    case 0:
-                        clipToPlay = player.animations.GroundAttackAnimation_1;
-                        attackCounter++;
-                        break;
-                    case 1:
-                        clipToPlay = player.animations.GroundAttackAnimation_2;
-                        attackCounter = 0;
-                        break;
-                }
+                clipToPlay = player.animations.UpAttackAnimation;
+        
+                // Optional: Reset the basic combo counter so returning to normal attacks feels fresh.
+                attackCounter = 0; 
             }
-            else 
+            else
             {
-                clipToPlay = player.animations.GroundAttackAnimation_1;
-                attackCounter = 1;
+                if(Time.time <= comboTimer)
+                {
+                    switch(attackCounter)
+                    {
+                        case 0:
+                            clipToPlay = player.animations.GroundAttackAnimation_1;
+                            attackCounter++;
+                            break;
+                        case 1:
+                            clipToPlay = player.animations.GroundAttackAnimation_2;
+                            attackCounter = 0;
+                            break;
+                    }
+                }
+                else 
+                {
+                    clipToPlay = player.animations.GroundAttackAnimation_1;
+                    attackCounter = 1;
+                }
             }
 
             entity.animationManager.PlayAnimation(clipToPlay);
             animationTimer = clipToPlay.length;
             currentClip = clipToPlay;
-            
+    
             comboTimer = Time.time + animationTimer + comboWindow;
         }
     }

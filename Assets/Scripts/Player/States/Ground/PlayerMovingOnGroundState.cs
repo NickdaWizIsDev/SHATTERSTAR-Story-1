@@ -19,7 +19,7 @@ namespace Player
         {
             wasRunning = player.isRunning;
             //TODO: get a proper walk animation in here if we're not running
-            player.animationManager.PlayAnimation(wasRunning ? player.animations.RunAnimation : player.animations.RunAnimation);
+            player.animationManager.PlayAnimation(wasRunning ? player.animations.RunAnimation : player.animations.WalkAnimation);
         }
         public override void Do()
         {

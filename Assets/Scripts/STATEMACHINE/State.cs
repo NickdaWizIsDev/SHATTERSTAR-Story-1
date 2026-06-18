@@ -29,17 +29,11 @@ namespace HSM
         public void RecursiveDo()
         {
             Do();
-            if(subState != null)
-            {
-                subState.RecursiveDo();
-            }
+            subState?.RecursiveDo();
         }
         public void RecursiveExit()
         {
-            if(subState != null)
-            {
-                subState.RecursiveExit();
-            }
+            subState?.RecursiveExit();
             Exit();
         
             // Clear the cached sub-state so it fires Enter() on the next visit!

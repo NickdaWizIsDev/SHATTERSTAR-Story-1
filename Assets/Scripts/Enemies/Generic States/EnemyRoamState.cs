@@ -9,18 +9,23 @@ namespace Enemies
         private float startX;
         private float roamDirection;
         private float currentRoamDistance;
+        private LayerMask obstacleLayer;
 
-        public EnemyRoamState(Entity entity, float direction) : base(entity)
+        public EnemyRoamState(Entity entity, float direction, LayerMask obs) : base(entity)
         {
             enemy = (EnemyController)entity;
             stateName = "Roaming";
             roamDirection = direction;
+            obstacleLayer = obs;
         }
 
         public override void Enter()
         {
             enemy.body.linearVelocity = new Vector2(0, enemy.body.linearVelocityY);
             enemy.animationManager.PlayAnimation(enemy.animations.MoveAnimation);
+            
+            // Pick a random direction every time it starts moving
+            roamDirection = Random.value > 0.5f ? 1f : -1f;
             
             startX = enemy.transform.position.x;
             currentRoamDistance = RandomRoamDistance();
@@ -32,13 +37,14 @@ namespace Enemies
             enemy.body.linearVelocity = new Vector2(roamDirection * enemy.moveSpeed, enemy.body.linearVelocityY);
 
             Vector2 pos = enemy.transform.position;
-            float boundsOffset = 1f;
+            
+            var boundsOffset = 0.6f; 
 
-            RaycastHit2D wallHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.right * roamDirection, 0.1f);
-            RaycastHit2D groundHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.down, 2f);
+            var wallHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.right * roamDirection, 0.1f, obstacleLayer);
+            var groundHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.down, 2f, obstacleLayer);
 
-            bool hitWall = wallHit.collider && !wallHit.collider.isTrigger;
-            bool noGround = !groundHit.collider;
+            var hitWall = wallHit.collider && !wallHit.collider.isTrigger;
+            var noGround = !groundHit.collider;
 
             if (hitWall || noGround)
             {
@@ -67,8 +73,8 @@ namespace Enemies
         {
             enemy.transform.localRotation = roamDirection switch
             {
-                > 0 => new Quaternion(0, 0, 0, 1),
-                < 0 => new Quaternion(0, 180, 0, 1),
+                > 0 => Quaternion.Euler(0, 0, 0),
+                < 0 => Quaternion.Euler(0, 180, 0),
                 _ => enemy.transform.localRotation
             };
         }

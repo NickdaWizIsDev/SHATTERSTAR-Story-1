@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5173282025046516950}
-  - component: {fileID: 8372727616310848568}
   - component: {fileID: 1521770610982360367}
   - component: {fileID: 2470826686729582042}
+  - component: {fileID: 6996670170120688544}
   m_Layer: 12
   m_Name: Earthen Sludge
   m_TagString: Untagged
@@ -35,34 +35,6 @@ Transform:
   - {fileID: 4938207576416520270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8372727616310848568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38463570788336642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25913f040ae54f0ba25547018cc85355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationManager: {fileID: 1521770610982360367}
-  health: 30
-  moveSpeed: 2
-  detectionRadius: 8
-  attackRange: 3
-  attackLungeSpeed: 4
-  attackDamage: 10
-  telegraphTime: 0.5
-  attackRecoveryTime: 0.5
-  attackCooldown: 1.5
-  body: {fileID: 2470826686729582042}
-  animations:
-    IdleAnimation: {fileID: 7400000, guid: 8ae1509cbee225d4eb2dfcb5ea073aac, type: 2}
-    MoveAnimation: {fileID: 7400000, guid: d20cd5167b958eb449beacecc0009156, type: 2}
-    TelegraphAnimation: {fileID: 7400000, guid: cf3047042f1dd5d4f94f37ec1d982078, type: 2}
-    AttackAnimation: {fileID: 7400000, guid: 417c6d94ed7a75c4a9b0f82f540264a2, type: 2}
 --- !u!114 &1521770610982360367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +75,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6996670170120688544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38463570788336642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a538b52bb5664cdca81089ac07a2a87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationManager: {fileID: 1521770610982360367}
+  health: 30
+  moveSpeed: 1
+  detectionRadius: 8
+  attackRange: 1.5
+  attackLungeSpeed: 10
+  attackDamage: 10
+  telegraphTime: 0.5
+  attackRecoveryTime: 0.5
+  attackCooldown: 0
+  body: {fileID: 2470826686729582042}
+  animations:
+    IdleAnimation: {fileID: 7400000, guid: 8ae1509cbee225d4eb2dfcb5ea073aac, type: 2}
+    MoveAnimation: {fileID: 7400000, guid: d20cd5167b958eb449beacecc0009156, type: 2}
+    TelegraphAnimation: {fileID: 0}
+    AttackAnimation: {fileID: 0}
+  initialRoamDirection: 0
+  idleWaitTime: 2
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 9
 --- !u!1 &887231314384913455
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182827a83c5c412ca72d35e438aa4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyController: {fileID: 8372727616310848568}
+  enemyController: {fileID: 6996670170120688544}
 --- !u!61 &600186633044070067
 BoxCollider2D:
   m_ObjectHideFlags: 0

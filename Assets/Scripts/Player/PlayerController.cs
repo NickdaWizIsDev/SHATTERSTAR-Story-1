@@ -150,8 +150,8 @@ namespace Player
 
             if (spriteRenderer != null) 
             {
-                Color c = spriteRenderer.color;
-                c.a = 0f;
+                var c = spriteRenderer.color;
+                c.a = 1f;
                 spriteRenderer.color = c;
             }
             isInvincible = false;
@@ -201,6 +201,8 @@ namespace Player
         public AnimationClip FallLoopAnimation;
         public AnimationClip GroundAttackAnimation_1;
         public AnimationClip GroundAttackAnimation_2;
+        public AnimationClip UpAttackAnimation;
+        public AnimationClip DownAttackAnimation;
         public AnimationClip AirAttackAnimation;        
         public AnimationClip MovingAttackAnimation;     
         public AnimationClip DashAnimation;
