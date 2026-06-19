@@ -5,8 +5,9 @@ namespace Gameplay
 {
     public class LeverSwitch : MonoBehaviour, IStrikeable
     {
-        public SaveStateID saveState;
-        public UnityEvent onToggle;
+        [SerializeField] private SaveStateID saveState;
+        [SerializeField] private UnityEvent onToggle;
+        [SerializeField] private bool oneShot = true;
         private bool isToggled;
 
         private void Start()
@@ -21,12 +22,14 @@ namespace Gameplay
 
         public void OnStrike(AttackType type)
         {
+            if(isToggled && oneShot) return;
             isToggled = !isToggled;
             onToggle?.Invoke();
-        
-            var scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+
+            if (TryGetComponent(out Animator animator))
+            {
+                animator.SetBool("isToggled", isToggled);
+            }
 
             if (saveState is null) return;
             if (isToggled) GameManager.Instance.activeStates.Add(saveState);

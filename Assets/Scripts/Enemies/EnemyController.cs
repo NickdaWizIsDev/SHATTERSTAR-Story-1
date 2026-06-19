@@ -114,6 +114,7 @@ namespace Enemies
         protected virtual void Die()
         {
             // TODO: Handle death (play animation, drop particles, destroy object)
+            OnDeath?.Invoke(this);
             Destroy(gameObject);
         }
 
@@ -129,6 +130,8 @@ namespace Enemies
         {
             attackTimer = attackCooldown;
         }
+
+        public event Action<EnemyController> OnDeath;
     }
 
     [Serializable]
