@@ -92,11 +92,13 @@ namespace Player
         {
             CurrentState.RecursiveDo();
 
+            #if UNITY_EDITOR
             if (debugStateText is not null)
             {
                 debugStateText.text = stateMachine.currentState.RecursiveStateString();
             }
-
+            #endif
+            
             if(movement.movementVector.x > 0)
             {
                 transform.localScale = new Vector3(1, 1, 1);

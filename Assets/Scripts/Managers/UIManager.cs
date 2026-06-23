@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Managers
@@ -11,6 +12,9 @@ namespace Managers
 
         public CanvasGroup HUD;
         public Image blackOverlay;
+        public PauseManager PauseManager;
+
+        [SerializeField] private InputActionReference pauseAction;
 
         private void Awake()
         {
@@ -25,6 +29,8 @@ namespace Managers
         private void Start()
         {
             StartCoroutine(FadeFromBlack(0.35f));
+            pauseAction.action.Enable();
+            pauseAction.action.started += Pause;
         }
 
         public IEnumerator FadeToBlack(float duration = 0.2f)
@@ -51,6 +57,11 @@ namespace Managers
                 blackOverlay.color = c;
                 yield return null;
             }
+        }
+
+        private void Pause(InputAction.CallbackContext callbackContext)
+        {
+            PauseManager.PauseGame();
         }
     }
 }
