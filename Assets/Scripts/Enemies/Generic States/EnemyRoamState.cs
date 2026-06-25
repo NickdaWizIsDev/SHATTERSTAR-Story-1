@@ -9,7 +9,7 @@ namespace Enemies
         private float startX;
         private float roamDirection;
         private float currentRoamDistance;
-        private LayerMask obstacleLayer;
+        private readonly LayerMask obstacleLayer;
 
         public EnemyRoamState(Entity entity, float direction, LayerMask obs) : base(entity)
         {

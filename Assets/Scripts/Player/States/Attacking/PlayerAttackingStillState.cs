@@ -21,7 +21,7 @@ namespace Player
 
         public override void Enter()
         {
-            player.canMove = false;
+            player.CanMove = false;
             player.animationManager.SetAnimationSpeed(1);
         }
         public override void Do()
@@ -37,7 +37,7 @@ namespace Player
         }
         public override void Exit()
         {
-            player.canMove = true;
+            player.CanMove = true;
             player.combat.CloseHitbox();
         }
 

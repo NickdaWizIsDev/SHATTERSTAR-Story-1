@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using Player;
+using UnityEngine.Events;
 
 namespace Managers
 {
@@ -23,6 +24,7 @@ namespace Managers
         private Coroutine typingCoroutine;
         private PlayerController currentPlayer;
         private bool isTyping;
+        [HideInInspector] public UnityEvent onFinish;
 
         private void Awake()
         {
@@ -39,7 +41,7 @@ namespace Managers
             currentLineIndex = 0;
             currentPlayer = player;
 
-            currentPlayer.canMove = false;
+            currentPlayer.CanMove = false;
             currentPlayer.movement.Stop();
 
             currentPlayer.OnInteractEvent += HandleInput;
@@ -98,7 +100,8 @@ namespace Managers
             dialoguePanel.SetActive(false);
 
             currentPlayer.OnInteractEvent -= HandleInput;
-            currentPlayer.canMove = true;
+            currentPlayer.CanMove = true;
+            onFinish?.Invoke();
         }
     }
 }

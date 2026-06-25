@@ -1,6 +1,7 @@
 using Managers;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Dialogue
 {
@@ -11,6 +12,7 @@ namespace Dialogue
         public string[] dialogueLines;
 
         [SerializeField] private bool autoTrigger;
+        [SerializeField] private UnityEvent onFinish;
         
         private PlayerController playerInZone;
 
@@ -36,6 +38,7 @@ namespace Dialogue
             if (DialogueManager.Instance != null && !DialogueManager.Instance.IsPlaying && playerInZone != null)
             {
                 DialogueManager.Instance.StartDialogue(dialogueLines, playerInZone);
+                DialogueManager.Instance.onFinish?.AddListener(() => onFinish?.Invoke());
             }
         }
     }

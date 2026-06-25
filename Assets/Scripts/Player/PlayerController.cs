@@ -21,7 +21,6 @@ namespace Player
         [SerializeField] internal SpriteRenderer spriteRenderer;
 
         [Header("Variables")]
-        [SerializeField] internal bool canMove = true;
         [SerializeField] private int health = 100;
         [SerializeField] private float iFrameDuration = 1.5f;
         [SerializeField] private float flashInterval = 0.1f;
@@ -32,6 +31,8 @@ namespace Player
         
         [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
+        internal bool CanMove = true;
+        internal bool CanAttack = true;
 
         private void Awake()
         {
@@ -54,29 +55,49 @@ namespace Player
 
             inputActions.Gameplay.Attack.started += OnAttack;
 
-            inputActions.Gameplay.Interact.started += OnInteract;
+            inputActions.Interactions.Interact.started += OnInteract;
 
             movement ??= GetComponent<PlayerMovement>();
             animations ??= GetComponent<PlayerAnimations>();
             combat ??= GetComponent<PlayerCombat>();
             spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
         }
-        
-        public void EnableInput() => inputActions.Gameplay.Enable();
-        public void DisableInput() => inputActions.Gameplay.Disable();
 
-        private void OnEnable() => EnableInput();
-        private void OnDisable() => DisableInput();
+        public void EnableInput()
+        {
+            CanMove = true;
+            CanAttack = true;
+        }
+
+        public void DisableInput()
+        {
+            CanMove = false;
+            CanAttack = false;
+        }
+
+        private void OnEnable()
+        {
+            EnableInput();
+            inputActions.Gameplay.Enable();
+            inputActions.Interactions.Enable();
+        }
+
+        private void OnDisable()
+        {
+            DisableInput();
+            inputActions.Gameplay.Disable();
+            inputActions.Interactions.Disable();
+        }
 
         private void Start()
         {
             stateMachine.ChangeStateTo<PlayerIdleState>();
-            movement.controller = this;
+            movement.Controller = this;
         }
 
         private void FixedUpdate()
         {
-            if (!canMove)
+            if (!CanMove)
             {
                 movement.Stop();
                 return;
@@ -163,7 +184,7 @@ namespace Player
         private void OnAttack(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
-            if (DialogueManager.Instance.IsPlaying) return;
+            if (DialogueManager.Instance.IsPlaying || !CanAttack) return;
 
             if (stateMachine.currentState is PlayerAttackState)
             {
@@ -180,7 +201,7 @@ namespace Player
         public void OnDash(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
-            if (DialogueManager.Instance.IsPlaying) return;
+            if (DialogueManager.Instance.IsPlaying || !CanMove) return;
             if (dashCdTimer > 0) return;
             
             stateMachine.ChangeStateTo<PlayerDashingState>();

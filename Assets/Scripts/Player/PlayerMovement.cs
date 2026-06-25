@@ -8,7 +8,7 @@ namespace Player
     {
         [Header("Values")]
         [SerializeField] internal Vector2 movementVector;
-        [SerializeField] internal Vector2 CurrentVelocity => body.linearVelocity;
+        internal Vector2 CurrentVelocity => body.linearVelocity;
 
         [Header("Horizontal Movement")]
         [SerializeField] internal float walkVelocity;
@@ -30,18 +30,19 @@ namespace Player
         [Header("References")]
         [SerializeField] internal Rigidbody2D body;
         [SerializeField] internal TouchingDirections touching;
-        internal PlayerController controller;
+        internal PlayerController Controller;
 
         private void Update()
         {
-            // Coyote Time
-            if (touching.Ground && coyoteTimer != coyoteTimeWindow)
+            switch (touching.Ground)
             {
-                coyoteTimer = coyoteTimeWindow;
-            }
-            else if (!touching.Ground)
-            {
-                coyoteTimer -= Time.deltaTime;
+                // Coyote Time
+                case true when !Mathf.Approximately(coyoteTimer, coyoteTimeWindow):
+                    coyoteTimer = coyoteTimeWindow;
+                    break;
+                case false:
+                    coyoteTimer -= Time.deltaTime;
+                    break;
             }
 
             // Jump Buffer
@@ -56,7 +57,7 @@ namespace Player
                 wantsToJump = true;
             }
 
-            if(controller.stateMachine.currentState is PlayerDashingState) return;
+            if(Controller.stateMachine.currentState is PlayerDashingState) return;
 
             // Gravity
             if (body.linearVelocityY < 0)
@@ -76,11 +77,9 @@ namespace Player
 
         private void FixedUpdate()
         {
-            if(wantsToJump)
-            {
-                Jump();
-                wantsToJump = false;
-            }
+            if (!wantsToJump) return;
+            Jump();
+            wantsToJump = false;
         }
 
         #region Movement
@@ -91,7 +90,7 @@ namespace Player
         }
         internal void Move()
         {
-            float activeVelocity = controller.isRunning ? runVelocity : walkVelocity;
+            float activeVelocity = Controller.isRunning ? runVelocity : walkVelocity;
             float targetVelocityX = movementVector.x * activeVelocity;
 
             // Turning logic
@@ -116,7 +115,7 @@ namespace Player
         #region Jumping
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (DialogueManager.Instance.IsPlaying) return;
+            if (DialogueManager.Instance.IsPlaying || !Controller.CanMove) return;
             if (context.started)
             {
                 if (touching.Ground)

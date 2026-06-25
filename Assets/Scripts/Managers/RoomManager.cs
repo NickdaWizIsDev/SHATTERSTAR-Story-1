@@ -96,12 +96,22 @@ namespace Managers
         
         private void OnTriggerEnter2D(Collider2D other)
         {
+            // This and other behaviors present in this script should go to its own ArenaManger eventually
             // Standard check to see if the player walked in
             if (other.attachedRigidbody == null ||
                 !other.attachedRigidbody.TryGetComponent<PlayerController>(out var player)) return;
             TriggerArena();
             // Disable the collider so it doesn't trigger multiple times
             GetComponent<Collider2D>().enabled = false;
+        }
+
+        public void DisablePlayerMovement()
+        {
+            GameManager.Instance.Player.DisableInput();
+        }
+        public void EnablePlayerMovement()
+        {
+            GameManager.Instance.Player.EnableInput();
         }
     }
 
