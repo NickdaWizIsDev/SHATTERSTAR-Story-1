@@ -22,7 +22,7 @@ namespace Enemies
             if (other.attachedRigidbody == null ||
                 !other.attachedRigidbody.TryGetComponent(out PlayerController player)) return;
             
-            player.DamageThis(enemyController.attackDamage);
+            player.DamageThis(enemyController.attackDamage, transform.position);
         }
     }
 }

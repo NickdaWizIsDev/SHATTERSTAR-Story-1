@@ -66,7 +66,7 @@ namespace Gameplay
             var walkDir = autoWalkDirection == Direction.Right ? 0.5f : -0.5f;
             player.movement.movementVector = new Vector2(walkDir, 0);
 
-            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(0.5f));
+            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(1f));
 
             yield return new WaitForSeconds(0.15f);
 

@@ -59,7 +59,7 @@ namespace Player
                 alreadyHitTargets.Add(target); 
 
                 var damageable = target.attachedRigidbody?.GetComponent<IDamageable>();
-                damageable?.DamageThis(attackDamage);
+                damageable?.DamageThis(attackDamage, transform.position);
 
                 var strikeable = target.GetComponent<IStrikeable>();
                 strikeable?.OnStrike(currentAttackType);
@@ -87,8 +87,8 @@ namespace Player
                     playerRb.linearVelocityY = pogoBounceForce;
                 }
 
-                GameManager.Instance.TriggerHitStop(0.05f);
-                CameraEffects.Instance?.Shake(0.1f, 0.2f);
+                GameManager.Instance.TriggerHitStop(0.07f);
+                CameraEffects.Instance?.Shake(0.1f, 0.8f);
             }
         }
 

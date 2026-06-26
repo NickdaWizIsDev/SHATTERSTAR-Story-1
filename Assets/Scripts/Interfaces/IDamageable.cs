@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IDamageable
 {
-    public void DamageThis(int damage);
+    void DamageThis(int damage, Vector2 damageSourcePos = default);
 }

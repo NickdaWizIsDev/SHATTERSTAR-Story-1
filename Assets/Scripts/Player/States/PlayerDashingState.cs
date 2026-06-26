@@ -25,7 +25,7 @@ namespace Player
             }
             else
             {
-                dashDirection = player.transform.localRotation.y == 0 ? 1 : -1;
+                dashDirection = player.transform.localScale.x > 0 ? 1 : -1;
             }
 
             player.movement.body.gravityScale = 0f;

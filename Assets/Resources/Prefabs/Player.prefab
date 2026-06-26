@@ -200,7 +200,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -876546973899608171, guid: 40ee28d3c6ceae84f85294f0e795f516, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -347,7 +347,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0f4cf67287046484e964274c53fd4c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -521,7 +521,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0f4cf67287046484e964274c53fd4c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -778,7 +778,6 @@ MonoBehaviour:
   combat: {fileID: 7923290647617882839}
   hurtbox: {fileID: 4942460145262820324}
   spriteRenderer: {fileID: 3400110669834385141}
-  canMove: 1
   health: 100
   iFrameDuration: 1.5
   flashInterval: 0.1
@@ -800,7 +799,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1433189544182447958}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 9728
   attackDamage: 10
   basicHitFXPrefab: {fileID: 3635309423712053226, guid: 3929ed140da76714f9b1609bf376355f, type: 3}
   basicHitSfx: {fileID: 0}
@@ -893,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2166423288509739109, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f4cf67287046484e964274c53fd4c79, type: 2}
     - target: {fileID: -1538140501531570913, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -917,6 +920,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2888596991278503578, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f4cf67287046484e964274c53fd4c79, type: 2}
     - target: {fileID: 3766294706792524111, guid: 375951b2ce9fe9448a723da5efb9f1ef, type: 3}
       propertyPath: m_IsActive
       value: 0

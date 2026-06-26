@@ -27,6 +27,12 @@ namespace Player
         [SerializeField] internal float dashCooldown = 0.75f;
         [SerializeField] internal float dashCdTimer;
         [SerializeField] internal bool isRunning;
+        
+        [Header("Knockback Settings")]
+        [SerializeField] private float knockbackForce = 12f;
+        [SerializeField] private float knockbackDuration = 0.2f;
+        private bool isKnockedBack;
+        
         private bool isInvincible;
         
         [UsedImplicitly] private PlayerStates playerStates;
@@ -137,7 +143,7 @@ namespace Player
             animationManager.SetBool("OnGround", movement.touching.Ground);
         }
 
-        public void DamageThis(int damage)
+        public void DamageThis(int damage, Vector2 damageSourcePos = default)
         {
             if (isInvincible) return;
 
@@ -149,7 +155,40 @@ namespace Player
             else
             {
                 StartCoroutine(IFrameRoutine());
+                GameManager.Instance.TriggerHitStop(0.25f);
+                CameraEffects.Instance.Shake(0.1f, 1f);
             }
+        }
+        
+        private IEnumerator KnockbackRoutine(Vector2 damageSourcePos)
+        {
+            isKnockedBack = true;
+            DisableInput();
+            
+            Vector2 knockbackDir;
+            if (damageSourcePos != default)
+            {
+                // Push away from the damage source
+                knockbackDir = ((Vector2)transform.position - damageSourcePos).normalized;
+            }
+            else
+            {
+                // Failsafe: If no source is provided (like environmental hazards), push them backwards based on where they are facing
+                knockbackDir = new Vector2(-Mathf.Sign(transform.localScale.x), 0);
+            }
+
+            knockbackDir.y = 0.5f; // A slight upward "pop" to juggle the player
+
+            if (movement.body != null)
+            {
+                movement.body.linearVelocity = Vector2.zero;
+                movement.body.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+            }
+
+            yield return new WaitForSeconds(knockbackDuration);
+
+            isKnockedBack = false;
+            EnableInput(); 
         }
 
         private IEnumerator IFrameRoutine()
@@ -157,15 +196,17 @@ namespace Player
             isInvincible = true;
             float elapsed = 0f;
             bool isVisible = true;
+            var mat = Instantiate(spriteRenderer.material);
+            spriteRenderer.material = mat;
 
             while (elapsed < iFrameDuration)
             {
                 isVisible = !isVisible;
-                if (spriteRenderer != null) 
+                if (spriteRenderer != null)
                 {
-                    Color c = spriteRenderer.color;
-                    c.a = isVisible ? 1f : 0f;
-                    spriteRenderer.color = c;
+                    var a = mat.GetFloat("_Alpha");
+                    var alpha = isVisible ? 1f : 0f;
+                    mat.SetFloat("_Alpha", alpha);
                 }
                 
                 yield return new WaitForSeconds(flashInterval);
@@ -174,9 +215,8 @@ namespace Player
 
             if (spriteRenderer != null) 
             {
-                var c = spriteRenderer.color;
-                c.a = 1f;
-                spriteRenderer.color = c;
+                var a = mat.GetFloat("_Alpha");
+                mat.SetFloat("_Alpha", 1f);
             }
             isInvincible = false;
         }

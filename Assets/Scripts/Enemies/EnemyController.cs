@@ -1,7 +1,7 @@
 using System;
-using System.Collections; // <--- ADD THIS
 using HSM;
 using UnityEngine;
+using PrimeTween;
 
 namespace Enemies
 {
@@ -29,16 +29,21 @@ namespace Enemies
         [Header("Juice")]
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float knockbackForce = 6f;
-        [SerializeField] private Color hitFlashColor = Color.red; // Pure white or red work best!
+        [SerializeField] private Color hitFlashColor = Color.red; 
         [SerializeField] private float hitFlashDuration = 0.1f;
         
         private Color originalColor;
         internal Transform playerTransform;
 
+        // Caching the MaterialPropertyBlock to prevent memory leaks
+        private MaterialPropertyBlock propBlock;
+        private Tween flashTween;
+
         protected virtual void Awake()
         {
             stateMachine = new StateMachine();
             InitializeStateMachine();
+            propBlock = new MaterialPropertyBlock(); // Initialize once
         }
 
         protected abstract void InitializeStateMachine();
@@ -48,13 +53,15 @@ namespace Enemies
             if (playerTransform == null)
             {
                 var player = GameManager.Instance.Player;
-                playerTransform = player.transform;
+                if (player != null) playerTransform = player.transform;
             }
 
-            // Cache the enemy's original color so we can revert back to it after flashing
+            // Cache the original color safely using sharedMaterial to avoid instantiation 
             if (spriteRenderer != null) 
             {
-                originalColor = spriteRenderer.color;
+                originalColor = spriteRenderer.sharedMaterial.HasProperty("m_Color") 
+                    ? spriteRenderer.sharedMaterial.GetColor("m_Color") 
+                    : Color.white;
             }
         }
 
@@ -68,30 +75,59 @@ namespace Enemies
             }
         }
 
-        public virtual void DamageThis(int damage)
+        // Updated Signature to match the new IDamageable!
+        public virtual void DamageThis(int damage, Vector2 damageSourcePos = default)
         {
             health -= damage;
         
             // 1. JUICE: KNOCKBACK
-            // Calculate the direction away from Nick, add a little upward "pop", and apply force.
-            if (body != null && playerTransform != null)
+            Vector2 knockbackDir;
+            
+            // Prioritize the actual attack location if provided
+            if (damageSourcePos != default)
             {
-                Vector2 knockbackDir = (transform.position - playerTransform.position).normalized;
-                knockbackDir.y = 0.5f; // Gives them a slight aerial juggle effect!
-                
+                knockbackDir = ((Vector2)transform.position - damageSourcePos).normalized;
+            }
+            // Fallback to the player's general position
+            else if (playerTransform != null)
+            {
+                knockbackDir = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
+            }
+            // Failsafe direction
+            else
+            {
+                knockbackDir = new Vector2(-Mathf.Sign(transform.localScale.x), 0);
+            }
+
+            knockbackDir.y = 0.5f; // Gives them a slight aerial juggle effect!
+            
+            if (body != null)
+            {
                 body.linearVelocity = Vector2.zero; // Reset velocity so the knockback is always consistent
                 body.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
             }
 
-            // 2. JUICE: HIT FLASH
-            // Blink the sprite a bright color for a fraction of a second.
+            // 2. JUICE: HIT FLASH via PrimeTween & MaterialPropertyBlock
             if (spriteRenderer != null && gameObject.activeInHierarchy)
             {
-                StartCoroutine(HitFlashRoutine());
+                flashTween.Stop(); // Stop any existing flash if they get hit rapidly
+
+                // Snap immediately to the flash color
+                spriteRenderer.GetPropertyBlock(propBlock);
+                propBlock.SetColor("m_Color", hitFlashColor);
+                spriteRenderer.SetPropertyBlock(propBlock);
+
+                // Tween smoothly back to the original color
+                flashTween = Tween.Custom(hitFlashColor, originalColor, duration: hitFlashDuration, onValueChange: color =>
+                {
+                    if (spriteRenderer == null) return;
+                    spriteRenderer.GetPropertyBlock(propBlock);
+                    propBlock.SetColor("m_Color", color);
+                    spriteRenderer.SetPropertyBlock(propBlock);
+                });
             }
 
             // 3. JUICE: INTERRUPT / STUN
-            // Force the enemy out of their Roam or Attack state so hitting them feels impactful.
             if (stateMachine.currentState is not EnemyIdleState)
             {
                 stateMachine.ChangeStateTo<EnemyIdleState>();
@@ -103,17 +139,10 @@ namespace Enemies
             }
         }
 
-        // The Coroutine that handles the flashing visual
-        private IEnumerator HitFlashRoutine()
-        {
-            spriteRenderer.color = hitFlashColor;
-            yield return new WaitForSeconds(hitFlashDuration);
-            spriteRenderer.color = originalColor;
-        }
-
         protected virtual void Die()
         {
-            // TODO: Handle death (play animation, drop particles, destroy object)
+            // Failsafe: stop the tween before destroying the object
+            flashTween.Stop();
             OnDeath?.Invoke(this);
             Destroy(gameObject);
         }

@@ -9,7 +9,7 @@ namespace Enemies
         private float startX;
         private float roamDirection;
         private float currentRoamDistance;
-        private readonly LayerMask obstacleLayer;
+        private LayerMask obstacleLayer;
 
         public EnemyRoamState(Entity entity, float direction, LayerMask obs) : base(entity)
         {
@@ -29,7 +29,8 @@ namespace Enemies
             
             startX = enemy.transform.position.x;
             currentRoamDistance = RandomRoamDistance();
-            UpdateRotation();
+            
+            UpdateFacingDirection();
         }
 
         public override void Do()
@@ -38,20 +39,31 @@ namespace Enemies
 
             Vector2 pos = enemy.transform.position;
             
-            var boundsOffset = 0.6f; 
+            float boundsOffset = 0.6f; 
+            float heightOffset = 0.5f; // Lifts the raycast origin up from the floor
+            
+            // Calculate the new origin slightly in front of and above the enemy's feet
+            Vector2 raycastOrigin = pos + new Vector2(roamDirection * boundsOffset, heightOffset);
 
-            var wallHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.right * roamDirection, 0.1f, obstacleLayer);
-            var groundHit = Physics2D.Raycast(pos + new Vector2(roamDirection * boundsOffset, 0), Vector2.down, 2f, obstacleLayer);
+            // Wall check, horizontal raycast
+            var wallHit = Physics2D.Raycast(raycastOrigin, Vector2.right * roamDirection, 0.8f, obstacleLayer);
+            Debug.DrawRay(raycastOrigin, Vector2.right * roamDirection, Color.red);
+            // Missing ground check, vertical raycast
+            var groundHit = Physics2D.Raycast(raycastOrigin, Vector2.down, 2f, obstacleLayer);
+            Debug.DrawRay(raycastOrigin, Vector2.down, Color.green);
+
 
             var hitWall = wallHit.collider && !wallHit.collider.isTrigger;
             var noGround = !groundHit.collider;
 
             if (hitWall || noGround)
             {
+                Debug.Log(enemy.gameObject.name + " couldn't keep going this direction!");
                 roamDirection *= -1f;
                 startX = enemy.transform.position.x;
                 currentRoamDistance = RandomRoamDistance();
-                UpdateRotation();
+                
+                UpdateFacingDirection();
             }
             else if (Mathf.Abs(enemy.transform.position.x - startX) >= currentRoamDistance)
             {
@@ -69,13 +81,13 @@ namespace Enemies
             return Random.Range(1f, 10f);
         }
 
-        private void UpdateRotation()
+        private void UpdateFacingDirection()
         {
-            enemy.transform.localRotation = roamDirection switch
+            enemy.transform.localScale = roamDirection switch
             {
-                > 0 => Quaternion.Euler(0, 0, 0),
-                < 0 => Quaternion.Euler(0, 180, 0),
-                _ => enemy.transform.localRotation
+                > 0 => new Vector3(1, 1, 1),
+                < 0 => new Vector3(-1, 1, 1),
+                _ => enemy.transform.localScale
             };
         }
     }

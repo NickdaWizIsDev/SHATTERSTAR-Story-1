@@ -72,7 +72,7 @@ namespace Gameplay
                 player.movement.movementVector = new Vector2(dir, 0);
             }
 
-            yield return UIManager.Instance.FadeFromBlack(0.5f);
+            yield return UIManager.Instance.FadeFromBlack(1f);
 
             player.movement.movementVector = Vector2.zero;
             player.EnableInput();

@@ -74,7 +74,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6996670170120688544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,11 +103,15 @@ MonoBehaviour:
     MoveAnimation: {fileID: 7400000, guid: d20cd5167b958eb449beacecc0009156, type: 2}
     TelegraphAnimation: {fileID: 0}
     AttackAnimation: {fileID: 0}
-  initialRoamDirection: 0
-  idleWaitTime: 2
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 9
+  spriteRenderer: {fileID: 3689153991802138614}
+  knockbackForce: 6
+  hitFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  hitFlashDuration: 0.1
+  initialRoamDirection: 0
+  idleWaitTime: 2
 --- !u!1 &887231314384913455
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +214,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 40ee28d3c6ceae84f85294f0e795f516, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

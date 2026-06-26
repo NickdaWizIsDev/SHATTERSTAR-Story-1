@@ -89,7 +89,7 @@ namespace Gameplay
             var walkDir = autoWalkDirection == Direction.Right ? 0.2f : -0.2f;
             player.movement.movementVector = new Vector2(walkDir, 0);
 
-            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(0.5f));
+            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(1f));
 
             // Wait a fraction of a second, then halt the player (using your updated timing!)
             yield return new WaitForSeconds(0.15f);
