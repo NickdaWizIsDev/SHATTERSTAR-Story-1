@@ -1,4 +1,5 @@
 using HSM;
+using PrimeTween;
 using UnityEngine;
 
 namespace Enemies
@@ -31,6 +32,7 @@ namespace Enemies
                 : new Quaternion(0, 180, 0, 1);
 
             enemy.animationManager.PlayAnimation(enemy.animations.TelegraphAnimation);
+            BrightUp();
         }
 
         public override void Do()
@@ -53,6 +55,7 @@ namespace Enemies
                     if (lungeTimer <= 0)
                     {
                         enemy.stateMachine.ChangeStateTo<EnemyIdleState>();
+                        BrightDown();
                     }
 
                     break;
@@ -63,6 +66,29 @@ namespace Enemies
         public override void Exit()
         {
             enemy.body.linearVelocityX = 0;
+        }
+
+
+        private void BrightUp(float time = 0.6f)
+        {
+            Tween.Custom(Color.white, enemy.attackGlowColor, duration: time, onValueChange: color =>
+            {
+                if (enemy.spriteRenderer is null) return;
+                enemy.spriteRenderer.GetPropertyBlock(enemy.propBlock);
+                enemy.propBlock.SetColor("_Emission_Color", color);
+                enemy.spriteRenderer.SetPropertyBlock(enemy.propBlock);
+            });
+        }
+
+        private void BrightDown(float time = 0.8f)
+        {
+            Tween.Custom(enemy.attackGlowColor, Color.white, duration: time, onValueChange: color =>
+            {
+                if (enemy.spriteRenderer is null) return;
+                enemy.spriteRenderer.GetPropertyBlock(enemy.propBlock);
+                enemy.propBlock.SetColor("_Emission_Color", color);
+                enemy.spriteRenderer.SetPropertyBlock(enemy.propBlock);
+            });
         }
     }
 }

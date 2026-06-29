@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e8386a2a154787c4caf48dd3195755b9
+guid: b3422cf3be75600428285de81fc3d508
 importerOverride:
   nativeImporterType: 2089858483
   scriptedImporterType:
@@ -35,12 +35,12 @@ ScriptedImporter:
     ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
-    spriteMode: 2
+    spriteMode: 1
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 150
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -76,9 +76,9 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   singleSpriteImportData:
-  - name: 
+  - name: minas_1
     originalName: 
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -86,9 +86,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 0
-      height: 0
-    spriteID: cf9b42f7ff4f3a94a8b432529b2bd394
+      width: 1920
+      height: 1080
+    spriteID: 5f83ab6322c379842b557b3bfd1c36ec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -100,7 +100,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Layer 1
+  - name: Layer 5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -109,10 +109,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 303
-      width: 619
-      height: 269
-    spriteID: 5de8f23a48da290478436e9413f9941f
+      y: 3268
+      width: 1820
+      height: 783
+    spriteID: 74c7ccd721eadb84d98b05aafcfb6219
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -120,31 +120,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 303}
-    spritePosition: {x: 131, y: 1031}
-  - name: 'Capa de pintura 2 '
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 580
-      width: 326
-      height: 319
-    spriteID: ddb24629d251cb44396c6b7fd7f6f615
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 580}
-    spritePosition: {x: 84, y: 597}
-  - name: 'Capa de pintura 1 '
+    uvTransform: {x: 4, y: 3268}
+    spritePosition: {x: 63, y: 237}
+  - name: Layer 4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -154,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 775
-      height: 291
-    spriteID: 31e73ff2a017177489ae715dd55ca1db
+      width: 1920
+      height: 1080
+    spriteID: 695d9f5da81f8f347af56246a431d6ec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -165,118 +143,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 126, y: 1023}
-  - name: 'Shardmoth Lineart '
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 261
-      y: 907
-      width: 0
-      height: 0
-    spriteID: 2e64d9d0abaa86e4a9868abc59ad0eb8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 261, y: 907}
-    spritePosition: {x: 0, y: 1360}
-  - name: Layer 2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 261
-      y: 915
-      width: 0
-      height: 0
-    spriteID: 6a6b8c0005961b74d8de1f4c998cac80
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 261, y: 915}
-    spritePosition: {x: 0, y: 1360}
-  - name: Layer 5 Copy
-    originalName: 
-    pivot: {x: 0.5066763, y: 0.04348168}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 338
-      y: 580
-      width: 287
-      height: 312
-    spriteID: d8424884944fa1e4c8b5ef6f96b9b764
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 338, y: 580}
-    spritePosition: {x: 718, y: 165}
-  - name: Layer 6 Copy
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 338
-      y: 900
-      width: 285
-      height: 102
-    spriteID: 1a0f0fcb94bd3314193fa5a371911be5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 338, y: 900}
-    spritePosition: {x: 724, y: 116}
-  - name: Layer 5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 633
-      y: 580
-      width: 287
-      height: 312
-    spriteID: d3e60642e9bbf434abdcd3245a9e3f15
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 633, y: 580}
-    spritePosition: {x: 191, y: 164}
-  - name: Layer 6
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -285,10 +153,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 907
-      width: 249
-      height: 98
-    spriteID: 1f6f5f01441c7f545a4e1f9f81e0815f
+      y: 1092
+      width: 1920
+      height: 1080
+    spriteID: 5249df1a0ac336448965e9132d049635
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -296,8 +164,74 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 907}
-    spritePosition: {x: 223, y: 115}
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2180
+      width: 1920
+      height: 1080
+    spriteID: 3b7ba3fb220676443bdf4c0a19b4745b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2180}
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1932
+      y: 4
+      width: 1920
+      height: 1080
+    spriteID: 5849d4ed0c5ebb84aa537adde3d6b81e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1932, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: Paper
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1932
+      y: 1092
+      width: 1920
+      height: 1080
+    spriteID: ed2594bec26565340aebb248e4f04ade
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1932, y: 1092}
+    spritePosition: {x: 0, y: 0}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -361,43 +295,43 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Layer 1
-    spriteName: Layer 1
+  - name: 2015-08-08_00011
+    spriteName: 
     isGroup: 0
     parentIndex: -1
-    spriteID: 5de8f23a48da290478436e9413f9941f
+    spriteID: d4b24dc071be95242b1ef2c7e4136e0a
     layerID: 0
-    mosaicPosition: {x: 4, y: 303}
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Layer 5
+    spriteName: Layer 5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 74c7ccd721eadb84d98b05aafcfb6219
+    layerID: -7500612
+    mosaicPosition: {x: 4, y: 3268}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: 'Capa de pintura 2 '
-    spriteName: 'Capa de pintura 2 '
+  - name: Layer 4
+    spriteName: Layer 4
     isGroup: 0
     parentIndex: -1
-    spriteID: ddb24629d251cb44396c6b7fd7f6f615
-    layerID: -1426428335
-    mosaicPosition: {x: 4, y: 580}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: 'Capa de pintura 1 '
-    spriteName: 'Capa de pintura 1 '
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 31e73ff2a017177489ae715dd55ca1db
-    layerID: -1426428338
+    spriteID: 695d9f5da81f8f347af56246a431d6ec
+    layerID: -7500613
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: 'Shardmoth Lineart '
-    spriteName: 'Shardmoth Lineart '
+  - name: Layer 3
+    spriteName: Layer 3
     isGroup: 0
     parentIndex: -1
-    spriteID: 2e64d9d0abaa86e4a9868abc59ad0eb8
-    layerID: -1523455237
-    mosaicPosition: {x: 261, y: 907}
+    spriteID: 5249df1a0ac336448965e9132d049635
+    layerID: -7500618
+    mosaicPosition: {x: 4, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -405,82 +339,32 @@ ScriptedImporter:
     spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 6a6b8c0005961b74d8de1f4c998cac80
+    spriteID: 3b7ba3fb220676443bdf4c0a19b4745b
     layerID: -7500619
-    mosaicPosition: {x: 261, y: 915}
+    mosaicPosition: {x: 4, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 5 Copy
-    spriteName: Layer 5 Copy
+  - name: Layer 1
+    spriteName: Layer 1
     isGroup: 0
     parentIndex: -1
-    spriteID: d8424884944fa1e4c8b5ef6f96b9b764
-    layerID: -394526473
-    mosaicPosition: {x: 338, y: 580}
+    spriteID: 5849d4ed0c5ebb84aa537adde3d6b81e
+    layerID: -7500616
+    mosaicPosition: {x: 1932, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 6 Copy
-    spriteName: Layer 6 Copy
+  - name: Paper
+    spriteName: Paper
     isGroup: 0
     parentIndex: -1
-    spriteID: 1a0f0fcb94bd3314193fa5a371911be5
-    layerID: -394529542
-    mosaicPosition: {x: 338, y: 900}
+    spriteID: ed2594bec26565340aebb248e4f04ade
+    layerID: -1779142660
+    mosaicPosition: {x: 1932, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 5
-    spriteName: Layer 5
-    isGroup: 0
-    parentIndex: -1
-    spriteID: d3e60642e9bbf434abdcd3245a9e3f15
-    layerID: -7500612
-    mosaicPosition: {x: 633, y: 580}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 6
-    spriteName: Layer 6
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 1f6f5f01441c7f545a4e1f9f81e0815f
-    layerID: -7500615
-    mosaicPosition: {x: 4, y: 907}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: 'Capa de pintura 3 '
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 5bf891ddc9bf4984e87b5ff9e6a5bb7c
-    layerID: -1426428336
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: 'Fondo '
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 870c6a703e2ff6148b6db67d74c40f84
-    layerID: 709232680
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: 'Fondo '
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: d3900ef5c0bf2d54eb73e1cac692c7f0
-    layerID: 1358543704
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
   mosaicPSDLayers: []
   rigPSDLayers: []
   sharedRigPSDLayers: []

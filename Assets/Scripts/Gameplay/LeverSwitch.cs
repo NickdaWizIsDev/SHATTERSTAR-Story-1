@@ -15,9 +15,7 @@ namespace Gameplay
             if (saveState == null || !GameManager.Instance.activeStates.Contains(saveState)) return;
             isToggled = true;
             
-            var scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            onToggle?.Invoke();
         }
 
         public void OnStrike(AttackType type)

@@ -1,9 +1,10 @@
 ﻿using HSM;
+using PrimeTween;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class ElvenConstruct : EnemyController
+    public class CrystalCrawler : EnemyController
     {
         protected override void InitializeStateMachine()
         {

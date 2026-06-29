@@ -25,25 +25,26 @@ namespace Enemies
         [SerializeField] internal EnemyAnimations animations;
         [SerializeField] internal LayerMask obstacleLayer;
         
-        // --- NEW JUICE REFERENCES ---
+        // GAME JUICE (FEEDBACK)
         [Header("Juice")]
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] internal SpriteRenderer spriteRenderer;
         [SerializeField] private float knockbackForce = 6f;
         [SerializeField] private Color hitFlashColor = Color.red; 
         [SerializeField] private float hitFlashDuration = 0.1f;
+        [ColorUsage(true, true)][SerializeField] internal Color attackGlowColor = Color.white;
         
         private Color originalColor;
         internal Transform playerTransform;
 
         // Caching the MaterialPropertyBlock to prevent memory leaks
-        private MaterialPropertyBlock propBlock;
+        internal MaterialPropertyBlock propBlock;
         private Tween flashTween;
 
         protected virtual void Awake()
         {
             stateMachine = new StateMachine();
             InitializeStateMachine();
-            propBlock = new MaterialPropertyBlock(); // Initialize once
+            propBlock = new MaterialPropertyBlock();
         }
 
         protected abstract void InitializeStateMachine();
@@ -56,7 +57,6 @@ namespace Enemies
                 if (player != null) playerTransform = player.transform;
             }
 
-            // Cache the original color safely using sharedMaterial to avoid instantiation 
             if (spriteRenderer != null) 
             {
                 originalColor = spriteRenderer.sharedMaterial.HasProperty("m_Color") 

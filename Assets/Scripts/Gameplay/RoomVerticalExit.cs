@@ -66,8 +66,6 @@ namespace Gameplay
 
             if (exitDirection == VDirection.Up)
             {
-                player.movement.Jump();
-                
                 var dir = autoWalkDirection == HDirection.Left ? -1 : 1;
                 player.movement.movementVector = new Vector2(dir, 0);
             }
