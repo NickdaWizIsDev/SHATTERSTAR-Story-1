@@ -110,6 +110,8 @@ MonoBehaviour:
   knockbackForce: 6
   hitFlashColor: {r: 1, g: 0, b: 0, a: 1}
   hitFlashDuration: 0.1
+  isInterruptable: 1
+  attackGlowColor: {r: 1, g: 1, b: 1, a: 1}
   initialRoamDirection: 0
   idleWaitTime: 2
 --- !u!1 &887231314384913455
@@ -214,7 +216,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 40ee28d3c6ceae84f85294f0e795f516, type: 3}
+  - {fileID: 2100000, guid: 4b98b2fa538af724f88815ab0cd1c0de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

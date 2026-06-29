@@ -52,7 +52,7 @@ namespace Gameplay
 
             player.DisableInput();
 
-            yield return UIManager.Instance.FadeToBlack(0.5f);
+            yield return UIManager.Instance.FadeToBlack(0.75f);
 
             player.movement.movementVector = Vector2.zero;
             player.movement.Stop();
@@ -89,15 +89,12 @@ namespace Gameplay
             var walkDir = autoWalkDirection == Direction.Right ? 0.2f : -0.2f;
             player.movement.movementVector = new Vector2(walkDir, 0);
 
-            var fadeCoroutine = StartCoroutine(UIManager.Instance.FadeFromBlack(1f));
+            StartCoroutine(UIManager.Instance.FadeFromBlack(1f));
 
-            // Wait a fraction of a second, then halt the player (using your updated timing!)
             yield return new WaitForSeconds(0.15f);
 
             player.movement.movementVector = Vector2.zero;
             player.movement.Stop();
-
-            yield return fadeCoroutine;
 
             player.EnableInput();
             

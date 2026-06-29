@@ -90,18 +90,21 @@ namespace Player
         }
         internal void Move()
         {
-            float activeVelocity = Controller.isRunning ? runVelocity : walkVelocity;
-            float targetVelocityX = movementVector.x * activeVelocity;
+            if(!Controller.CanMove) return;
+            
+            var activeVelocity = Controller.isRunning ? runVelocity : walkVelocity;
+            var targetVelocityX = movementVector.x * activeVelocity;
 
             // Turning logic
-            if (Mathf.Sign(body.linearVelocityX) != Mathf.Sign(movementVector.x) && Mathf.Abs(body.linearVelocityX) > 0.5f)
+            if (!Mathf.Approximately(Mathf.Sign(body.linearVelocityX), Mathf.Sign(movementVector.x)) 
+                && Mathf.Abs(body.linearVelocityX) > 0.5f)
             {
                 body.linearVelocityX = Mathf.Lerp(body.linearVelocityX, targetVelocityX, stopLerpValue / 4);
                 return;
             }
 
             // Apply less force in the air, so you don't accelerate as fast as when you're on the ground
-            float accelerationRate = touching.Ground ? (activeVelocity * 15f) : (activeVelocity * 7.5f);
+            var accelerationRate = touching.Ground ? (activeVelocity * 15f) : (activeVelocity * 7.5f);
             
             body.linearVelocityX = Mathf.MoveTowards(body.linearVelocityX, targetVelocityX, accelerationRate * Time.fixedDeltaTime);
         }
@@ -140,16 +143,16 @@ namespace Player
         {            
             // 1. Calculate the actual gravity affecting this Rigidbody2D
             // Physics2D.gravity is -9.81. We multiply by baseGravityScale and make it positive.
-            float gravity = Mathf.Abs(Physics2D.gravity.y * baseGravityScale);
+            var gravity = Mathf.Abs(Physics2D.gravity.y * baseGravityScale);
 
             // 2. Kinematic formula: vi = sqrt(vf^2 + 2gh)
-            float requiredVelocity = Mathf.Sqrt(
+            var requiredVelocity = Mathf.Sqrt(
                 Mathf.Pow(1.5f, 2) + (2f * gravity * jumpHeight + 0.5f)
             );
             
             // Zero out vertical velocity before jumping so falling doesn't weaken the jump
             body.linearVelocityY = 0f;
-            float requiredForce = requiredVelocity * body.mass;
+            var requiredForce = requiredVelocity * body.mass;
             body.AddForceY(requiredForce, ForceMode2D.Impulse);
         }
         #endregion

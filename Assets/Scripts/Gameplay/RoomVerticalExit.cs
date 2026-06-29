@@ -31,7 +31,7 @@ namespace Gameplay
 
             player.DisableInput();
 
-            yield return UIManager.Instance.FadeToBlack(0.5f);
+            yield return UIManager.Instance.FadeToBlack(0.2f);
 
             player.movement.movementVector = Vector2.zero;
             player.movement.Stop();
@@ -60,7 +60,7 @@ namespace Gameplay
         private IEnumerator SpawnRoutine()
         {
             isTransitioning = true;
-            PlayerController player = GameManager.Instance.Player;
+            var player = GameManager.Instance.Player;
 
             player.transform.position = spawnPoint.position;
 
@@ -70,7 +70,9 @@ namespace Gameplay
                 player.movement.movementVector = new Vector2(dir, 0);
             }
 
-            yield return UIManager.Instance.FadeFromBlack(1f);
+            UIManager.Instance.FadeFromBlack(1f);
+            
+            yield return new WaitForSeconds(0.15f);
 
             player.movement.movementVector = Vector2.zero;
             player.EnableInput();

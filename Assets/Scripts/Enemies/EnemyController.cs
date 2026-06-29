@@ -31,6 +31,7 @@ namespace Enemies
         [SerializeField] private float knockbackForce = 6f;
         [SerializeField] private Color hitFlashColor = Color.red; 
         [SerializeField] private float hitFlashDuration = 0.1f;
+        [SerializeField] internal bool isInterruptable = true;
         [ColorUsage(true, true)][SerializeField] internal Color attackGlowColor = Color.white;
         
         private Color originalColor;
@@ -80,8 +81,7 @@ namespace Enemies
         {
             health -= damage;
         
-            // 1. JUICE: KNOCKBACK
-            Vector2 knockbackDir;
+            var knockbackDir = Vector2.right;
             
             // Prioritize the actual attack location if provided
             if (damageSourcePos != default)
@@ -89,26 +89,21 @@ namespace Enemies
                 knockbackDir = ((Vector2)transform.position - damageSourcePos).normalized;
             }
             // Fallback to the player's general position
-            else if (playerTransform != null)
+            else if (playerTransform is not null)
             {
                 knockbackDir = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
             }
-            // Failsafe direction
-            else
-            {
-                knockbackDir = new Vector2(-Mathf.Sign(transform.localScale.x), 0);
-            }
 
-            knockbackDir.y = 0.5f; // Gives them a slight aerial juggle effect!
+            knockbackDir.y = 0.1f; // Slight aerial push
             
-            if (body != null)
+            if (body is not null)
             {
                 body.linearVelocity = Vector2.zero; // Reset velocity so the knockback is always consistent
                 body.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
             }
 
-            // 2. JUICE: HIT FLASH via PrimeTween & MaterialPropertyBlock
-            if (spriteRenderer != null && gameObject.activeInHierarchy)
+            // Hit flash
+            if (spriteRenderer is not null && gameObject.activeInHierarchy)
             {
                 flashTween.Stop(); // Stop any existing flash if they get hit rapidly
 
@@ -127,8 +122,7 @@ namespace Enemies
                 });
             }
 
-            // 3. JUICE: INTERRUPT / STUN
-            if (stateMachine.currentState is not EnemyIdleState)
+            if (stateMachine.currentState is not EnemyIdleState && isInterruptable)
             {
                 stateMachine.ChangeStateTo<EnemyIdleState>();
             }
@@ -141,10 +135,9 @@ namespace Enemies
 
         protected virtual void Die()
         {
-            // Failsafe: stop the tween before destroying the object
-            flashTween.Stop();
+            Tween.StopAll(spriteRenderer);
             OnDeath?.Invoke(this);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         protected virtual void OnDrawGizmosSelected()

@@ -21,6 +21,7 @@ namespace Player
         [SerializeField] internal SpriteRenderer spriteRenderer;
 
         [Header("Variables")]
+        [SerializeField] private int maxHealth = 100;
         [SerializeField] private int health = 100;
         [SerializeField] private float iFrameDuration = 1.5f;
         [SerializeField] private float flashInterval = 0.1f;
@@ -35,10 +36,11 @@ namespace Player
         
         private bool isInvincible;
         
+        public event Action<float> OnHealthPctChanged;
+        
         [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
-        internal bool CanMove = true;
-        internal bool CanAttack = true;
+        public bool CanMove { get; set; }
 
         private void Awake()
         {
@@ -71,14 +73,16 @@ namespace Player
 
         public void EnableInput()
         {
-            CanMove = true;
-            CanAttack = true;
+            inputActions.Gameplay.Enable();
         }
 
         public void DisableInput()
         {
-            CanMove = false;
-            CanAttack = false;
+            // Disables all movement, jumping, dashing, and attacking inputs.
+            inputActions.Gameplay.Disable(); 
+    
+            movement.movementVector = Vector2.zero; 
+            isRunning = false;
         }
 
         private void OnEnable()
@@ -99,15 +103,12 @@ namespace Player
         {
             stateMachine.ChangeStateTo<PlayerIdleState>();
             movement.Controller = this;
+            OnHealthPctChanged?.Invoke((float)health / maxHealth);
         }
 
         private void FixedUpdate()
         {
-            if (!CanMove)
-            {
-                movement.Stop();
-                return;
-            }
+            if (isKnockedBack) return;
 
             if (movement.movementVector == Vector2.zero)
                 movement.Stop();
@@ -149,13 +150,16 @@ namespace Player
 
             health -= damage;
             
+            OnHealthPctChanged?.Invoke((float)health / maxHealth);
+            
             if(health <= 0)
             {
             }
             else
             {
                 StartCoroutine(IFrameRoutine());
-                GameManager.Instance.TriggerHitStop(0.25f);
+                StartCoroutine(KnockbackRoutine(damageSourcePos));
+                GameManager.Instance.TriggerHitStop(0.08f);
                 CameraEffects.Instance.Shake(0.1f, 1f);
             }
         }
@@ -224,7 +228,7 @@ namespace Player
         private void OnAttack(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
-            if (DialogueManager.Instance.IsPlaying || !CanAttack) return;
+            if (DialogueManager.Instance.IsPlaying) return;
 
             if (stateMachine.currentState is PlayerAttackState)
             {
@@ -241,7 +245,7 @@ namespace Player
         public void OnDash(InputAction.CallbackContext context)
         {
             if (stateMachine.currentState is PlayerDashingState) return;
-            if (DialogueManager.Instance.IsPlaying || !CanMove) return;
+            if (DialogueManager.Instance.IsPlaying) return;
             if (dashCdTimer > 0) return;
             
             stateMachine.ChangeStateTo<PlayerDashingState>();

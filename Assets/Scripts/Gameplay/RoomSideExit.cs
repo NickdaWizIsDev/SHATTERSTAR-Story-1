@@ -30,7 +30,7 @@ namespace Gameplay
             var walkDir = autoWalkDirection == Direction.Right ? 0.5f : -0.5f;
             player.movement.movementVector = new Vector2(-walkDir, 0);
 
-            yield return UIManager.Instance.FadeToBlack(0.5f);
+            yield return UIManager.Instance.FadeToBlack(0.2f);
 
             player.movement.movementVector = Vector2.zero;
             player.movement.Stop();
@@ -72,8 +72,6 @@ namespace Gameplay
 
             player.movement.movementVector = Vector2.zero;
             player.movement.Stop();
-
-            yield return fadeCoroutine;
 
             player.EnableInput();
             

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -25,33 +26,17 @@ namespace Managers
 
         private void Start()
         {
-            StartCoroutine(FadeFromBlack(0.75f));
+            FadeFromBlack(0.75f);
         }
 
-        public IEnumerator FadeToBlack(float duration = 0.2f)
+        public Tween FadeToBlack(float duration = 0.2f)
         {
-            float time = 0;
-            var c = blackOverlay.color;
-            while (time < duration)
-            {
-                time += Time.unscaledDeltaTime;
-                c.a = Mathf.Lerp(0, 1, time / duration);
-                blackOverlay.color = c;
-                yield return null;
-            }
+            return Tween.Alpha(blackOverlay, endValue: 1f, duration, useUnscaledTime: true);
         }
 
-        public IEnumerator FadeFromBlack(float duration = 0.2f)
+        public Tween FadeFromBlack(float duration = 0.2f, float delay = 0.2f)
         {
-            var time = 0f;
-            var c = blackOverlay.color;
-            while (time < duration)
-            {
-                time += Time.unscaledDeltaTime;
-                c.a = Mathf.Lerp(1, 0, time / duration);
-                blackOverlay.color = c;
-                yield return null;
-            }
+            return Tween.Alpha(blackOverlay, endValue: 0f, duration, startDelay: delay, useUnscaledTime: true);
         }
     }
 }

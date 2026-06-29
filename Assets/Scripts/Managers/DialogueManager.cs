@@ -41,8 +41,7 @@ namespace Managers
             currentLineIndex = 0;
             currentPlayer = player;
 
-            currentPlayer.CanMove = false;
-            currentPlayer.movement.Stop();
+            currentPlayer.DisableInput();
 
             currentPlayer.OnInteractEvent += HandleInput;
 
@@ -100,7 +99,7 @@ namespace Managers
             dialoguePanel.SetActive(false);
 
             currentPlayer.OnInteractEvent -= HandleInput;
-            currentPlayer.CanMove = true;
+            currentPlayer.EnableInput();
             onFinish?.Invoke();
         }
     }

@@ -10,11 +10,13 @@ namespace Enemies
         {
             stateMachine.AddStates(
                 new EnemyIdleState(this),
+                new EnemyRoamState(this, 1, obstacleLayer),
                 new EnemyChaseState(this),
                 new EnemyAttackState(this)
             );
             
             stateMachine.ChangeStateTo<EnemyIdleState>();
+            isInterruptable = false;
         }
     }
 }

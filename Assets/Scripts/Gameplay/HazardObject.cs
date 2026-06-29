@@ -1,13 +1,17 @@
 using System;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 namespace Gameplay
 {
-    public class HazardTilemap : MonoBehaviour, IStrikeable
+    public class HazardObject : MonoBehaviour, IStrikeable
     {
         [Header("Hazard Settings")]
         [SerializeField] private int hazardDamage = 10;
+
+        [SerializeField] private UnityEvent onContact;
         
         public void OnStrike(AttackType type)
         {
@@ -19,7 +23,8 @@ namespace Gameplay
             if (other.collider.attachedRigidbody == null ||
                 !other.collider.attachedRigidbody.TryGetComponent(out PlayerController player)) return;
             
-            player.DamageThis(hazardDamage);
+            onContact?.Invoke();
+            player.DamageThis(hazardDamage, GetComponent<Collider2D>().ClosestPoint(player.transform.position));
         }
     }
 }

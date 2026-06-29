@@ -32,7 +32,11 @@ namespace Player
             }
             else 
             {
-                player.stateMachine.ChangeStateTo<PlayerIdleState>();
+                if (Mathf.Abs(player.movement.movementVector.x) > 0)
+                {
+                    player.stateMachine.ChangeStateTo<PlayerMovingState>();
+                }
+                else player.stateMachine.ChangeStateTo<PlayerIdleState>();
             }
         }
         public override void Exit()
