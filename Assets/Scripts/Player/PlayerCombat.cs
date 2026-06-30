@@ -50,7 +50,7 @@ namespace Player
             if (!isHitboxActive) return;
 
             var hitTargets = Physics2D.OverlapBoxAll(attackPoint.transform.position, AttackArea, 0f, targetLayers);
-            bool landedValidHit = false;
+            var landedValidHit = false;
 
             foreach (var target in hitTargets)
             {

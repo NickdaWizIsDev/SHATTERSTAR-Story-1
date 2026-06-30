@@ -41,7 +41,7 @@ namespace Player
 
         public override void StartAttack()
         {
-            bool isPogo = false;
+            var isPogo = false;
             var clipToPlay = player.animations.AirAttackAnimation;
 
             if (animationTimer / (currentClip ? currentClip.length : clipToPlay.length) > 0.15f) return;

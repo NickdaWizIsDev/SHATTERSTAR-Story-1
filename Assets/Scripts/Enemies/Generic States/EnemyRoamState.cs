@@ -39,11 +39,11 @@ namespace Enemies
 
             Vector2 pos = enemy.transform.position;
             
-            float boundsOffset = 0.6f; 
-            float heightOffset = 0.5f; // Lifts the raycast origin up from the floor
+            var boundsOffset = 0.6f; 
+            var heightOffset = 0.5f; // Lifts the raycast origin up from the floor
             
             // Calculate the new origin slightly in front of and above the enemy's feet
-            Vector2 raycastOrigin = pos + new Vector2(roamDirection * boundsOffset, heightOffset);
+            var raycastOrigin = pos + new Vector2(roamDirection * boundsOffset, heightOffset);
 
             // Wall check, horizontal raycast
             var wallHit = Physics2D.Raycast(raycastOrigin, Vector2.right * roamDirection, 0.8f, obstacleLayer);

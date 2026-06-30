@@ -1,7 +1,7 @@
 using UnityEngine;
 using Player;
 
-public class AnimationEventRouter : MonoBehaviour
+public class PlayerAnimationEventRouter : MonoBehaviour
 {
     [SerializeField] private PlayerCombat combatEngine;
 

@@ -12,7 +12,7 @@ namespace Managers
             var coreSceneName = "CoreScene"; 
 
             var isCoreLoaded = false;
-            for (int i = 0; i < SceneManager.sceneCount; i++)
+            for (var i = 0; i < SceneManager.sceneCount; i++)
             {
                 if (SceneManager.GetSceneAt(i).name == coreSceneName)
                 {

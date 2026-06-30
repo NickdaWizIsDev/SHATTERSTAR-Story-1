@@ -84,7 +84,7 @@ namespace Managers
             isTyping = true;
             dialogueText.text = "";
             
-            foreach (char c in currentLines[currentLineIndex].ToCharArray())
+            foreach (var c in currentLines[currentLineIndex].ToCharArray())
             {
                 dialogueText.text += c;
                 yield return new WaitForSeconds(typingSpeed);

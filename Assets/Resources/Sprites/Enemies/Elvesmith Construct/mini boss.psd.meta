@@ -6087,6 +6087,16 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
+  - name: HEAD
+    spriteName: HEAD
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bc5eca33a83e6dc42a4766d7368a85ca
+    layerID: 4
+    mosaicPosition: {x: 1748, y: 302}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: smear
     spriteName: 
     isGroup: 1
@@ -6100,7 +6110,7 @@ ScriptedImporter:
   - name: SMEAR
     spriteName: SMEAR
     isGroup: 0
-    parentIndex: 0
+    parentIndex: 1
     spriteID: e6cd180c38f3e8b47a99b76e2354bce4
     layerID: 32
     mosaicPosition: {x: 4, y: 4}
@@ -6130,7 +6140,7 @@ ScriptedImporter:
   - name: L LEG
     spriteName: L LEG
     isGroup: 0
-    parentIndex: 3
+    parentIndex: 4
     spriteID: cb4805ee7612d424686a398ae75d1732
     layerID: 28
     mosaicPosition: {x: 552, y: 827}
@@ -6140,7 +6150,7 @@ ScriptedImporter:
   - name: L FOOT
     spriteName: L FOOT
     isGroup: 0
-    parentIndex: 3
+    parentIndex: 4
     spriteID: b4233eb9471535a448284bb36305e58f
     layerID: 38
     mosaicPosition: {x: 4, y: 827}
@@ -6160,7 +6170,7 @@ ScriptedImporter:
   - name: Layer 6
     spriteName: Layer 6
     isGroup: 0
-    parentIndex: 6
+    parentIndex: 7
     spriteID: eea96c440e9422d4fb6186f1cf317862
     layerID: 22
     mosaicPosition: {x: 406, y: 827}
@@ -6170,7 +6180,7 @@ ScriptedImporter:
   - name: R FOOT
     spriteName: R FOOT
     isGroup: 0
-    parentIndex: 6
+    parentIndex: 7
     spriteID: 4bf326cfa43a70b4390cb4e27cc9bd00
     layerID: 23
     mosaicPosition: {x: 4, y: 302}
@@ -6190,7 +6200,7 @@ ScriptedImporter:
   - name: R SHOULDER
     spriteName: R SHOULDER
     isGroup: 0
-    parentIndex: 9
+    parentIndex: 10
     spriteID: 543a31eb9fa9d5d4d8393a174a1cc143
     layerID: 18
     mosaicPosition: {x: 1748, y: 574}
@@ -6200,7 +6210,7 @@ ScriptedImporter:
   - name: R FOREARM
     spriteName: R FOREARM
     isGroup: 0
-    parentIndex: 9
+    parentIndex: 10
     spriteID: 449f4d5943e9c7747850d278633a04e6
     layerID: 19
     mosaicPosition: {x: 1333, y: 4}
@@ -6210,7 +6220,7 @@ ScriptedImporter:
   - name: R HAND
     spriteName: R HAND
     isGroup: 0
-    parentIndex: 9
+    parentIndex: 10
     spriteID: 200660c7ca1abf147854f770183f7c28
     layerID: 17
     mosaicPosition: {x: 1199, y: 302}
@@ -6240,7 +6250,7 @@ ScriptedImporter:
   - name: L FOREARM
     spriteName: L FOREARM
     isGroup: 0
-    parentIndex: 14
+    parentIndex: 15
     spriteID: 62b84a954ac77bd43bf4029b4155c3f4
     layerID: 40
     mosaicPosition: {x: 1918, y: 574}
@@ -6250,7 +6260,7 @@ ScriptedImporter:
   - name: L SHOULDER
     spriteName: L SHOULDER
     isGroup: 0
-    parentIndex: 14
+    parentIndex: 15
     spriteID: aa802dc3cc197a74ca82786bbb95b356
     layerID: 13
     mosaicPosition: {x: 1160, y: 4}
@@ -6270,7 +6280,7 @@ ScriptedImporter:
   - name: HIP
     spriteName: HIP
     isGroup: 0
-    parentIndex: 17
+    parentIndex: 18
     spriteID: 68fe20caae4210d41868412a57d8b362
     layerID: 41
     mosaicPosition: {x: 877, y: 626}
@@ -6280,20 +6290,10 @@ ScriptedImporter:
   - name: TORSO
     spriteName: TORSO
     isGroup: 0
-    parentIndex: 17
+    parentIndex: 18
     spriteID: 32266b920c4f1ef459983c8ba04bd06d
     layerID: 8
     mosaicPosition: {x: 877, y: 302}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: HEAD
-    spriteName: HEAD
-    isGroup: 0
-    parentIndex: -1
-    spriteID: bc5eca33a83e6dc42a4766d7368a85ca
-    layerID: 4
-    mosaicPosition: {x: 1748, y: 302}
     flatten: 0
     isImported: 1
     isVisible: 1

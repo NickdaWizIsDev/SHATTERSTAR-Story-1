@@ -44,7 +44,7 @@ namespace HSM
         }
         public string RecursiveStateString()
         {
-            string fullStateName = stateName;
+            var fullStateName = stateName;
             if(subState != null)        {
                 fullStateName += "." + subState.RecursiveStateString();
             }

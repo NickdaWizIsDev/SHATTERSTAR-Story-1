@@ -18,7 +18,7 @@ namespace Player
         [SerializeField] internal PlayerAnimations animations;
         [SerializeField] internal PlayerCombat combat;
         [SerializeField] internal Collider2D hurtbox;
-        [SerializeField] internal SpriteRenderer spriteRenderer;
+        [SerializeField] internal SpriteRenderer[] spriteRenderers;
 
         [Header("Variables")]
         [SerializeField] private int maxHealth = 100;
@@ -41,6 +41,7 @@ namespace Player
         [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
         public bool CanMove { get; set; }
+        private MaterialPropertyBlock mpb;
 
         private void Awake()
         {
@@ -68,7 +69,8 @@ namespace Player
             movement ??= GetComponent<PlayerMovement>();
             animations ??= GetComponent<PlayerAnimations>();
             combat ??= GetComponent<PlayerCombat>();
-            spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
+            spriteRenderers ??= GetComponentsInChildren<SpriteRenderer>();
+            mpb = new MaterialPropertyBlock();
         }
 
         public void EnableInput()
@@ -198,29 +200,36 @@ namespace Player
         private IEnumerator IFrameRoutine()
         {
             isInvincible = true;
-            float elapsed = 0f;
-            bool isVisible = true;
-            var mat = Instantiate(spriteRenderer.material);
-            spriteRenderer.material = mat;
+            var elapsed = 0f;
+            var isVisible = true;
 
             while (elapsed < iFrameDuration)
             {
                 isVisible = !isVisible;
-                if (spriteRenderer != null)
+                var alpha = isVisible ? 1f : 0f;
+                
+                foreach (var sr in spriteRenderers)
                 {
-                    var a = mat.GetFloat("_Alpha");
-                    var alpha = isVisible ? 1f : 0f;
-                    mat.SetFloat("_Alpha", alpha);
+                    if (sr != null)
+                    {
+                        sr.GetPropertyBlock(mpb);
+                        mpb.SetFloat("_Alpha", alpha);
+                        sr.SetPropertyBlock(mpb);
+                    }
                 }
                 
                 yield return new WaitForSeconds(flashInterval);
                 elapsed += flashInterval;
             }
 
-            if (spriteRenderer != null) 
+            foreach (var sr in spriteRenderers)
             {
-                var a = mat.GetFloat("_Alpha");
-                mat.SetFloat("_Alpha", 1f);
+                if (sr != null)
+                {
+                    sr.GetPropertyBlock(mpb);
+                    mpb.SetFloat("_Alpha", 1f);
+                    sr.SetPropertyBlock(mpb);
+                }
             }
             isInvincible = false;
         }

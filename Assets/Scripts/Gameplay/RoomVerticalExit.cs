@@ -38,9 +38,9 @@ namespace Gameplay
 
             GameManager.Instance.nextSpawnExit = targetExitID;
 
-            string currentScene = gameObject.scene.name;
+            var currentScene = gameObject.scene.name;
 
-            AsyncOperation loadOp = SceneManager.LoadSceneAsync(targetScene.ScenePath, LoadSceneMode.Additive);
+            var loadOp = SceneManager.LoadSceneAsync(targetScene.ScenePath, LoadSceneMode.Additive);
             while (!loadOp.isDone)
             {
                 yield return null;
