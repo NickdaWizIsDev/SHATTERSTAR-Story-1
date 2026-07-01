@@ -1,5 +1,6 @@
 using UnityEngine;
 using Player;
+using PrimeTween;
 
 namespace Gameplay
 {
@@ -9,17 +10,17 @@ namespace Gameplay
         [SerializeField] private int damage = 20;
         [SerializeField] private float lifetime = 3f;
 
-        private Vector2 moveDirection;
+        public Vector2 MoveDirection { get; set; }
 
         private void Start()
         {
-            moveDirection = transform.right; 
+            Tween.ScaleY(this.transform, 0.1f, 1f, 0.2f);
             Destroy(gameObject, lifetime);
         }
 
         private void Update()
         {
-            transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+            transform.Translate(MoveDirection * (speed * Time.deltaTime), Space.World);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

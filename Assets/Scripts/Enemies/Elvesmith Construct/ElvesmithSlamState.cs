@@ -17,20 +17,18 @@ namespace Enemies
         public override void Enter()
         {
             boss.body.linearVelocity = Vector2.zero;
-            boss.TriggerTelegraphGlow();
-            // boss.animationManager.PlayAnimation(boss.animations.SlamAnimation);
-            animationTimer = 1.2f; // Replace with actual animation length
+            boss.animationManager.PlayAnimation(boss.animations.SlamAnimation);
+            animationTimer = boss.animations.SlamAnimation.length;
+            boss.TriggerTelegraphGlow(animationTimer/2);
         }
 
         public override void Do()
         {
             animationTimer -= Time.deltaTime;
-            if (animationTimer <= 0)
-            {
-                boss.attackCounter++;
-                boss.nextAttackTime = Time.time + boss.slamRecoveryTime;
-                boss.stateMachine.ChangeStateTo<ElvesmithChaseState>();
-            }
+            if (animationTimer > 0) return;
+            boss.attackCounter++;
+            boss.nextAttackTime = Time.time + boss.slamRecoveryTime;
+            boss.stateMachine.ChangeStateTo<ElvesmithIdleState>();
         }
 
         public override void Exit()

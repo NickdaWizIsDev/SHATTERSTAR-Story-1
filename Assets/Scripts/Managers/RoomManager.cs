@@ -51,7 +51,7 @@ namespace Managers
             }
         }
 
-        private void HandleEnemyDeath(EnemyController deadEnemy)
+        private void HandleEnemyDeath(Entity deadEnemy)
         {
             // Unsubscribe to prevent memory leaks
             deadEnemy.OnDeath -= HandleEnemyDeath;
@@ -122,7 +122,7 @@ namespace Managers
         [Tooltip("The physical walls or gates that block the exits.")]
         public GameObject[] barrierWalls;
         [Tooltip("The enemies that should spawn/activate during the lockdown.")]
-        public List<EnemyController> arenaEnemies;
+        public List<Entity> arenaEnemies;
 
         [Header("Events")]
         public UnityEvent onArenaStart;

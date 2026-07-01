@@ -29,6 +29,11 @@ namespace Player
             if(animationTimer > 0)
             {
                 animationTimer -= Time.deltaTime;
+
+                if (!(player.attackBufferTimer > 0) ||
+                    !((animationTimer / (currentClip ? currentClip.length : 1f)) <= 0.15f)) return;
+                player.attackBufferTimer = 0f; // Consume the buffer
+                StartAttack();
             }
             else 
             {
@@ -49,16 +54,11 @@ namespace Player
         {
             player.combat.InitializeAttack(AttackType.Sword);
             var clipToPlay = player.animations.GroundAttackAnimation_1;
-    
-            // Ignore the input if the current swing hasn't completed to a certain point.
-            if (animationTimer / (currentClip ? currentClip.length : clipToPlay.length) > 0.15f) return;
 
-            // We use > 0.5f to account for joystick dead zones, preventing accidental up-attacks.
             if (player.movement.movementVector.y > 0.5f)
             {
                 clipToPlay = player.animations.UpAttackAnimation;
         
-                // Optional: Reset the basic combo counter so returning to normal attacks feels fresh.
                 attackCounter = 0; 
             }
             else

@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay;
 using PrimeTween;
 using UnityEngine;
 using HSM;
@@ -8,7 +9,7 @@ namespace Enemies
     public class ElvesmithController : Entity, IDamageable
     {
         private static readonly int MColor = Shader.PropertyToID("m_Color");
-        private static readonly int GlowAmount = Shader.PropertyToID("_GlowAmount");
+        private static readonly int GlowAmount = Shader.PropertyToID("_EmissionColor");
 
         [Header("Boss Stats")]
         [SerializeField] internal int health = 30;
@@ -19,10 +20,18 @@ namespace Enemies
         [SerializeField] internal float slamRecoveryTime = 0.5f;
         [SerializeField] internal int attacksBeforeStomp = 3;
         [SerializeField] internal float stompRecoveryTime = 0.7f;
+        [SerializeField] internal float knockbackTime = 0.2f;
+        internal float knockbackTimer;
+        
+        [Header("Dash Attempts & Cooldown")]
+        [SerializeField] internal int maxDashAttempts = 2; // How many dashes before a long rest
+        [SerializeField] internal float dashRefreshCooldown = 4f; // How long it takes to get dashes back
+        internal int currentDashAttempts = 2;
+        internal float nextDashTime; // Tracks when the next dash is legally allowed
 
         [Header("References")]
             internal Transform playerTarget;
-        [SerializeField] internal GameObject shockwavePrefab;
+        [SerializeField] internal Shockwave shockwavePrefab;
         [SerializeField] internal Transform shockwaveSpawnPoint;
         [SerializeField] internal Rigidbody2D body;
         [SerializeField] internal ElvesmithAnimations animations;
@@ -33,7 +42,6 @@ namespace Enemies
         [SerializeField] private float knockbackForce = 6f;
         [SerializeField] private Color hitFlashColor = Color.red; 
         [SerializeField] private float hitFlashDuration = 0.1f;
-        [SerializeField] internal bool isInterruptable;
         [ColorUsage(true, true)][SerializeField] internal Color attackGlowColor = Color.white;
         
         private Color originalColor;
@@ -75,32 +83,47 @@ namespace Enemies
             stateMachine = new StateMachine();
             
             stateMachine.AddStates(
+                new ElvesmithIdleState(this),
                 new ElvesmithChaseState(this),
                 new ElvesmithSlamState(this),
                 new ElvesmithStompState(this),
                 new ElvesmithDashState(this)
             );
             
-            stateMachine.ChangeStateTo<ElvesmithChaseState>();
+            stateMachine.ChangeStateTo<ElvesmithIdleState>();
         }
 
         private void Update()
         {
+            if (knockbackTimer > 0) knockbackTimer -= Time.deltaTime;
+            
             CurrentState?.RecursiveDo();
         }
 
         internal void TriggerTelegraphGlow(float duration = 0.5f)
         {
-            Tween.Custom(this, 1f, 0f, duration, onValueChange: (target, val) =>
+            Tween.Custom(this, Color.black, attackGlowColor, duration, onValueChange: (target, val) =>
             {
                 foreach (var sr in target.spriteRenderers)
                 {
-                    if (sr != null)
-                    {
-                        sr.GetPropertyBlock(target.mpb);
-                        target.mpb.SetFloat(GlowAmount, val);
-                        sr.SetPropertyBlock(target.mpb);
-                    }
+                    if (sr is null) return;
+                    sr.GetPropertyBlock(mpb);
+                    mpb.SetColor("_Emission_Color", val);
+                    sr.SetPropertyBlock(mpb);
+                }
+            }).OnComplete(()=> ToneDownGlow());
+        }
+
+        private void ToneDownGlow(float duration = 0.7f)
+        {
+            Tween.Custom(this, mpb.GetColor("_Emission_Color"), Color.black, duration, onValueChange: (target, val) =>
+            {
+                foreach (var sr in target.spriteRenderers)
+                {
+                    if (sr is null) return;
+                    sr.GetPropertyBlock(mpb);
+                    mpb.SetColor("_Emission_Color", val);
+                    sr.SetPropertyBlock(mpb);
                 }
             });
         }
@@ -133,6 +156,7 @@ namespace Enemies
             {
                 body.linearVelocity = Vector2.zero;
                 body.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+                knockbackTimer = knockbackTime;
             }
 
             if (spriteRenderers != null && spriteRenderers.Length > 0 && gameObject.activeInHierarchy)
@@ -161,11 +185,6 @@ namespace Enemies
                 });
             }
 
-            if (isInterruptable)
-            {
-                stateMachine.ChangeStateTo<ElvesmithChaseState>();
-            }
-
             if (health <= 0)
             {
                 Die();
@@ -186,9 +205,7 @@ namespace Enemies
     {
         public AnimationClip IdleAnimation;
         public AnimationClip MoveAnimation;
-        public AnimationClip SlamTelegraphAnimation;
         public AnimationClip SlamAnimation;
-        public AnimationClip StompTelegraphAnimation;
         public AnimationClip StompAnimation;
         public AnimationClip DashAnimation;
     }

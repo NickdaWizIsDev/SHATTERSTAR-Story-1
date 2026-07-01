@@ -1,26 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using PrimeTween;
 using Player;
 
-namespace Managers
+namespace Managers 
 {
     public class HUDManager : MonoBehaviour
     {
         [Header("References")]
-        private PlayerController player;
-        [SerializeField] private Image healthBarFill;  // The front bar 
-        [SerializeField] private Image healthBarGhost; // The back bar 
+        [SerializeField] private PlayerController player;
+        [SerializeField] private Image mainFill;
+        [SerializeField] private Image ghostFill;
 
         [Header("Tween Settings")]
-        [SerializeField] private float ghostDrainDuration = 0.5f;
-        [SerializeField] private float ghostDrainDelay = 0.3f;
-
-        private void Start()
-        {
-            player = GameManager.Instance.Player;
-        }
+        [SerializeField] private float ghostDelay = 0.3f;
+        [SerializeField] private float ghostDrainSpeed = 0.4f;
 
         private void OnEnable()
         {
@@ -32,23 +26,30 @@ namespace Managers
 
         private void OnDisable()
         {
-            // Always unsubscribe to prevent memory leaks!
             if (player != null)
             {
                 player.OnHealthPctChanged -= UpdateHealthBar;
             }
         }
 
-        private void UpdateHealthBar(float currentHealthPct)
+        private void Start()
         {
-            // 1. Instantly snap the main health bar to the new value
-            healthBarFill.fillAmount = currentHealthPct;
+            if (player is null) return;
+            UpdateHealthBar(player.CurrentHealthPct);
+                
+            ghostFill.fillAmount = player.CurrentHealthPct;
+        }
 
-            // 2. Stop any existing tweens on the ghost bar so rapid hits don't conflict
-            Tween.StopAll(healthBarGhost);
+        private void UpdateHealthBar(float targetPct)
+        {
+            // 1. Instantly snap the main red/green bar down to show the damage
+            mainFill.fillAmount = targetPct;
 
-            // 3. Tween the ghost bar down to match the new health percentage smoothly
-            Tween.UIFillAmount(healthBarGhost, currentHealthPct, duration: ghostDrainDuration, startDelay: ghostDrainDelay, ease: Ease.OutQuad);
+            // 2. Stop any existing tweens on the ghost bar so they don't overlap during a rapid combo
+            Tween.StopAll(ghostFill);
+
+            // 3. Tween the ghost bar smoothly after a short delay for that juicy visual impact
+            Tween.UIFillAmount(ghostFill, targetPct, duration: ghostDrainSpeed, startDelay: ghostDelay);
         }
     }
 }

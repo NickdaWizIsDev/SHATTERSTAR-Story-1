@@ -30,6 +30,11 @@ namespace Player
             if(animationTimer > 0)
             {
                 animationTimer -= Time.deltaTime;
+                
+                if (!(player.attackBufferTimer > 0) ||
+                    !((animationTimer / (currentClip ? currentClip.length : 1f)) <= 0.15f)) return;
+                player.attackBufferTimer = 0f; // Consume the buffer
+                StartAttack();
             }
             else 
             {
@@ -46,8 +51,6 @@ namespace Player
         {
             player.combat.InitializeAttack(AttackType.Sword);
             var clipToPlay = player.animations.MovingAttackAnimation; // Assuming you use MovingAttack as the base
-    
-            if (animationTimer / (currentClip ? currentClip.length : clipToPlay.length) > 0.15f) return;
 
             // Directional Checks
             if (player.movement.movementVector.y > 0.5f)

@@ -15,34 +15,36 @@ namespace Enemies
 
         public override void Enter()
         {
-            // play Move
+            boss.animationManager.PlayAnimation(boss.animations.MoveAnimation);
         }
 
         public override void Do()
         {
+            // PROTECT THE KNOCKBACK: Don't override physics if he is reeling from a hit!
+            if (boss.knockbackTimer > 0) return;
+
             if (boss.playerTarget == null) return;
 
             boss.FacePlayer();
             var distanceToPlayer = Vector2.Distance(boss.transform.position, boss.playerTarget.position);
 
-            if (Time.time >= boss.nextAttackTime)
+            if (boss.attackCounter >= boss.attacksBeforeStomp)
             {
-                if (boss.attackCounter >= boss.attacksBeforeStomp)
-                {
-                    boss.stateMachine.ChangeStateTo<ElvesmithStompState>();
-                    return;
-                }
+                boss.stateMachine.ChangeStateTo<ElvesmithStompState>();
+                return;
+            }
 
-                if (distanceToPlayer <= boss.slamAttackRange)
-                {
-                    boss.stateMachine.ChangeStateTo<ElvesmithSlamState>();
-                    return;
-                }
-                if (distanceToPlayer <= boss.dashAttackRange)
-                {
-                    boss.stateMachine.ChangeStateTo<ElvesmithDashState>();
-                    return;
-                }
+            if (distanceToPlayer <= boss.slamAttackRange)
+            {
+                boss.stateMachine.ChangeStateTo<ElvesmithSlamState>();
+                return;
+            }
+            
+            // Only dash if the player is FAR away
+            if (distanceToPlayer > boss.dashAttackRange && Time.time >= boss.nextDashTime)
+            {
+                boss.stateMachine.ChangeStateTo<ElvesmithDashState>();
+                return;
             }
 
             // Move towards player

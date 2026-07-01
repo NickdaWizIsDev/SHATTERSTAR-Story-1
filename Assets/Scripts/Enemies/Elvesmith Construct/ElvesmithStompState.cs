@@ -1,3 +1,4 @@
+using Gameplay;
 using HSM;
 using UnityEngine;
 
@@ -20,32 +21,31 @@ namespace Enemies
             boss.body.linearVelocity = Vector2.zero;
             boss.attackCounter = 0; 
             shockwaveSpawned = false;
-            boss.TriggerTelegraphGlow(0.8f);
             
-            // boss.animationManager.PlayAnimation(boss.animations.StompAnimation);
-            animationTimer = 1.5f; 
+            boss.animationManager.PlayAnimation(boss.animations.StompAnimation);
+            animationTimer = boss.animations.StompAnimation.length;
+            boss.TriggerTelegraphGlow(animationTimer/2);
         }
 
         public override void Do()
         {
             animationTimer -= Time.deltaTime;
 
-            // Spawn shockwave at the exact moment the foot hits the ground (e.g., 0.5s before animation ends)
-            if (animationTimer <= 0.5f && !shockwaveSpawned)
+            if (animationTimer <= 1f && !shockwaveSpawned)
             {
                 shockwaveSpawned = true;
-                Object.Instantiate(boss.shockwavePrefab, boss.shockwaveSpawnPoint.position, Quaternion.identity);
-                // CameraEffects.Instance.Shake(0.2f, 1.5f);
+                var sw = Object.Instantiate(boss.shockwavePrefab, boss.shockwaveSpawnPoint.position, Quaternion.identity);
+                sw.MoveDirection = new Vector2(boss.transform.localScale.x, 0f);
+                CameraEffects.Instance.Shake(0.5f, 1.5f);
             }
 
             if (!(animationTimer <= 0)) return;
             boss.nextAttackTime = Time.time + boss.stompRecoveryTime;
-            boss.stateMachine.ChangeStateTo<ElvesmithChaseState>();
+            boss.stateMachine.ChangeStateTo<ElvesmithIdleState>();
         }
 
         public override void Exit()
         {
-            
         }
     }
 }

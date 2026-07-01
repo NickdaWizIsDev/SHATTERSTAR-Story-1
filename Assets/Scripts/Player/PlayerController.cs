@@ -23,6 +23,8 @@ namespace Player
         [Header("Variables")]
         [SerializeField] private int maxHealth = 100;
         [SerializeField] private int health = 100;
+        public float CurrentHealthPct => (float)health / maxHealth;
+
         [SerializeField] private float iFrameDuration = 1.5f;
         [SerializeField] private float flashInterval = 0.1f;
         [SerializeField] internal float dashCooldown = 0.75f;
@@ -34,9 +36,13 @@ namespace Player
         [SerializeField] private float knockbackDuration = 0.2f;
         private bool isKnockedBack;
         
-        private bool isInvincible;
+        [Header("Input Buffering")]
+        public float attackBufferTimer;
+        private float attackBufferWindow = 0.2f;
         
-        public event Action<float> OnHealthPctChanged;
+        private bool isInvincible;
+
+        public event Action<float> OnHealthPctChanged = f => {};
         
         [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
@@ -120,6 +126,18 @@ namespace Player
 
         private void Update()
         {
+            if (attackBufferTimer > 0)
+            {
+                attackBufferTimer -= Time.deltaTime;
+            }
+
+            if (attackBufferTimer > 0 && stateMachine.currentState is not PlayerAttackState && stateMachine.currentState is not PlayerDashingState)
+            {
+                attackBufferTimer = 0f; // Consume the buffer
+                stateMachine.ChangeStateTo<PlayerAttackState>();
+                (stateMachine.currentState as PlayerAttackState)?.StartAttack();
+            }
+            
             CurrentState.RecursiveDo();
 
             #if UNITY_EDITOR
@@ -152,10 +170,11 @@ namespace Player
 
             health -= damage;
             
-            OnHealthPctChanged?.Invoke((float)health / maxHealth);
+            OnHealthPctChanged.Invoke((float)health / maxHealth);
             
             if(health <= 0)
             {
+                
             }
             else
             {
@@ -238,17 +257,8 @@ namespace Player
         {
             if (stateMachine.currentState is PlayerDashingState) return;
             if (DialogueManager.Instance.IsPlaying) return;
-
-            if (stateMachine.currentState is PlayerAttackState)
-            {
-                var activeAttack = stateMachine.currentState as PlayerAttackState;
-                activeAttack?.StartAttack();
-                return;
-            }
-
-            stateMachine.ChangeStateTo<PlayerAttackState>();
-            var newAttack = stateMachine.currentState as PlayerAttackState;
-            newAttack?.StartAttack();
+            
+            attackBufferTimer = attackBufferWindow;
         }
 
         public void OnDash(InputAction.CallbackContext context)

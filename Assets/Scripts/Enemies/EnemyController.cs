@@ -152,8 +152,6 @@ namespace Enemies
         {
             attackTimer = attackCooldown;
         }
-
-        public event Action<EnemyController> OnDeath;
     }
 
     [Serializable]
