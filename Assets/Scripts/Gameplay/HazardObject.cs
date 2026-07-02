@@ -2,7 +2,6 @@ using System;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Tilemaps;
 
 namespace Gameplay
 {
@@ -24,7 +23,10 @@ namespace Gameplay
                 !other.collider.attachedRigidbody.TryGetComponent(out PlayerController player)) return;
             
             onContact?.Invoke();
-            player.DamageThis(hazardDamage, GetComponent<Collider2D>().ClosestPoint(player.transform.position));
+            
+            Vector2 hitPoint = other.GetContact(0).point;
+            
+            player.DamageThis(hazardDamage, hitPoint);
         }
     }
 }
