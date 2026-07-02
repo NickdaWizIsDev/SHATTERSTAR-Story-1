@@ -34,8 +34,14 @@ namespace Player
             }
             else 
             {
-                player.stateMachine.ChangeStateTo<PlayerIdleState>(); 
-                // Note: You might want to change this to a PlayerFallState depending on your HSM setup.
+                if (Mathf.Abs(player.movement.movementVector.x) > 0)
+                {
+                    player.stateMachine.ChangeStateTo<PlayerMovingState>();
+                }
+                else
+                {
+                    player.stateMachine.ChangeStateTo<PlayerIdleState>();
+                }
             }
         }
 
@@ -58,6 +64,20 @@ namespace Player
             {
                 clipToPlay = player.animations.DownAttackAnimation;
                 isPogo = true; // Toggle the pogo flag!
+            }
+            else
+            {
+                switch (currentClip == player.animations.AirAttackAnimation)
+                {
+                    case true:
+                        // Normally, the alternative attack anim would be here, but there's none, and I'm
+                        // using the exact same animation anyway
+                        clipToPlay = player.animations.GroundAttackAnimation_2;
+                        break;
+                    case false:
+                        // no need to do anything hahahahahahah imsotired
+                        break;
+                }
             }
 
             // We pass the pogo flag into the Combat script

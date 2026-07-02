@@ -1,8 +1,4 @@
-﻿using HSM;
-using PrimeTween;
-using UnityEngine;
-
-namespace Enemies
+﻿namespace Enemies
 {
     public class CrystalCrawler : EnemyController
     {
@@ -17,6 +13,7 @@ namespace Enemies
             
             stateMachine.ChangeStateTo<EnemyIdleState>();
             isInterruptable = false;
+            doesChase = true;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Enemies
 
             var distanceToPlayer = Vector2.Distance(enemy.transform.position, enemy.playerTransform.position);
 
-            if (distanceToPlayer <= enemy.detectionRadius)
+            if (distanceToPlayer <= enemy.detectionRadius && enemy.doesChase)
             {
                 enemy.stateMachine.ChangeStateTo<EnemyChaseState>();
             }

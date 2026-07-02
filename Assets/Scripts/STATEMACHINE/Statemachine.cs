@@ -21,7 +21,7 @@ namespace HSM
         public Exception ChangeStateTo<T>() where T : State
         {
             var type = typeof(T);
-            if (!availableStates.TryGetValue(type, out var state)) return new Exception("State of type " 
+            if (!availableStates.TryGetValue(type, out _)) throw new Exception("State of type " 
                                                                     + type + " not found on this machine.");
             if (availableStates[type] == currentState) return null;
             currentState?.RecursiveExit();

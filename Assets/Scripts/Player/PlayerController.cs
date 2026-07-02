@@ -4,12 +4,15 @@ using JetBrains.Annotations;
 using Managers;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace Player
 {
     public class PlayerController : Entity, IDamageable
     {
+        private static readonly int Alpha = Shader.PropertyToID("_Alpha");
+
         [Header("Debug Stuff")] 
         [SerializeField] private TextMeshProUGUI debugStateText;
 
@@ -28,21 +31,25 @@ namespace Player
         [SerializeField] private float iFrameDuration = 1.5f;
         [SerializeField] private float flashInterval = 0.1f;
         [SerializeField] internal float dashCooldown = 0.75f;
-        [SerializeField] internal float dashCdTimer;
-        [SerializeField] internal bool isRunning;
+        internal float dashCdTimer;
+        internal bool isRunning;
         
         [Header("Knockback Settings")]
         [SerializeField] private float knockbackForce = 12f;
         [SerializeField] private float knockbackDuration = 0.2f;
         private bool isKnockedBack;
         
+        [Header("Audio")]
+        [SerializeField] internal AudioResource landAudio;
+        [SerializeField] internal AudioResource hitAudio;
+        
         [Header("Input Buffering")]
-        public float attackBufferTimer;
-        private float attackBufferWindow = 0.2f;
+        internal float attackBufferTimer;
+        [SerializeField] private float attackBufferWindow = 0.2f;
         
         private bool isInvincible;
 
-        public event Action<float> OnHealthPctChanged = f => {};
+        public event Action<float> OnHealthPctChanged = _ => {};
         
         [UsedImplicitly] private PlayerStates playerStates;
         private PlayerInputActions inputActions;
@@ -63,8 +70,8 @@ namespace Player
             inputActions.Gameplay.Move.performed += movement.OnMove;
             inputActions.Gameplay.Move.canceled += movement.OnMove;
 
-            inputActions.Gameplay.Run.performed += ctx => isRunning = true;
-            inputActions.Gameplay.Run.canceled += ctx => isRunning = false;
+            inputActions.Gameplay.Run.performed += _ => isRunning = true;
+            inputActions.Gameplay.Run.canceled += _ => isRunning = false;
 
             inputActions.Gameplay.Dash.started += OnDash;
 
@@ -109,8 +116,10 @@ namespace Player
 
         private void Start()
         {
+            CanMove = true;
             stateMachine.ChangeStateTo<PlayerIdleState>();
             movement.Controller = this;
+            health = maxHealth;
             OnHealthPctChanged?.Invoke((float)health / maxHealth);
         }
 
@@ -126,6 +135,7 @@ namespace Player
 
         private void Update()
         {
+            if (isDead) return;
             if (attackBufferTimer > 0)
             {
                 attackBufferTimer -= Time.deltaTime;
@@ -174,7 +184,7 @@ namespace Player
             
             if(health <= 0)
             {
-                
+                stateMachine.ChangeStateTo<PlayerDeathState>();
             }
             else
             {
@@ -182,6 +192,7 @@ namespace Player
                 StartCoroutine(KnockbackRoutine(damageSourcePos));
                 GameManager.Instance.TriggerHitStop(0.08f);
                 CameraEffects.Instance.Shake(0.1f, 1f);
+                if(hitAudio) PlaySFX(hitAudio);
             }
         }
         
@@ -189,22 +200,16 @@ namespace Player
         {
             isKnockedBack = true;
             DisableInput();
-            
-            Vector2 knockbackDir;
-            if (damageSourcePos != default)
-            {
+
+            var knockbackDir =
                 // Push away from the damage source
-                knockbackDir = ((Vector2)transform.position - damageSourcePos).normalized;
-            }
-            else
-            {
+                damageSourcePos != default ? ((Vector2)transform.position - damageSourcePos).normalized :
                 // Failsafe: If no source is provided (like environmental hazards), push them backwards based on where they are facing
-                knockbackDir = new Vector2(-Mathf.Sign(transform.localScale.x), 0);
-            }
+                new Vector2(-Mathf.Sign(transform.localScale.x), 0);
 
             knockbackDir.y = 0.5f; // A slight upward "pop" to juggle the player
 
-            if (movement.body != null)
+            if (movement.body)
             {
                 movement.body.linearVelocity = Vector2.zero;
                 movement.body.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
@@ -232,7 +237,7 @@ namespace Player
                     if (sr != null)
                     {
                         sr.GetPropertyBlock(mpb);
-                        mpb.SetFloat("_Alpha", alpha);
+                        mpb.SetFloat(Alpha, alpha);
                         sr.SetPropertyBlock(mpb);
                     }
                 }
@@ -246,7 +251,7 @@ namespace Player
                 if (sr != null)
                 {
                     sr.GetPropertyBlock(mpb);
-                    mpb.SetFloat("_Alpha", 1f);
+                    mpb.SetFloat(Alpha, 1f);
                     sr.SetPropertyBlock(mpb);
                 }
             }
@@ -255,7 +260,7 @@ namespace Player
 
         private void OnAttack(InputAction.CallbackContext context)
         {
-            if (stateMachine.currentState is PlayerDashingState) return;
+            if (stateMachine.currentState is PlayerDashingState || isDead) return;
             if (DialogueManager.Instance.IsPlaying) return;
             
             attackBufferTimer = attackBufferWindow;
@@ -263,7 +268,7 @@ namespace Player
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            if (stateMachine.currentState is PlayerDashingState) return;
+            if (stateMachine.currentState is PlayerDashingState || isDead) return;
             if (DialogueManager.Instance.IsPlaying) return;
             if (dashCdTimer > 0) return;
             
@@ -295,5 +300,6 @@ namespace Player
         public AnimationClip AirAttackAnimation;        
         public AnimationClip MovingAttackAnimation;     
         public AnimationClip DashAnimation;
+        public AnimationClip DeathAnimation;
     }
 }

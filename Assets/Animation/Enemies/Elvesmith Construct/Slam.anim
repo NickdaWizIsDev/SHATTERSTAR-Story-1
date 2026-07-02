@@ -7170,4 +7170,18 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.36666667
+    functionName: PlayResource
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 98b701aefbcda794781e75ebd15baf0f, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.51666665
+    functionName: PlayResource
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: a12a1d3de5244f44e84808e6c4f07693, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

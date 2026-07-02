@@ -16,13 +16,15 @@ namespace Player
             MovingState = new PlayerMovingState(player);
             AttackState = new PlayerAttackState(player);
             DashingState = new PlayerDashingState(player);
+            DeathState = new PlayerDeathState(player);
 
-            player.stateMachine.AddStates(IdleState, MovingState, AttackState, DashingState);
+            player.stateMachine.AddStates(IdleState, MovingState, AttackState, DashingState, DeathState);
         }
-        
-        internal State IdleState;
-        internal State MovingState;
-        internal State AttackState;
-        internal State DashingState;
+
+        private State IdleState;
+        private State MovingState;
+        private State AttackState;
+        private State DashingState;
+        private State DeathState;
     }
 }

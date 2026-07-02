@@ -1647,6 +1647,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.06
+    functionName: PlayResource
+    data: 
+    objectReferenceParameter: {fileID: 6418180475301049370, guid: e6c9eaaaf559e4d458a6e8f2ba78a076, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.15
     functionName: CloseHitbox
     data: 

@@ -22,7 +22,7 @@ namespace Enemies.Sludge
         {
             CurrentState.RecursiveDo();
 
-            // If we are currently roaming (or chasing), keep resetting the timer.
+            // If we are currently roaming, keep resetting the timer.
             if (stateMachine.currentState is not EnemyIdleState) 
             {
                 roamTimer = idleWaitTime; 

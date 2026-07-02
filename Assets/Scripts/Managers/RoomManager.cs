@@ -16,7 +16,7 @@ namespace Managers
 
         private void Start()
         {
-            // 1. Check if Nick has already beaten this arena
+            // Check if the player has already beaten this arena
             if (arena.arenaClearedState != null && GameManager.Instance.activeStates.Contains(arena.arenaClearedState))
             {
                 // Arena already cleared! Disable the trigger, walls, and enemies.
@@ -24,7 +24,7 @@ namespace Managers
                 return;
             }
 
-            // 2. If not cleared, prepare the arena
+            // If not cleared, prepare the arena
             arena.remainingEnemies = arena.arenaEnemies.Count;
             
             // Ensure barriers are down and enemies are hidden/disabled at the start

@@ -3,13 +3,14 @@ using Gameplay;
 using PrimeTween;
 using UnityEngine;
 using HSM;
+using UnityEngine.Audio;
 
 namespace Enemies
 {
     public class ElvesmithController : Entity, IDamageable
     {
         private static readonly int MColor = Shader.PropertyToID("m_Color");
-        private static readonly int GlowAmount = Shader.PropertyToID("_EmissionColor");
+        private static readonly int EmissionColor = Shader.PropertyToID("_Emission_Color");
 
         [Header("Boss Stats")]
         [SerializeField] internal int health = 30;
@@ -30,12 +31,13 @@ namespace Enemies
         internal float nextDashTime; // Tracks when the next dash is legally allowed
 
         [Header("References")]
-            internal Transform playerTarget;
+        internal Transform playerTarget;
         [SerializeField] internal Shockwave shockwavePrefab;
         [SerializeField] internal Transform shockwaveSpawnPoint;
         [SerializeField] internal Rigidbody2D body;
         [SerializeField] internal ElvesmithAnimations animations;
         [SerializeField] internal LayerMask obstacleLayer;
+        [SerializeField] internal AudioResource hitSound;
         
         [Header("Juice")]
         [SerializeField] internal SpriteRenderer[] spriteRenderers;
@@ -43,6 +45,7 @@ namespace Enemies
         [SerializeField] private Color hitFlashColor = Color.red; 
         [SerializeField] private float hitFlashDuration = 0.1f;
         [ColorUsage(true, true)][SerializeField] internal Color attackGlowColor = Color.white;
+        [SerializeField] private GameObject deathFXPrefab;
         
         private Color originalColor;
         internal Transform playerTransform;
@@ -51,8 +54,6 @@ namespace Enemies
         
         internal int attackCounter = 0;
         internal float nextAttackTime = 0f;
-
-        public event Action<ElvesmithController> OnDeath;
 
         protected void Awake()
         {
@@ -70,7 +71,7 @@ namespace Enemies
                 if (player != null) playerTarget = player.transform;
             }
 
-            if (spriteRenderers != null && spriteRenderers.Length > 0 && spriteRenderers[0] != null) 
+            if (spriteRenderers is { Length: > 0 } && spriteRenderers[0] != null) 
             {
                 originalColor = spriteRenderers[0].sharedMaterial.HasProperty(MColor) 
                     ? spriteRenderers[0].sharedMaterial.GetColor(MColor) 
@@ -108,7 +109,7 @@ namespace Enemies
                 {
                     if (sr is null) return;
                     sr.GetPropertyBlock(mpb);
-                    mpb.SetColor("_Emission_Color", val);
+                    mpb.SetColor(EmissionColor, val);
                     sr.SetPropertyBlock(mpb);
                 }
             }).OnComplete(()=> ToneDownGlow());
@@ -116,13 +117,13 @@ namespace Enemies
 
         private void ToneDownGlow(float duration = 0.7f)
         {
-            Tween.Custom(this, mpb.GetColor("_Emission_Color"), Color.black, duration, onValueChange: (target, val) =>
+            Tween.Custom(this, mpb.GetColor(EmissionColor), Color.black, duration, onValueChange: (target, val) =>
             {
                 foreach (var sr in target.spriteRenderers)
                 {
                     if (sr is null) return;
                     sr.GetPropertyBlock(mpb);
-                    mpb.SetColor("_Emission_Color", val);
+                    mpb.SetColor(EmissionColor, val);
                     sr.SetPropertyBlock(mpb);
                 }
             });
@@ -138,6 +139,12 @@ namespace Enemies
         public void DamageThis(int damage, Vector2 damageSourcePos = default)
         {
             health -= damage;
+
+            if (health <= 0)
+            {
+                Die();
+                return;
+            }
         
             var knockbackDir = Vector2.right;
             
@@ -159,18 +166,16 @@ namespace Enemies
                 knockbackTimer = knockbackTime;
             }
 
-            if (spriteRenderers != null && spriteRenderers.Length > 0 && gameObject.activeInHierarchy)
+            if (spriteRenderers is { Length: > 0 } && gameObject.activeInHierarchy)
             {
                 flashTween.Stop();
 
                 foreach (var sr in spriteRenderers)
                 {
-                    if (sr != null)
-                    {
-                        sr.GetPropertyBlock(mpb);
-                        mpb.SetColor(MColor, hitFlashColor);
-                        sr.SetPropertyBlock(mpb);
-                    }
+                    if (!sr) continue;
+                    sr.GetPropertyBlock(mpb);
+                    mpb.SetColor(MColor, hitFlashColor);
+                    sr.SetPropertyBlock(mpb);
                 }
 
                 flashTween = Tween.Custom(hitFlashColor, originalColor, duration: hitFlashDuration, onValueChange: color =>
@@ -185,9 +190,9 @@ namespace Enemies
                 });
             }
 
-            if (health <= 0)
+            if (hitSound is not null)
             {
-                Die();
+                PlaySFX(hitSound);
             }
         }
 
@@ -197,6 +202,8 @@ namespace Enemies
             Tween.StopAll(this);
             OnDeath?.Invoke(this);
             gameObject.SetActive(false);
+            Instantiate(deathFXPrefab, transform.position, Quaternion.identity);
+            GameManager.Instance.EndDemo();
         }
     }
 

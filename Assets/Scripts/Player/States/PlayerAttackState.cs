@@ -41,7 +41,7 @@ namespace Player
         }
         public override void Exit()
         {
-            
+            player.CanMove = true;
         }
 
         public void StartAttack()

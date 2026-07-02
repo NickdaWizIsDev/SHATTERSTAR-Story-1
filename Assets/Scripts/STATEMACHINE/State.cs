@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace HSM
 {
     public abstract class State

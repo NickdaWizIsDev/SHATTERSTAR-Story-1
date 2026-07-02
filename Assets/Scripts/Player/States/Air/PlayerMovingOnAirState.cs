@@ -46,7 +46,7 @@ namespace Player
                     if (player.movement.CurrentVelocity.y < -1f) subStateMachine.ChangeStateTo<PlayerFallState>();
                     break;
                 case PlayerFallState:
-                    if (player.movement.CurrentVelocity.y >= -0.5f && player.movement.CurrentVelocity.y <= 0.5f) 
+                    if (player.movement.CurrentVelocity.y is >= -0.5f and <= 0.5f) 
                         subStateMachine.ChangeStateTo<PlayerAirHangState>();
                     break;
             }

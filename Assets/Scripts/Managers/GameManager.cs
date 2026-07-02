@@ -37,14 +37,19 @@ public class GameManager : MonoBehaviour
     
     public void TriggerHitStop(float duration)
     {
+        StopCoroutine(HitStopRoutine(duration));
         StartCoroutine(HitStopRoutine(duration));
     }
 
     private IEnumerator HitStopRoutine(float duration)
     {
-        var originalTimeScale = timeScale;
         timeScale = 0f;
         yield return new WaitForSecondsRealtime(duration);
-        timeScale = originalTimeScale;
+        timeScale = 1;
+    }
+
+    public void EndDemo()
+    {
+        UIManager.Instance.EndDemoSequence();
     }
 }

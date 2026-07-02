@@ -14,7 +14,7 @@ namespace Gameplay
 
         private void Start()
         {
-            Tween.ScaleY(this.transform, 0.1f, 1f, 0.2f);
+            Tween.ScaleY(transform, 0.1f, 1f, 0.2f);
             Destroy(gameObject, lifetime);
         }
 

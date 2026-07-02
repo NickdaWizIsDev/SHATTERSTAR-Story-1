@@ -2,6 +2,7 @@ using System;
 using HSM;
 using UnityEngine;
 using PrimeTween;
+using UnityEngine.Audio;
 
 namespace Enemies
 {
@@ -24,6 +25,7 @@ namespace Enemies
         [SerializeField] internal Rigidbody2D body;
         [SerializeField] internal EnemyAnimations animations;
         [SerializeField] internal LayerMask obstacleLayer;
+        [SerializeField] private GameObject deathFXPrefab;
         
         // GAME JUICE (FEEDBACK)
         [Header("Juice")]
@@ -33,6 +35,7 @@ namespace Enemies
         [SerializeField] private float hitFlashDuration = 0.1f;
         [SerializeField] internal bool isInterruptable = true;
         [ColorUsage(true, true)][SerializeField] internal Color attackGlowColor = Color.white;
+        [SerializeField] private AudioResource hitAudio;
         
         private Color originalColor;
         internal Transform playerTransform;
@@ -40,6 +43,7 @@ namespace Enemies
         // Caching the MaterialPropertyBlock to prevent memory leaks
         internal MaterialPropertyBlock propBlock;
         private Tween flashTween;
+        public bool doesChase = false;
 
         protected virtual void Awake()
         {
@@ -121,6 +125,8 @@ namespace Enemies
                     spriteRenderer.SetPropertyBlock(propBlock);
                 });
             }
+            
+            if(hitAudio) PlaySFX(hitAudio);
 
             if (stateMachine.currentState is not EnemyIdleState && isInterruptable)
             {
@@ -138,6 +144,7 @@ namespace Enemies
             Tween.StopAll(spriteRenderer);
             OnDeath?.Invoke(this);
             gameObject.SetActive(false);
+            Instantiate(deathFXPrefab, transform.position, Quaternion.identity);  
         }
 
         protected virtual void OnDrawGizmosSelected()
